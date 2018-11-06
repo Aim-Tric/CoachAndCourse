@@ -35,8 +35,8 @@ public class LoginServlet extends HttpServlet {
 
         resp.getWriter().write("");
         if(new LoginHandle().confirm(account, password)){
-            
-            resp.getWriter().write("登录成功");
+
+            resp.getWriter().print("success");
         }else{
             resp.getWriter().write("登录失败");
         }
