@@ -27,8 +27,8 @@
             <dataSource type="POOLED">
                 <property name="driver" value="${driver}"/>
                 <property name="url" value="${url}"/>
-                <property name="username" value="${username}"/>
-                <property name="password" value="${password}"/>
+                <property name="username" value="cncadmin"/>
+                <property name="password" value="zxcvbnm123"/>
             </dataSource>
         </environment>
     </environments>
