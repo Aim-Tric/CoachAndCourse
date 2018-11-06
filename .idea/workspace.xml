@@ -7,14 +7,14 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31cc10ac-8844-43ea-8579-f3949eaa7626" name="Default Changelist" comment="">
+ <list default="true" id="de9d46c8-6c30-4a08-9042-008c30900804" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/co.bkspace.cnc/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/co.bkspace.cnc/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/co.bkspace.cnc/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/co.bkspace.cnc/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,14 +89,35 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-121431672">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="xml" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="XML" value="3" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+
+            <state relative-caret-position="322">
+              <caret line="14" column="44" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
+
             </state>
           </provider>
         </entry>
@@ -113,8 +134,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/UserDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+
+            <state relative-caret-position="598">
+              <caret line="26" column="55" lean-forward="true" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
+
             </state>
           </provider>
         </entry>
@@ -150,6 +173,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
     <option name="FILTER_WARNINGS" value="false" />
@@ -176,6 +200,7 @@
   <component name="ProjectFrameBounds" extendedState="1">
     <option name="width" value="960" />
     <option name="height" value="1050" />
+
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -248,6 +273,7 @@
             <path>
               <item name="CoachAndCourse" type="b2602c69:ProjectViewProjectNode" />
               <item name="CoachAndCourse" type="462c0819:PsiDirectoryNode" />
+
             </path>
             <path>
               <item name="CoachAndCourse" type="b2602c69:ProjectViewProjectNode" />
@@ -259,6 +285,7 @@
               <item name="CoachAndCourse" type="462c0819:PsiDirectoryNode" />
               <item name=".idea" type="462c0819:PsiDirectoryNode" />
               <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+
             </path>
             <path>
               <item name="CoachAndCourse" type="b2602c69:ProjectViewProjectNode" />
@@ -278,6 +305,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+
             <path>
               <item name="CoachAndCourse" type="b2602c69:ProjectViewProjectNode" />
               <item name="CoachAndCourse" type="462c0819:PsiDirectoryNode" />
@@ -286,6 +314,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="mapper" type="462c0819:PsiDirectoryNode" />
             </path>
+
           </expand>
           <select />
         </subPane>
@@ -295,9 +324,11 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541468705289" />
     <property name="js.buildTools.grunt.grunt-cli.package" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/target" />
+
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -506,13 +537,16 @@
       <created>1541429562555</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+
       <updated>1541429562555</updated>
       <workItem from="1541429566691" duration="7443000" />
       <workItem from="1541464942958" duration="2839000" />
+
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+
     <option name="totallyTimeSpent" value="10282000" />
   </component>
   <component name="ToolWindowManager">
@@ -527,6 +561,7 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
+
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49888888" visible="true" weight="0.32969433" />
@@ -534,6 +569,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5011111" side_tool="true" weight="0.32969433" />
@@ -541,15 +577,18 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
+
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
+
       <window_info anchor="right" id="Maven Projects" order="5" weight="0.32995737" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
+
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -561,6 +600,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="331">
           <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
         </state>
@@ -570,11 +610,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="5" column="10" lean-forward="true" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-config.xml">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="304">
           <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
         </state>
@@ -605,6 +647,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="56" lean-forward="true" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
+
         </state>
       </provider>
     </entry>
