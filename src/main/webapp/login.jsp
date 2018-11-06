@@ -26,7 +26,7 @@
             <h3 class="form-title">登录</h3>
             <div class="col-md-9">
 
-                <form action="servlet/register" method="get">
+                <form action="servlet/login" method="post">
                     <div class="form-group">
                         <i class="fa fa-user fa-lg"></i>
                         <input class="form-control required" type="text" placeholder="用户名" id="username" name="username"
@@ -35,7 +35,7 @@
                     <div class="form-group">
                         <i class="fa fa-lock fa-lg"></i>
                         <input class="form-control required" type="password" placeholder="密码" id="password"
-                               name="password" maxlength="8"/>
+                               name="password" maxlength="16"/>
                     </div>
                     <div class="form-group">
                         <label class="checkbox">

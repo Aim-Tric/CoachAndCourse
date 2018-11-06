@@ -4,9 +4,9 @@ import pojo.User;
 
 public interface UserDAO {
 
-    User findUserById(int id);
+    User findUserByUserName(String userName);
 
-    User findUserByName(String name);
+    User findUserByEmail(String email);
 
     void insertUser(User user);
 

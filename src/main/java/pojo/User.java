@@ -2,16 +2,45 @@ package pojo;
 
 public class User {
     private int id;
-    private String name;
+    private String userName;
     private String sex;
+    private String email;
+    private String nickName;
     private String password;
 
-    public User(){}
+    public User() {
+    }
 
-    public User(int id, String name, String sex, String password){
+    public User(int id, String userName, String sex, String email, String nickName, String password) {
         this.id = id;
-        this.name = name;
+        this.userName = userName;
         this.sex = sex;
+        this.email = email;
+        this.nickName = nickName;
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -23,12 +52,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String name) {
+        this.userName = name;
     }
 
     public String getSex() {
@@ -39,18 +68,10 @@ public class User {
         this.sex = sex;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String toString(){
+    public String toString() {
         return "id = " + id +
-                " name = " + name +
-                " sex = " + sex +
-                " password = " + password;
+                " name = " + userName +
+                " sex = " + sex;
     }
 }

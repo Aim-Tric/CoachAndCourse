@@ -24,13 +24,12 @@ public class UserImpl implements UserDAO {
         }
     }
 
-
     @Override
-    public User findUserById(int id) {
+    public User findUserByUserName(String userName) {
         try{
             session = factory.openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
-            user = mapper.findUserById(id);
+            user = mapper.findUserByUserName(userName);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -40,11 +39,11 @@ public class UserImpl implements UserDAO {
     }
 
     @Override
-    public User findUserByName(String name) {
+    public User findUserByEmail(String email) {
         try{
             session = factory.openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
-            user = mapper.findUserByName(name);
+            user = mapper.findUserByEmail(email);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -65,13 +64,6 @@ public class UserImpl implements UserDAO {
         }finally {
             session.close();
         }
-    }
-
-    public static void main(String[] args) {
-        UserImpl impl = new UserImpl();
-        impl.insertUser(new User(7, "BK", "女", "shasdf"));
-        User user = impl.findUserById(7);
-        System.out.println(user.toString());
     }
 
 }

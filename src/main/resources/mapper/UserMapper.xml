@@ -2,14 +2,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.UserDAO">
-    <select id="findUserById" parameterType="int" resultType="pojo.User">
-    select * from user where id = #{id}
+    <select id="findUserByUserName" resultType="pojo.User">
+      select * from user where username = #{username}
   </select>
-    <select id="findUserByName" resultType="java.lang.String">
-      select * from user where name = #{name}
+    <select id="findUserByEmail" resultType="pojo.User">
+      select * from user where email = #{email}
   </select>
     <insert id="insertUser" parameterType="pojo.User">
-      insert into user (id, name, sex, password)
-      values (#{id}, #{name}, #{sex}, #{password})
+      insert into user (id, username, sex, password, email, nickname)
+      values (#{id}, #{name}, #{sex}, #{password}, #{email}, #{nickname})
     </insert>
 </mapper>
