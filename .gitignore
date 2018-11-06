@@ -22,4 +22,11 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+# custom files filter here
+# filter all auto-genarated file by intelliJ idea and eclipse 
 .idea/
+target/
+bin/
+.settings/
+.classpath/
+*.project
