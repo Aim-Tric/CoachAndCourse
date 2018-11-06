@@ -28,7 +28,8 @@ public class LoginHandle {
                 "(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@" +
                 "(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w]" +
                 "(?:[\\w-]*[\\w])?";
-        if (java.util.regex.Pattern.matches(account, mailRex)) {
+        boolean isMail = java.util.regex.Pattern.matches(account, mailRex);
+        if (isMail) {
             return impl.findUserByEmail(account);
         } else {
             return impl.findUserByUserName(account);
