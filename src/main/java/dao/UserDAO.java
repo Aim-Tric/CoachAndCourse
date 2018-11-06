@@ -4,6 +4,10 @@ import pojo.User;
 
 public interface UserDAO {
 
-    User selectUser(int id);
+    User findUserById(int id);
+
+    User findUserByName(String name);
+
+    void insertUser(User user);
 
 }

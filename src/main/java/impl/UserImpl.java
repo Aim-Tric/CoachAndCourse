@@ -10,17 +10,27 @@ import pojo.User;
 import java.io.InputStream;
 
 public class UserImpl implements UserDAO {
+    SqlSession session = null;
+    User user = null;
+    InputStream stream = null;
+    SqlSessionFactory factory = null;
+
+    public UserImpl(){
+        try{
+            stream = Resources.getResourceAsStream("mybatis-config.xml");
+            factory = new SqlSessionFactoryBuilder().build(stream);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
-    public User selectUser(int id) {
-        SqlSession session = null;
-        User user = null;
+    public User findUserById(int id) {
         try{
-            InputStream stream = Resources.getResourceAsStream("mybatis-config.xml");
-            SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(stream);
             session = factory.openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
-            user = mapper.selectUser(id);
+            user = mapper.findUserById(id);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -29,9 +39,39 @@ public class UserImpl implements UserDAO {
         return user;
     }
 
+    @Override
+    public User findUserByName(String name) {
+        try{
+            session = factory.openSession();
+            UserDAO mapper = session.getMapper(UserDAO.class);
+            user = mapper.findUserByName(name);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return user;
+    }
+
+    @Override
+    public void insertUser(User user) {
+        try{
+            session = factory.openSession();
+            UserDAO mapper = session.getMapper(UserDAO.class);
+            mapper.insertUser(user);
+            session.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+    }
+
     public static void main(String[] args) {
-        UserImpl imp = new UserImpl();
-        User user = imp.selectUser(1);
+        UserImpl impl = new UserImpl();
+        impl.insertUser(new User(7, "BK", "女", "shasdf"));
+        User user = impl.findUserById(7);
         System.out.println(user.toString());
     }
+
 }

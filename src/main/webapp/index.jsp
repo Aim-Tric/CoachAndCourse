@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,14 +16,11 @@
     <title>Document</title>
 </head>
 <body>
-
+    <input type="button" name=loginButton>
+    <script src="jquery.js"></script>
+    <script>
+        $.post('')
+    </script>
 </body>
 </html>
-=======
-<input type="button" name=loginButton>
-<script src="jquery.js"></script>
-<script >
-    $.post('')
 
-</script>
->>>>>>> 3a5914b9bbda62f1afd136b642707aeff7a71456
