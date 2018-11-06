@@ -3,34 +3,40 @@
 <configuration>
 
     <settings>
-        <!-- Globally enables or disables any caches configured in any mapper under this configuration -->
-        <setting name="cacheEnabled" value="false"/>
-        <!-- Sets the number of seconds the driver will wait for a response from the database -->
-        <setting name="defaultStatementTimeout" value="5"/>
-        <!-- Enables automatic mapping from classic database column names A_COLUMN to camel case classic Java property names aColumn -->
-        <setting name="mapUnderscoreToCamelCase" value="true"/>
-        <!-- Allows JDBC support for generated keys. A compatible driver is required.
-        This setting forces generated keys to be used if set to true,
-         as some drivers deny compatibility but still work -->
-        <setting name="useGeneratedKeys" value="true"/>
+        <setting name="cacheEnabled" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="useColumnLabel" value="true"/>
+        <setting name="useGeneratedKeys" value="false"/>
+        <setting name="autoMappingBehavior" value="PARTIAL"/>
+        <setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>
+        <setting name="defaultExecutorType" value="SIMPLE"/>
+        <setting name="defaultStatementTimeout" value="25"/>
+        <setting name="defaultFetchSize" value="100"/>
+        <setting name="safeRowBoundsEnabled" value="false"/>
+        <setting name="mapUnderscoreToCamelCase" value="false"/>
+        <setting name="localCacheScope" value="SESSION"/>
+        <setting name="jdbcTypeForNull" value="OTHER"/>
+        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
     </settings>
 
     <!-- Continue editing here -->
-
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
+
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/mybatis"/>
-                <property name="username" value="root"/>
-                <property name="password" value="123"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/cnc"/>
+                <property name="username" value="cncadmin"/>
+                <property name="password" value="zxcvbnm123"/>
+
             </dataSource>
         </environment>
     </environments>
 
     <mappers>
-        <mapper resource="" />
+        <mapper resource=""/>
     </mappers>
 
 </configuration>
