@@ -9,7 +9,7 @@
       select * from user where email = #{email}
   </select>
     <insert id="insertUser" parameterType="pojo.User">
-      insert into user (id, username, sex, password, email, nickname)
-      values (#{id}, #{name}, #{sex}, #{password}, #{email}, #{nickname})
+      insert into user (username, sex, password, email, nickname)
+      values (#{username}, #{sex}, #{password}, #{email}, #{nickname})
     </insert>
 </mapper>

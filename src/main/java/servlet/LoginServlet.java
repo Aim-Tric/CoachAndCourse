@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
+
 /**
  * 接收返回登录操作
  */
@@ -17,28 +19,21 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
-//        测试
-        String json =req.getParameter("json").replace("＂","\"");
-        System.out.println(json);
+//        use json
+//        String json =req.getParameter("json").replace("＂","\"");
+//        System.out.println(json);
+
 
         String account = req.getParameter("username");
         String password = req.getParameter("password");
-
-        resp.getWriter().write("");
         if(new LoginHandle().confirm(account, password)){
-
             resp.getWriter().print("success");
         }else{
-            resp.getWriter().write("登录失败");
+            resp.getWriter().print("error");
         }
     }
 }

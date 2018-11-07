@@ -1,27 +1,30 @@
 $(function () {
-    $('form').click(function () {
+    $('#do-login').click(function (e) {
+        // e.stopPropagation();
+        // e.preventDefault();
         var arr = {};
-        var form = $(this).serializeArray();
+        var $form = $('form');
+        var form = $form.serializeArray();
         $.each(form, function () {
             arr[this.name] = this.value;
         });
-        var $self = $(this);
+
         $.ajax({
-            method: 'post',
-            url: 'servlet/login',
-            dataType: 'text',
+            type: 'Post',
+            url: '/servlet/login',
+            dataType: 'json',
+            contentType: "application/json; charset=utf-8",
             data: JSON.stringify(arr),
             success : function (result) {
-                $self.html("<div class='alert alert-success'>" +
+                $form.html("<div class='alert alert-success'>" +
                     "<a href='#' class='close' data-dismiss='alert'>&times;</a>" +
-                    "<strong>登陆成功！</strong>" + result + "</div>")
+                    "<strong>" + result + "</strong></div>")
             },
             error: function () {
-                $self.html("<div class='alert alert-warning'>" +
-                    "<a href='#' class='close' data-dismiss='alert'>&times;</a>" +
-                    "<strong>警告！</strong>您的网络连接有问题。</div>")
+                $('#alert-pw').removeClass("hidden");
             }
         });
+        return false
     });
 
 });

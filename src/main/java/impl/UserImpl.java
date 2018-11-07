@@ -66,4 +66,9 @@ public class UserImpl implements UserDAO {
         }
     }
 
+//    public static void main(String[] args) {
+//        UserImpl imp = new UserImpl();
+//
+//    }
+
 }

@@ -1,5 +1,6 @@
 package handle;
 
+import data.Consts;
 import impl.UserImpl;
 import pojo.User;
 
@@ -24,16 +25,16 @@ public class LoginHandle {
 
     private User getUser(String account) {
         UserImpl impl = new UserImpl();
-        String mailRex = "[\\w!#$%&'*+/=?^_`{|}~-]+" +
-                "(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@" +
-                "(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w]" +
-                "(?:[\\w-]*[\\w])?";
-        boolean isMail = java.util.regex.Pattern.matches(account, mailRex);
+        boolean isMail = java.util.regex.Pattern.matches(account, Consts.mailStr);
         if (isMail) {
             return impl.findUserByEmail(account);
         } else {
             return impl.findUserByUserName(account);
         }
-
     }
+
+//    public static void main(String[] args) {
+//        LoginHandle l = new LoginHandle();
+//        l.getUser("1231231");
+//    }
 }
