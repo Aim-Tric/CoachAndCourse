@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+import java.util.Enumeration;
 
 
 /**
@@ -26,6 +26,11 @@ public class LoginServlet extends HttpServlet {
 //        use json
 //        String json =req.getParameter("json").replace("＂","\"");
 //        System.out.println(json);
+
+        Enumeration<String> e = req.getAttributeNames();
+        System.out.println(e.nextElement());
+
+
 
 
         String account = req.getParameter("username");
