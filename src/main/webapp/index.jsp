@@ -21,7 +21,7 @@
 
     <!-- 用户自定义 -->
     <link rel="stylesheet" href="css/foodstyle.css">
-    <%--<script src="js/functions.js"></script>--%>
+    <script src="js/functions.js"></script>
 </head>
 
 <body>
@@ -146,7 +146,7 @@
             <div class="panel panel-default">
 
                 <div class="panel-body">
-                    <form class="form-horizontal" id="login_form" action="servlet/login" method="post">
+                    <form class="form-horizontal" id="login_form" method="post">
                         <h3 class="form-title">登录</h3>
                         <div id='alert-pw' class='alert alert-warning hidden'>
                             <a href='#' class='close' data-dismiss='alert'>&times;</a>

@@ -11,10 +11,10 @@ $(function () {
 
         $.ajax({
             type: 'Post',
-            url: '/servlet/login',
-            dataType: 'json',
+            url: 'servlet/login',
+            dataType: 'test',
             contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(arr),
+            data: {'json':  JSON.stringify(arr)},
             success : function (result) {
                 $form.html("<div class='alert alert-success'>" +
                     "<a href='#' class='close' data-dismiss='alert'>&times;</a>" +
