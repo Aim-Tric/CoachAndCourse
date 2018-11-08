@@ -1,15 +1,35 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.UserDAO">
-    <select id="findUserByUserName" resultType="pojo.User">
-      select * from user where username = #{username}
-  </select>
-    <select id="findUserByEmail" resultType="pojo.User">
-      select * from user where email = #{email}
-  </select>
-    <insert id="insertUser" parameterType="pojo.User">
-      insert into user (username, sex, password, email, nickname)
-      values (#{username}, #{sex}, #{password}, #{email}, #{nickname})
+<mapper namespace="dao.user.UserDAO">
+    <select id="findUsers" resultType="java.util.List">
+        select *
+        from user
+    </select>
+
+    <select id="findUser" resultType="pojo.user.User">
+        select * from user
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="username != null">
+                AND username = #{username}
+            </if>
+            <if test="sex != null">
+                AND sex = #{sex}
+            </if>
+            <if test="email != null">
+                AND email = #{email}
+            </if>
+            <if test="nickname != null">
+                AND nickname = #{nickname}
+            </if>
+            <if test="password != null">
+                AND password = #{password}
+            </if>
+        </trim>
+    </select>
+
+    <insert id="insertUser" parameterType="pojo.user.User">
+        insert into user (username, sex, password, email, nickname)
+        values (#{username}, #{sex}, #{password}, #{email}, #{nickname})
     </insert>
 </mapper>

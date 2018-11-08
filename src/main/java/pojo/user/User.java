@@ -1,4 +1,4 @@
-package pojo;
+package pojo.user;
 
 public class User {
     private int id;
@@ -11,7 +11,7 @@ public class User {
     public User() {
     }
 
-    public User( String username, String sex, String email, String nickName, String password) {
+    public User(String username, String sex, String email, String nickName, String password) {
         this.username = username;
         this.sex = sex;
         this.email = email;
@@ -22,7 +22,6 @@ public class User {
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
@@ -30,7 +29,6 @@ public class User {
     public String getNickname() {
         return nickname;
     }
-
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
@@ -38,7 +36,6 @@ public class User {
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -46,7 +43,6 @@ public class User {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -54,15 +50,13 @@ public class User {
     public String getUsername() {
         return username;
     }
-
-    public void getUsername(String name) {
-        this.username = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getSex() {
         return sex;
     }
-
     public void setSex(String sex) {
         this.sex = sex;
     }
@@ -70,7 +64,7 @@ public class User {
 
     public String toString() {
         return "id = " + id +
-                " name = " + username +
+                " username = " + username +
                 " sex = " + sex;
     }
 }

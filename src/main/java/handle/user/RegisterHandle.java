@@ -1,8 +1,8 @@
-package handle;
+package handle.user;
 
 import data.Consts;
 import impl.UserImpl;
-import pojo.User;
+import pojo.user.User;
 
 public class RegisterHandle {
     private UserImpl impl;
@@ -25,7 +25,10 @@ public class RegisterHandle {
     }
 
     private boolean isExist(String str){
-        if(impl.findUserByUserName(str) == null)
+        User user = new User();
+        user.setUsername(str);
+
+        if(impl.findUser(user) == null)
             return false;
         return true;
     }

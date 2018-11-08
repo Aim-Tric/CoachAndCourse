@@ -146,11 +146,11 @@
             <div class="panel panel-default">
 
                 <div class="panel-body">
-                    <form class="form-horizontal" id="login_form" method="post">
+                    <form class="form-horizontal" id="login_form">
                         <h3 class="form-title">登录</h3>
                         <div id='alert-pw' class='alert alert-warning hidden'>
                             <a href='#' class='close' data-dismiss='alert'>&times;</a>
-                            <strong>警告！</strong>账户或密码错误
+                            <strong>警告！</strong> <span>账户或密码错误</span>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
