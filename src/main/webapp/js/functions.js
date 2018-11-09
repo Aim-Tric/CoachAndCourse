@@ -11,7 +11,7 @@ $(function () {
         });
         $.ajax({
             type: 'POST',
-            url: './servlet/user/login',
+            url: './application.servlet/user/login',
             dataType: 'text',
             data: {'user': JSON.stringify(arr)},
             success : function (result) {

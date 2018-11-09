@@ -173,8 +173,8 @@
                             </div>
                             <div class="form-group col-md-offset-3 login-panel-button-group">
                                 <button type="submit" class="btn btn-success" id="do-login" name="do-login">登录</button>
-                                <button type="submit" class="btn btn-default" id="do-register" name="do-register">注册
-                                </button>
+                                <a type="submit" href="register.jsp"  class="btn btn-default" id="do-register" name="do-register">注册
+                                </a>
                             </div>
 
                         </div>

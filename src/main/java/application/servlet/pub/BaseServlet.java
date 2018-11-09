@@ -1,7 +1,6 @@
-package servlet.pub;
+package application.servlet.pub;
 
 import net.sf.json.JSONObject;
-import net.sf.json.JsonConfig;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +17,7 @@ public abstract class BaseServlet extends HttpServlet {
         Handle(req, resp);
     }
 
-    protected abstract void Handle(HttpServletRequest req, HttpServletResponse resp);
+    protected abstract void Handle(HttpServletRequest req, HttpServletResponse resp) throws IOException;
 
     protected Object getBeanFromJson(String param, Class tmp){
         JSONObject json = JSONObject.fromObject(param);

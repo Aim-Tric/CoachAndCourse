@@ -1,13 +1,13 @@
-package handle.user;
+package service.user;
 
-import data.Consts;
-import impl.UserImpl;
-import pojo.user.User;
+import commons.data.Consts;
+import persistent.impl.UserImpl;
+import persistent.pojo.user.User;
 
-public class RegisterHandle {
+public class RegisterService {
     private UserImpl impl;
 
-    public RegisterHandle(){ }
+    public RegisterService(){ }
 
     public boolean register(User user){
         impl = new UserImpl();
@@ -20,7 +20,7 @@ public class RegisterHandle {
     }
 
     private boolean isLegal(String str){
-        return !java.util.regex.Pattern.matches(str, Consts.illegalStr);
+        return !java.util.regex.Pattern.matches(str, Consts.REGEX_ILLEGAL);
     }
 
     private boolean isExist(String str){

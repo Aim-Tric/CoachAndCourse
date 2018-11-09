@@ -1,13 +1,13 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.user.UserDAO">
+<mapper namespace="persistent.usernt.UserDAO">
     <select id="findUsers" resultType="java.util.List">
         select *
         from user
     </select>
 
-    <select id="findUser" resultType="pojo.user.User">
+    <select id="findUser" resultType="persistent.pojo.user.User">
         select * from user
         <trim prefix="WHERE" prefixOverrides="AND">
             <if test="username != null">
@@ -28,7 +28,7 @@
         </trim>
     </select>
 
-    <insert id="insertUser" parameterType="pojo.user.User">
+    <insert id="insertUser" parameterType="persistent.pojo.user.User">
         insert into user (username, sex, password, email, nickname)
         values (#{username}, #{sex}, #{password}, #{email}, #{nickname})
     </insert>

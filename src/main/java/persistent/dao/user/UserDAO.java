@@ -1,6 +1,6 @@
-package dao.user;
+package persistent.dao.user;
 
-import pojo.user.User;
+import persistent.pojo.user.User;
 
 import java.util.List;
 
