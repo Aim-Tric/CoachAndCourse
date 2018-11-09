@@ -1,49 +1,39 @@
 package impl;
 
-import dao.UserDAO;
-import org.apache.ibatis.io.Resources;
+import dao.user.UserDAO;
+import impl.util.SessionFactory;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import pojo.User;
+import pojo.user.User;
 
-import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class UserImpl implements UserDAO {
-    SqlSession session = null;
-    User user = null;
-    InputStream stream = null;
-    SqlSessionFactory factory = null;
-
-    public UserImpl(){
-        try{
-            stream = Resources.getResourceAsStream("mybatis-config.xml");
-            factory = new SqlSessionFactoryBuilder().build(stream);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+    private SqlSession session = null;
 
     @Override
-    public User findUserByUserName(String userName) {
+    public List<User> findUsers() {
+        List<User> users = new ArrayList<>();
         try{
-            session = factory.openSession();
+            session = SessionFactory.getFactory().openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
-            user = mapper.findUserByUserName(userName);
+            users = mapper.findUsers();
         }catch (Exception e){
             e.printStackTrace();
         }finally {
             session.close();
         }
-        return user;
+        return users;
     }
 
     @Override
-    public User findUserByEmail(String email) {
+    public User findUser(User u) {
+        User user = null;
         try{
-            session = factory.openSession();
+            session = SessionFactory.getFactory().openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
-            user = mapper.findUserByEmail(email);
+            user = mapper.findUser(u);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -55,7 +45,7 @@ public class UserImpl implements UserDAO {
     @Override
     public void insertUser(User user) {
         try{
-            session = factory.openSession();
+            session = SessionFactory.getFactory().openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
             mapper.insertUser(user);
             session.commit();
@@ -65,5 +55,12 @@ public class UserImpl implements UserDAO {
             session.close();
         }
     }
+
+//    public static void main(String[] args) {
+//        UserImpl imp = new UserImpl();
+//        User u = new User();
+//        u.setUsername("zhaoliu");
+//        System.out.println(imp.findUser(u).toString());
+//    }
 
 }

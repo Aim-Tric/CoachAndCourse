@@ -1,45 +1,41 @@
-package pojo;
+package pojo.user;
 
 public class User {
     private int id;
-    private String userName;
+    private String username;
     private String sex;
     private String email;
-    private String nickName;
+    private String nickname;
     private String password;
 
     public User() {
     }
 
-    public User(int id, String userName, String sex, String email, String nickName, String password) {
-        this.id = id;
-        this.userName = userName;
+    public User(String username, String sex, String email, String nickName, String password) {
+        this.username = username;
         this.sex = sex;
         this.email = email;
-        this.nickName = nickName;
+        this.nickname = nickName;
         this.password = password;
     }
 
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getNickname() {
+        return nickname;
     }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -47,23 +43,20 @@ public class User {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
-
-    public void setUserName(String name) {
-        this.userName = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getSex() {
         return sex;
     }
-
     public void setSex(String sex) {
         this.sex = sex;
     }
@@ -71,7 +64,7 @@ public class User {
 
     public String toString() {
         return "id = " + id +
-                " name = " + userName +
+                " username = " + username +
                 " sex = " + sex;
     }
 }

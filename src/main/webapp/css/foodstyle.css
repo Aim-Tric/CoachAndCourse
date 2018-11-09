@@ -362,7 +362,13 @@ footer hr {
     background-color: #f5f5dc;
 }
 
+.alert-pw {
+    display: none;
+}
 
+.alert-pw .active {
+    display: block;
+}
 
 .container {
     padding: 2%;
