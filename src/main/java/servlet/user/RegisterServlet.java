@@ -12,13 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 public class RegisterServlet extends BaseServlet {
 
     protected void Handle(HttpServletRequest req, HttpServletResponse resp){
-        String username = req.getParameter("username");
-        String sex = req.getParameter("sex");
-        String password = req.getParameter("password");
-        String nickname = req.getParameter("nickname");
-        String email = req.getParameter("email");
-
-        User user = new User(username, sex, password, nickname, email);
+        String json = req.getParameter("user");
+        User user = (User) getBeanFromJson(json, User.class);
 
         try {
             if(new RegisterHandle().register(user))

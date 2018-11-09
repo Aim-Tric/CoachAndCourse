@@ -11,27 +11,35 @@ import java.util.List;
 
 public class UserImpl implements UserDAO {
     private SqlSession session = null;
-    private User user = null;
-    List<User> users = new ArrayList<>();
 
     @Override
     public List<User> findUsers() {
-
-        return users;
-    }
-
-    @Override
-    public User findUser(User user) {
+        List<User> users = new ArrayList<>();
         try{
             session = SessionFactory.getFactory().openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
-            this.user = mapper.findUser(user);
+            users = mapper.findUsers();
         }catch (Exception e){
             e.printStackTrace();
         }finally {
             session.close();
         }
-        return this.user;
+        return users;
+    }
+
+    @Override
+    public User findUser(User u) {
+        User user = null;
+        try{
+            session = SessionFactory.getFactory().openSession();
+            UserDAO mapper = session.getMapper(UserDAO.class);
+            user = mapper.findUser(u);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return user;
     }
 
     @Override

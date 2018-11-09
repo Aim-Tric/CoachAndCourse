@@ -7,11 +7,10 @@ import pojo.user.User;
 public class RegisterHandle {
     private UserImpl impl;
 
-    public RegisterHandle(){
-        impl = new UserImpl();
-    }
+    public RegisterHandle(){ }
 
     public boolean register(User user){
+        impl = new UserImpl();
         String userName = user.getUsername();
         if((!isLegal(userName))
                 || isExist(userName))

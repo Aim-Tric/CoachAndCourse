@@ -20,8 +20,8 @@ public abstract class BaseServlet extends HttpServlet {
 
     protected abstract void Handle(HttpServletRequest req, HttpServletResponse resp);
 
-    protected Object getJson(String param, Object tmp){
+    protected Object getBeanFromJson(String param, Class tmp){
         JSONObject json = JSONObject.fromObject(param);
-        return JSONObject.toBean(json, tmp.getClass());
+        return JSONObject.toBean(json, tmp);
     }
 }

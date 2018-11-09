@@ -1,7 +1,6 @@
 package servlet.user;
 
 import handle.user.LoginHandle;
-import net.sf.json.JSONObject;
 import pojo.user.User;
 import servlet.pub.BaseServlet;
 
@@ -26,9 +25,9 @@ public class LoginServlet extends BaseServlet {
     }
 
     protected void Handle(HttpServletRequest req, HttpServletResponse resp){
+        String json = req.getParameter("user");
+        User user = (User) getBeanFromJson(json, User.class);
 
-        User user = (User) getJson(req.getParameter("user"), User.class);
-        System.out.println(user.toString());
         try{
             if(new LoginHandle().confirm(user)){
                 resp.getWriter().print("RESULT_OK");
