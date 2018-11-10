@@ -1,4 +1,4 @@
-package pojo.user;
+package persistent.pojo.user;
 
 public class User {
     private int id;

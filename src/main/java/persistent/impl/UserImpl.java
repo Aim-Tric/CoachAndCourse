@@ -1,9 +1,9 @@
-package impl;
+package persistent.impl;
 
-import dao.user.UserDAO;
-import impl.util.SessionFactory;
+import persistent.dao.user.UserDAO;
+import persistent.impl.util.SessionFactory;
 import org.apache.ibatis.session.SqlSession;
-import pojo.user.User;
+import persistent.pojo.user.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,13 +15,13 @@ public class UserImpl implements UserDAO {
     @Override
     public List<User> findUsers() {
         List<User> users = new ArrayList<>();
-        try{
+        try {
             session = SessionFactory.getFactory().openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
             users = mapper.findUsers();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
         return users;
@@ -30,13 +30,13 @@ public class UserImpl implements UserDAO {
     @Override
     public User findUser(User u) {
         User user = null;
-        try{
+        try {
             session = SessionFactory.getFactory().openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
             user = mapper.findUser(u);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
         return user;
@@ -44,14 +44,14 @@ public class UserImpl implements UserDAO {
 
     @Override
     public void insertUser(User user) {
-        try{
+        try {
             session = SessionFactory.getFactory().openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
             mapper.insertUser(user);
             session.commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
     }
