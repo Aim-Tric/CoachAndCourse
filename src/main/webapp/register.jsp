@@ -39,6 +39,18 @@
                     </div>
                     <div class="form-group">
 
+                        <i class="fa fa-envelope fa-lg"></i>
+                        <input class="form-control required" type="text" placeholder="邮箱" id="email"
+                               name="email" maxlength="16"/>
+                    </div>
+                    <div class="form-group">
+
+                        <i class="fa fa-info fa-lg"></i>
+                        <input class="form-control required" type="text" placeholder="昵称" id="nickname"
+                               name="nickname" maxlength="16"/>
+                    </div>
+                    <div class="form-group">
+
                         <i class="fa fa-lock fa-lg"></i>
                         <input class="form-control required" type="password" placeholder="密码" id="password"
                                name="password" maxlength="16"/>
