@@ -26,12 +26,14 @@
                     <li data-slide-to="2" data-target="#carousel-13519"></li>
                 </ol>
                 <div class="carousel-inner">
+
                     <div class="item active">
                         <img alt="" src="img/1.jpg"/>
                         <div class="carousel-caption"><h4>自制风味酱料秘籍</h4>
                             <p>酱料是一种神奇的存在，它们可蘸食、可调味，甚至有的可以当作小菜，来看看自己怎么做才好吃吧！</p>
                         </div>
                     </div>
+
                     <div class="item">
                         <img alt="" src="img/2.jpg"/>
                         <div class="carousel-caption"><h4>

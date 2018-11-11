@@ -1,8 +1,8 @@
 package persistent.impl;
 
+import org.apache.ibatis.session.SqlSession;
 import persistent.dao.user.UserDAO;
 import persistent.impl.util.SessionFactory;
-import org.apache.ibatis.session.SqlSession;
 import persistent.pojo.user.User;
 
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class UserImpl implements UserDAO {
 
 //    public static void main(String[] args) {
 //        UserImpl imp = new UserImpl();
-//        User u = new User();
+//        user u = new user();
 //        u.setUsername("zhaoliu");
 //        System.out.println(imp.findUser(u).toString());
 //    }
