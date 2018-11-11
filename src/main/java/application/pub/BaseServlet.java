@@ -1,4 +1,4 @@
-package application.servlet.pub;
+package application.pub;
 
 import net.sf.json.JSONObject;
 

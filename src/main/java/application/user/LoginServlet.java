@@ -1,9 +1,9 @@
-package application.servlet.user;
+package application.user;
 
+import application.pub.BaseServlet;
 import commons.data.Consts;
-import service.user.LoginService;
 import persistent.pojo.user.User;
-import application.servlet.pub.BaseServlet;
+import service.user.LoginService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +17,7 @@ import java.io.IOException;
  * 接收返回登录操作
  */
 
-@WebServlet("/application/servlet/user/login")
+@WebServlet("/application/user/login")
 public class LoginServlet extends BaseServlet {
 
     @Override
