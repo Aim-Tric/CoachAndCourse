@@ -5,7 +5,7 @@
   Time: 5:08 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@include file="WEB-INF/common/header.jsp" %>
+<%@include file="../common/header.jsp" %>
 <%@ page pageEncoding="utf-8" contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="container">
@@ -67,5 +67,5 @@
     </div>
 
 </div>
-<%@include file="WEB-INF/common/footer.jsp" %>
+<%@include file="../common/footer.jsp" %>
 
