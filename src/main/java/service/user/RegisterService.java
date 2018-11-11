@@ -3,33 +3,21 @@ package service.user;
 import commons.data.Consts;
 import persistent.impl.UserImpl;
 import persistent.pojo.user.User;
+import service.pub.BaseService;
 
-public class RegisterService {
-    private UserImpl impl;
+public class RegisterService extends BaseService {
 
     public RegisterService() {
     }
 
-    public boolean register(User user){
-        impl = new UserImpl();
+    public String register(User user) {
+        UserImpl impl = new UserImpl();
         if ((!isLegal(user))
                 || isExist(user))
-            return false;
-        impl.insertUser(user);
-        return true;
+            return Consts.RESULT_FAILED;
+        return impl.insertUser(user);
     }
 
-    private boolean isLegal(User user) {
-        return !java.util.regex.Pattern.matches(user.getUsername(), Consts.REGEX_ILLEGAL);
-    }
-
-    private boolean isExist(User user) {
-        User u = new User();
-        u.setUsername(user.getUsername());
-        if (impl.findUser(u) == null)
-            return false;
-        return true;
-    }
 
 
 }

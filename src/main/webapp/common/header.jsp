@@ -27,8 +27,8 @@
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- 用户自定义 -->
-    <link rel="stylesheet" href="css/foodstyle.css">
-    <script src="js/functions.js"></script>
+    <link rel="stylesheet" href="../css/foodstyle.css">
+    <script src="../js/functions.js"></script>
 </head>
 <body>
 <header>
@@ -43,7 +43,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="logo-text" href="#">
-                    <img id="logo" src="img/logo.png" alt="">
+                    <img id="logo" src="../img/logo.png" alt="">
                     <a class="navbar-brand" href="#">Fresh&Delisious</a>
 
                 </a>
