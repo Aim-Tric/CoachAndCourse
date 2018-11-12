@@ -4,9 +4,11 @@ import application.pub.BaseServlet;
 import persistent.pojo.user.User;
 import service.user.RegisterService;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 
 @WebServlet("/application/user/register")
@@ -22,6 +24,5 @@ public class RegisterServlet extends BaseServlet {
 
         }
     }
-
 
 }

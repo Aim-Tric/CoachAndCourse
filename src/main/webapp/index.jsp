@@ -1,20 +1,6 @@
-<%@ page import="persistent.impl.UserImpl" %>
-<%@ page import="persistent.pojo.user.User" %>
-<%@include file="common/header.jsp" %>
+<%@ include file="common/header.jsp" %>
 <%@ page pageEncoding="utf-8" contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    boolean isLogged = false;
-    // 如果已经登录完毕，则去除登录界面
-    User user = new User();
-    new UserImpl().findUser(user);
-    for (Cookie ck : request.getCookies()) {
-        String username;
-        if (ck.getName().equals("username")) {
-            user.setUsername(ck.getValue());
-            // TODO: 在数据库中找到CNCSID，确认已登录后就不需要登录界面，以及给出个人信息
-        }
-    }
-%>
+
 
 <div class="container">
     <div class="row">
@@ -33,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8 col-lg-9">
+        <div class="col-md-8 col-lg-<%if (!isLogged) {%>9<%}else{%>12<%}%>">
             <div class="carousel slide" id="carousel-13519">
                 <ol class="carousel-indicators">
                     <li class="active" data-slide-to="0" data-target="#carousel-13519"></li>
@@ -74,14 +60,11 @@
                 <a data-slide="next" href="#carousel-13519" class="right carousel-control"></a>
             </div>
         </div>
-<%
 
-    if () {
-%>
-<jsp:include page="/admin/login.jsp" flush="true">
-    <%
-        }
-    %>
+            <% if (!isLogged) { %>
+                <%@include file="/admin/login.jsp" %>
+            <% } %>
+
     </div>
 
     <div class="row">
@@ -111,7 +94,7 @@
                         <span class="label label-success">#吃法#</span>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-12 ">
+                <div class="col-xs-6 col-md-12 hidden-md hidden-lg">
                     <div class="well">
                         <h2>粗粮细做更健康
                         </h2>
@@ -297,4 +280,4 @@
 
 </div>
 
-    <%@include file="common/footer.jsp" %>
+<%@include file="common/footer.jsp" %>

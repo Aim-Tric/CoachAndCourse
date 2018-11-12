@@ -3,7 +3,6 @@
 ::before {
     margin: 0;
     padding: 0;
-    z-index: 80;
 }
 
 body {
@@ -254,6 +253,10 @@ footer hr {
 
 
 /* 适配bootstrap的代码 */
+.container>div {
+    z-index: -2;
+}
+
 .center-block {
     width: fit-content;
     width: -moz-fit-content;
