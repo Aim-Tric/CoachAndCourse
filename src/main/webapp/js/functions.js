@@ -32,6 +32,11 @@ $(function () {
                 setTimeout(function() {
                     $('form').parent().hide('slow', function () {
                         $('.carousel').parent().fadeOut('fast').removeClass('col-lg-9').addClass('col-lg-12').fadeIn('fast');
+                        // TODO: 第一次跑时user_panel还没有
+                        var user_panel = $('#user-panel');
+                        user_panel.children('span').text(arr['username']);
+                        user_panel.removeClass('hidden').fadeIn('fast');
+                        window.reload(false);
                     });
                 }, 3000);
 
@@ -84,7 +89,6 @@ $(function () {
                     return isVaild;
                 }
             }
-
             // var usernameIllegal = regex_illegal.test(form[0].value); // 用户名
             // var emailIllegal = regex_email.test(form[1].value);
             // var isPasswordMatch = form[3].value == form[4].value;
@@ -134,4 +138,9 @@ $(function () {
             }
         });
     });
+    $('#logout-btn').click(function (e) {
+    //    TODO: 注销登录
+        window.expires = 0;
+        window.reload(false);
+    })
 });

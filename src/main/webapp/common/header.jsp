@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page pageEncoding="utf-8" contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="login_checker.jsp" %>
 
 <html lang="en">
 
@@ -13,22 +14,17 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
     <!-- 编辑网站的 Bootstrap 核心 CSS 文件 -->
     <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <%--<link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">--%>
+    <%--<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->--%>
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <!-- 用户自定义 -->
-    <link rel="stylesheet" href="../css/foodstyle.css">
-    <script src="../js/functions.js"></script>
+    <%--<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->--%>
+    <%--<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>--%>
+    <%--<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">--%>
+    <%--<!-- 用户自定义 -->--%>
+    <link rel="stylesheet" href="./css/food_style.css">
+    <script src="./js/functions.js"></script>
 </head>
 <body>
 <header>
@@ -43,11 +39,20 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="logo-text" href="#">
-                    <img id="logo" src="../img/logo.png" alt="">
-                    <a class="navbar-brand" href="#">Fresh&Delisious</a>
+                    <img id="logo" src="./img/logo.png" alt="">
+                    <a class="navbar-brand" href="#">Coach&Course</a>
 
                 </a>
             </div>
+
+            <% if (isLogged) { %>
+            <div class="navbar-header hidden" id="user-panel">
+                登录用户： <span><%=user.getNickname()%></span>
+                <button class="btn btn-default" id="logout-btn">注销登录</button>
+            </div>
+            <% } %>
+
+
             <div class="collapse navbar-collapse" id="example-navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">鲜甜水果</a></li>

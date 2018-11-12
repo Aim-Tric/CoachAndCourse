@@ -41,13 +41,20 @@ public class UserImpl implements UserDAO {
             e.printStackTrace();
         } catch (Exception e) {
             catchCommunicationsException(e);
+            catchNullPointerException(e);
         } finally {
             session.close();
         }
         return user;
     }
 
+    private boolean catchNullPointerException(Exception e) {
+        e.printStackTrace();
+        return e instanceof NullPointerException;
+    }
+
     private boolean catchCommunicationsException(Exception e) {
+        e.printStackTrace();
         return e instanceof CommunicationsException;
     }
 
@@ -67,11 +74,12 @@ public class UserImpl implements UserDAO {
         return Consts.RESULT_OK;
     }
 
-//    public static void main(String[] args) {
-//        UserImpl imp = new UserImpl();
-//        user u = new user();
+    public static void main(String[] args) {
+        UserImpl imp = new UserImpl();
+        User u = new User();
+        u.setId(5);
 //        u.setUsername("zhaoliu");
-//        System.out.println(imp.findUser(u).toString());
-//    }
+        System.out.println(imp.findUser(u).toString());
+    }
 
 }
