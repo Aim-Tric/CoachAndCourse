@@ -36,7 +36,8 @@
                     </div>
                     <div class="form-group col-md-offset-3 login-panel-button-group">
                         <button type="submit" class="btn btn-success" id="do-login" name="do-login">登录</button>
-                        <a type="submit" href="register.jsp" class="btn btn-default">注册</a>
+                        <%-- 跳转到注册页面失败，code405，方法不允许 --%>
+                        <a href="admin/register.jsp" class="btn btn-default">注册</a>
                     </div>
                 </div>
             </form>

@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8 col-lg-9">
+        <div class="col-md-8 col-lg-<%if (!isLogged) {%>9<%}else{%>12<%}%>">
             <div class="carousel slide" id="carousel-13519">
                 <ol class="carousel-indicators">
                     <li class="active" data-slide-to="0" data-target="#carousel-13519"></li>
@@ -94,7 +94,7 @@
                         <span class="label label-success">#吃法#</span>
                     </div>
                 </div>
-                <div class="col-xs-6 col-md-12 ">
+                <div class="col-xs-6 col-md-12 hidden-md hidden-lg">
                     <div class="well">
                         <h2>粗粮细做更健康
                         </h2>
