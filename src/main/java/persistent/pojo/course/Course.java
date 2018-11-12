@@ -1,12 +1,18 @@
 package persistent.pojo.course;
 
+import persistent.pojo.user.User;
+
+import java.util.List;
+
 public class Course {
 
-    private int id, stutid, teaid;
+    private int id, teaid;
+    private List<User> students;
     private String name;
     private String info;
-    private String courseware;
+    private String sourse;
     private String type;
+    private String imageview;
 
     public String getType() {
         return type;
@@ -22,14 +28,6 @@ public class Course {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getStutid() {
-        return stutid;
-    }
-
-    public void setStutid(int stutid) {
-        this.stutid = stutid;
     }
 
     public int getTeaid() {
@@ -56,12 +54,20 @@ public class Course {
         this.info = info;
     }
 
-    public String getCourseware() {
-        return courseware;
+    public String getSourse() {
+        return sourse;
     }
 
-    public void setCourseware(String courseware) {
-        this.courseware = courseware;
+    public void setSourse(String sourse) {
+        this.sourse = sourse;
     }
+
+    public String getImageview() { return imageview; }
+
+    public void setImageview(String imageview) { this.imageview = imageview; }
+
+    public List<User> getStudents() { return students; }
+
+    public void setStudents(List<User> students) { this.students = students; }
 
 }

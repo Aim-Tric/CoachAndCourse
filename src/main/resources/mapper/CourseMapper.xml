@@ -20,11 +20,14 @@
             <if test="info != null">
                 AND info = #{info}
             </if>
-            <if test="name != null">
-                AND courseware = #{courseware}
+            <if test="sourse != null">
+                AND sourse = #{sourse}
             </if>
             <if test="type != null">
                 AND type = #{type}
+            </if>
+            <if test="imageview">
+                AND imageview = #{imageview}
             </if>
         </trim>
     </select>
