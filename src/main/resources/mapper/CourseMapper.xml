@@ -17,8 +17,8 @@
             <if test="teaid != null">
                 AND teaid = #{teaid}
             </if>
-            <if test="info != null">
-                AND info = #{info}
+            <if test="overview != null">
+                AND overview = #{overview}
             </if>
             <if test="sourse != null">
                 AND sourse = #{sourse}
@@ -31,4 +31,11 @@
             </if>
         </trim>
     </select>
+
+    <insert id="insertCourse">
+        insert into course (name, teaid, name, overview, sourse, type, imageview)
+        values (#{name}, #{teaid}, #{name}, #{overview}, #{sourse}, #{type}, #{imageview})
+    </insert>
+
+
 </mapper>

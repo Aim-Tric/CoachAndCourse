@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
 
-                        <i class="fa fa-info fa-lg"></i>
+                        <i class="fa fa-overview fa-lg"></i>
                         <input class="form-control required" type="text" placeholder="昵称(必填)" id="nickname"
                                name="nickname" maxlength="16"/>
                     </div>

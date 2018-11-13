@@ -8,7 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="col-md-2 col-lg-3 hidden-xs hidden-sm hidden-md">
     <div class="panel panel-default">
-
         <div class="panel-body">
             <form class="form-horizontal" id="login_form">
                 <h3 class="form-title">登录</h3>

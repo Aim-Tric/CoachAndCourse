@@ -76,7 +76,7 @@
                     <p><a class="btn btn-primary btn-large" href="#">参看更多 »</a></p>
                     <span class="badge">#352</span>
                     <span class="label label-primary">料理教学</span>
-                    <span class="label label-info">小姐姐</span>
+                    <span class="label label-overview">小姐姐</span>
                     <span class="label label-primary">懒人教学</span>
                     <span class="label label-success">#你不知道的日常用品技巧#</span>
                 </div>
