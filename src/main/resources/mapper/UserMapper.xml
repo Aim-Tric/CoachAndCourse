@@ -10,7 +10,7 @@
     <select id="findUser" resultType="persistent.pojo.user.User">
         select * from user
         <trim prefix="WHERE" prefixOverrides="AND">
-            <if test="id != null">
+            <if test="id != 0">
                 AND id = #{id}
             </if>
             <if test="username != null">

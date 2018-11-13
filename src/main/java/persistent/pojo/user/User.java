@@ -1,12 +1,8 @@
 package persistent.pojo.user;
 
 public class User {
-    private int id;
-    private String username;
-    private String sex;
-    private String email;
-    private String nickname;
-    private String password;
+    private long id;
+    private String username, sex, email, nickname, password;
 
     public User() {
     }
@@ -40,10 +36,10 @@ public class User {
         this.password = password;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
