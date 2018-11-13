@@ -8,7 +8,6 @@ import service.pub.BaseService;
 
 import java.util.Map;
 
-
 public class LoginService extends BaseService {
 
     public LoginService() {

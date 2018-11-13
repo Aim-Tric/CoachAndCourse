@@ -16,4 +16,5 @@ public class Consts {
     public static final String RESULT_CANCEL = "RESULT_CANCEL";
 
     public static final int COOKIE_EXPIRED_SEC = 3 * 60;
+
 }

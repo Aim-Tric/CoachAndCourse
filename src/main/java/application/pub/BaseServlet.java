@@ -20,6 +20,7 @@ public abstract class BaseServlet extends HttpServlet {
         resp.setContentType("text/html;charset=UTF-8");
         resp.setCharacterEncoding("UTF-8");
         Handle(req, resp);
+
     }
 
     protected abstract void Handle(HttpServletRequest req, HttpServletResponse resp) throws IOException;

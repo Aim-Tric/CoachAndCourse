@@ -257,6 +257,10 @@ footer hr {
     z-index: -2;
 }
 
+.sidebar {
+    position: fixed;
+}
+
 .center-block {
     width: fit-content;
     width: -moz-fit-content;

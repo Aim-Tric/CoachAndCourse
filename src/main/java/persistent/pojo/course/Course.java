@@ -1,12 +1,23 @@
 package persistent.pojo.course;
 
+import persistent.pojo.user.User;
+
+import java.util.List;
+
 public class Course {
 
-    private int id, stutid, teaid;
-    private String name;
-    private String info;
-    private String courseware;
-    private String type;
+    private int id, teaid;
+    private List<User> students;
+    private String name, overview, sourse, type, imageview;
+    private String index;
+
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
+    }
 
     public String getType() {
         return type;
@@ -22,14 +33,6 @@ public class Course {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getStutid() {
-        return stutid;
-    }
-
-    public void setStutid(int stutid) {
-        this.stutid = stutid;
     }
 
     public int getTeaid() {
@@ -48,20 +51,36 @@ public class Course {
         this.name = name;
     }
 
-    public String getInfo() {
-        return info;
+    public String getOverview() {
+        return overview;
     }
 
-    public void setInfo(String info) {
-        this.info = info;
+    public void setOverview(String overview) {
+        this.overview = overview;
     }
 
-    public String getCourseware() {
-        return courseware;
+    public String getSourse() {
+        return sourse;
     }
 
-    public void setCourseware(String courseware) {
-        this.courseware = courseware;
+    public void setSourse(String sourse) {
+        this.sourse = sourse;
+    }
+
+    public String getImageview() {
+        return imageview;
+    }
+
+    public void setImageview(String imageview) {
+        this.imageview = imageview;
+    }
+
+    public List<User> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<User> students) {
+        this.students = students;
     }
 
 }
