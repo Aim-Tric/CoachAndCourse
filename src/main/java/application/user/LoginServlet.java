@@ -27,7 +27,6 @@ public class LoginServlet extends BaseServlet {
         User user;
         String json;
         json = req.getParameter("user");
-
         // 验证是用户名登录还是邮箱登录
         json = LoginService.ifIsEmail(json);
         user = (User) LoginService.getBeanFromJson(json, User.class);
@@ -43,6 +42,7 @@ public class LoginServlet extends BaseServlet {
         }
         // 登录成功，从数据库取正确的用户信息
         user = LoginService.findUser(user);
+
         retMap.put("nickname", user.getNickname());
         ret = JSONObject.fromObject(retMap);
         // 数据预处理与存储

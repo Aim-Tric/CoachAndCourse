@@ -37,6 +37,7 @@ public class UserImpl implements UserDAO {
             session = SessionFactory.getFactory().openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
             user = mapper.findUser(u);
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -49,7 +50,6 @@ public class UserImpl implements UserDAO {
     }
 
     private boolean catchNullPointerException(Exception e) {
-        e.printStackTrace();
         return e instanceof NullPointerException;
     }
 
