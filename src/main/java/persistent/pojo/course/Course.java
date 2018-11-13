@@ -9,6 +9,7 @@ public class Course {
     private int id, teaid;
     private List<User> students;
     private String name, overview, sourse, type, imageview;
+    private String index;
 
     public String getIndex() {
         return index;
@@ -17,8 +18,6 @@ public class Course {
     public void setIndex(String index) {
         this.index = index;
     }
-
-    private String index;
 
     public String getType() {
         return type;
