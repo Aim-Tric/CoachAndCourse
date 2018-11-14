@@ -37,7 +37,6 @@ public class LoginServlet extends BaseServlet {
         JSONObject ret = JSONObject.fromObject(retMap);
         // 密码错误，直接跳出
         if (!result.equals(Consts.RESULT_OK)) {
-            out.print(ret);
             return;
         }
         // 登录成功，从数据库取正确的用户信息
@@ -56,7 +55,6 @@ public class LoginServlet extends BaseServlet {
             ck.setPath("/");
             resp.addCookie(ck);
         }
-        out.print(ret);
     }
 
 }

@@ -8,7 +8,7 @@
     <select id="findCourse" resultType="persistent.pojo.course.Course">
         select * from course
         <trim prefix="WHERE" prefixOverrides="AND">
-            <if test="id != null">
+            <if test="id != 0">
                 AND id = #{id}
             </if>
             <if test="name != null">
@@ -31,11 +31,36 @@
             </if>
         </trim>
     </select>
-
     <insert id="insertCourse">
-        insert into course (name, teaid, name, overview, sourse, type, imageview)
-        values (#{name}, #{teaid}, #{name}, #{overview}, #{sourse}, #{type}, #{imageview})
+        insert into course
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="teaid != 0">teaid,</if>
+            <if test="type != null">type,</if>
+            <if test="overview != null">overview,</if>
+            <if test="sourse != null">sourse,</if>
+            <if test="imageview != null">imageview,</if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="teaid != 0">#{teaid},</if>
+            <if test="type != null">#{type},</if>
+            <if test="overview != null">#{overview},</if>
+            <if test="sourse != null">#{sourse},</if>
+            <if test="imageview != null">#{imageview},</if>
+        </trim>
     </insert>
 
+    <update id="updateCourse">
+        update course
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="overview != null">overview = #{overview},</if>
+            <if test="sourse != null">sourse = #{sourse},</if>
+            <if test="imageview != null">imageview = #{imageview},</if>
+        </trim>
+        where teaid = #{teaid}
+    </update>
 
 </mapper>

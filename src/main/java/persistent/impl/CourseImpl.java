@@ -38,4 +38,38 @@ public class CourseImpl implements CourseDAO {
         }
         return c;
     }
+
+    @Override
+    public void insertCourse(Course course) {
+        try {
+            session = SessionFactory.getFactory().openSession();
+            CourseDAO mapper = session.getMapper(CourseDAO.class);
+            mapper.insertCourse(course);
+            session.commit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateCourse(Course course) {
+        try {
+            session = SessionFactory.getFactory().openSession();
+            CourseDAO mapper = session.getMapper(CourseDAO.class);
+            mapper.updateCourse(course);
+            session.commit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+//    public static void main(String[] args) {
+//        CourseImpl i = new CourseImpl();
+//        Course c = new Course();
+//        c.setName("语文");
+//        c.setOverview("大学语文");
+//        c.setTeaid(1);
+//        c.setType("中文");
+//        i.updateCourse(c);
+//    }
 }
