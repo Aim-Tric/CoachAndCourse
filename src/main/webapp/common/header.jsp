@@ -29,6 +29,7 @@
     <script src="/js/components/course.js"></script>
     <script src="/js/components/register.js"></script>
     <script src="/js/components/sidebar.js"></script>
+    <script src="/js/consts/config.js"></script>
     <script src="/js/utils/utils.js"></script>
     <script src="/js/main.js"></script>
 </head>

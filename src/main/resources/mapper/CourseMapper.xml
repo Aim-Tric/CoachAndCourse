@@ -14,7 +14,7 @@
             <if test="name != null">
                 AND name = #{name}
             </if>
-            <if test="teaid != null">
+            <if test="teaid != 0">
                 AND teaid = #{teaid}
             </if>
             <if test="overview != null">
@@ -31,15 +31,15 @@
             </if>
         </trim>
     </select>
-    <insert id="insertCourse">
+    <insert id="insertCourse" parameterType="persistent.pojo.course.Course">
         insert into course
-        <trim prefix="(" suffix=")" suffixOverrides=",">
+        <trim prefix=" (" suffix=")" suffixOverrides=",">
             <if test="name != null">name,</if>
             <if test="teaid != 0">teaid,</if>
             <if test="type != null">type,</if>
             <if test="overview != null">overview,</if>
             <if test="sourse != null">sourse,</if>
-            <if test="imageview != null">imageview,</if>
+            <if test="imageview != null">imageview</if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             <if test="name != null">#{name},</if>

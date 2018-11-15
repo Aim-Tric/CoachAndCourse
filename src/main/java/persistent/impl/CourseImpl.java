@@ -73,15 +73,15 @@ public class CourseImpl implements CourseDAO {
         }
     }
 
-//    public static void main(String[] args) {
-//        CourseImpl i = new CourseImpl();
-//        Course c = new Course();
-//        c.setName("语文");
-//        c.setOverview("大学语文");
-//        c.setTeaid(1);
-//        c.setType("中文");
-//        i.updateCourse(c);
-//        System.out.println(i.findCourse(c));
-//    }
+    public static void main(String[] args) {
+        CourseImpl i = new CourseImpl();
+        Course c = new Course();
+        c.setName("数学");
+        c.setOverview("大学数学");
+        c.setTeaid(2);
+        c.setType("数学");
+        i.insertCourse(c);
+        System.out.println(i.findCourse(c));
+    }
 
 }

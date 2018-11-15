@@ -64,11 +64,15 @@ public class UserImpl implements UserDAO {
         return Consts.RESULT_OK;
     }
 
-//    public static void main(String[] args) {
-//        UserImpl imp = new UserImpl();
-//        User u = new User();
-//        u.setUsername("zhaoliu");
-//        System.out.println(imp.findUser(u).toString());
-//    }
+    public static void main(String[] args) {
+        UserImpl imp = new UserImpl();
+        User u = new User();
+        u.setUsername("shadiao");
+        u.setEmail("123123@qq.com");
+        u.setNickname("hamapi");
+        u.setPassword("hello");
+        imp.insertUser(u);
+        System.out.println(imp.findUser(u).toString());
+    }
 
 }
