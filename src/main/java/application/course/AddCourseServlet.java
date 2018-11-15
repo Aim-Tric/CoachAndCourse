@@ -14,7 +14,7 @@ public class AddCourseServlet extends BaseServlet {
     @Override
     protected void Handle(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String json = req.getParameter("course");
-        // TODO:传进来的课程信息，先由管理员审核，再完成数据库操作
+        // TODO:传进来的课程信息，先存进管理员审核表
 
         AddCourseService acs = new AddCourseService();
         String ret = acs.addCourse(json);
