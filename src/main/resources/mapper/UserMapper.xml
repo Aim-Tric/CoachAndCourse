@@ -3,8 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="persistent.dao.user.UserDAO">
     <select id="findUsers" resultType="java.util.List">
-        select *
-        from user
+        select * from user
     </select>
 
     <select id="findUser" resultType="persistent.pojo.user.User">
@@ -27,6 +26,9 @@
             </if>
             <if test="password != null">
                 AND password = #{password}
+            </if>
+            <if test="avatar != null">
+                avatar = #{avatar}
             </if>
         </trim>
     </select>

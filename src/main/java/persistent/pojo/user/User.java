@@ -3,6 +3,7 @@ package persistent.pojo.user;
 public class User {
     private long id;
     private String username, sex, email, nickname, password;
+    private Byte[] avatar;
 
     public User() {
     }
@@ -57,6 +58,13 @@ public class User {
         this.sex = sex;
     }
 
+    public Byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Byte[] avatar) {
+        this.avatar = avatar;
+    }
 
     public String toString() {
         return "id = " + id +

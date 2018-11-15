@@ -27,11 +27,11 @@
         <!-- # 二维码 -->
         <div class="div-qrcode">
             <div class="div-qrcode-inner">
-                <img src="img/Android.png" alt="anndroid">
+                <img src="/img/Android.png" alt="anndroid">
                 <p>Andoird</p>
             </div>
             <div class="div-qrcode-inner">
-                <img src="img/iOS.png" alt="ios">
+                <img src="/img/iOS.png" alt="ios">
                 <p>iOS</p>
             </div>
             <div class="lineImg"></div>

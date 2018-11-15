@@ -20,9 +20,21 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
                      aria-labelledby="headingOne">
-                    <div class="panel-body">
-                        个人空间
-                    </div>
+                    <a id="moments">
+                        <div class="panel-body">
+                            个人空间
+                        </div>
+                    </a>
+                    <a id="profile-view">
+                        <div class="panel-body">
+                            查看个人资料
+                        </div>
+                    </a>
+                    <a id="profile-edit">
+                        <div class="panel-body">
+                            编辑个人资料
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="panel panel-default">
@@ -36,9 +48,21 @@
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
                      aria-labelledby="headingTwo">
-                    <div class="panel-body">
-
-                    </div>
+                    <a id="new-course">
+                        <div class="panel-body">
+                            创建课程
+                        </div>
+                    </a>
+                    <a id="joined-course">
+                        <div class="panel-body">
+                            已参加课程
+                        </div>
+                    </a>
+                    <a id="update-course">
+                        <div class="panel-body">
+                            修改课程
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="panel panel-default">
@@ -52,9 +76,16 @@
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
                      aria-labelledby="headingThree">
-                    <div class="panel-body">
-
-                    </div>
+                    <a id="new-place">
+                        <div class="panel-body">
+                            发布场所信息
+                        </div>
+                    </a>
+                    <a id="update-place">
+                        <div class="panel-body">
+                            修改场所信息
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

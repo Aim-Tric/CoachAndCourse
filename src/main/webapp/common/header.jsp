@@ -24,7 +24,13 @@
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- 用户自定义 -->
     <link rel="stylesheet" href="/css/food_style.css">
-    <script src="/js/functions.js"></script>
+    <script src="/js/components/header.js"></script>
+    <script src="/js/components/login.js"></script>
+    <script src="/js/components/course.js"></script>
+    <script src="/js/components/register.js"></script>
+    <script src="/js/components/sidebar.js"></script>
+    <script src="/js/utils/utils.js"></script>
+    <script src="/js/main.js"></script>
 </head>
 <body>
 <header>

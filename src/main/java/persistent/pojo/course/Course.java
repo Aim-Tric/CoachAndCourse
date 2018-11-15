@@ -6,10 +6,17 @@ import java.util.List;
 
 public class Course {
 
-    private int id, teaid;
+    private long id, teaid;
     private List<User> students;
-    private String name, overview, sourse, type, imageview;
-    private String index;
+    private String name, overview, sourse, type, imageview, index;
+
+    public Course(){}
+    public Course(long teaid, String name, String overview, String type) {
+        this.teaid = teaid;
+        this.name = name;
+        this.overview = overview;
+        this.type = type;
+    }
 
     public String getIndex() {
         return index;
@@ -27,19 +34,19 @@ public class Course {
         this.type = type;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getTeaid() {
+    public long getTeaid() {
         return teaid;
     }
 
-    public void setTeaid(int teaid) {
+    public void setTeaid(long teaid) {
         this.teaid = teaid;
     }
 
@@ -81,6 +88,10 @@ public class Course {
 
     public void setStudents(List<User> students) {
         this.students = students;
+    }
+
+    public String toString() {
+        return "name = " + this.name;
     }
 
 }
