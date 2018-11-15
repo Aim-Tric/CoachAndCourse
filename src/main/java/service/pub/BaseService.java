@@ -23,6 +23,7 @@ public class BaseService {
         UserImpl impl = new UserImpl();
         User u = new User();
         u.setUsername(user.getUsername());
+        u.setEmail(user.getEmail());
         if (impl.findUser(u) == null)
             return false;
         return true;

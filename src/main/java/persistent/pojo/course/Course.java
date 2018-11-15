@@ -90,4 +90,8 @@ public class Course {
         this.students = students;
     }
 
+    public String toString() {
+        return "name = " + this.name;
+    }
+
 }

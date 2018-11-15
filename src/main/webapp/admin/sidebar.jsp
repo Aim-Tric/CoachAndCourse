@@ -20,19 +20,19 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
                      aria-labelledby="headingOne">
-                    <a href="application/user/personal">
+                    <a id="moments">
                         <div class="panel-body">
                             个人空间
                         </div>
                     </a>
-                    <a href="application/user/public">
+                    <a id="profile-view">
                         <div class="panel-body">
-                            公开资料
+                            查看个人资料
                         </div>
                     </a>
-                    <a href="application/user/private">
+                    <a id="profile-edit">
                         <div class="panel-body">
-                            私人资料
+                            编辑个人资料
                         </div>
                     </a>
                 </div>
@@ -48,17 +48,17 @@
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
                      aria-labelledby="headingTwo">
-                    <a href="application/user/createCourse">
+                    <a id="new-course">
                         <div class="panel-body">
                             创建课程
                         </div>
                     </a>
-                    <a href="application/user/joinedCourse">
+                    <a id="joined-course">
                         <div class="panel-body">
                             已参加课程
                         </div>
                     </a>
-                    <a href="application/user/updateCourse">
+                    <a id="update-course">
                         <div class="panel-body">
                             修改课程
                         </div>
@@ -76,12 +76,12 @@
                 </div>
                 <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
                      aria-labelledby="headingThree">
-                    <a href="">
+                    <a id="new-place">
                         <div class="panel-body">
                             发布场所信息
                         </div>
                     </a>
-                    <a href="">
+                    <a id="update-place">
                         <div class="panel-body">
                             修改场所信息
                         </div>

@@ -1,9 +1,9 @@
 package persistent.impl;
 
-import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
 import commons.data.Consts;
 import org.apache.ibatis.session.SqlSession;
 import persistent.dao.user.UserDAO;
+import persistent.impl.pub.BaseImpl;
 import persistent.impl.util.SessionFactory;
 import persistent.pojo.user.User;
 
@@ -37,25 +37,15 @@ public class UserImpl implements UserDAO {
             session = SessionFactory.getFactory().openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
             user = mapper.findUser(u);
-
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception e) {
-            catchCommunicationsException(e);
-            catchNullPointerException(e);
+            BaseImpl.catchCommunicationsException(e);
+            BaseImpl.catchNullPointerException(e);
         } finally {
             session.close();
         }
         return user;
-    }
-
-    private boolean catchNullPointerException(Exception e) {
-        return e instanceof NullPointerException;
-    }
-
-    private boolean catchCommunicationsException(Exception e) {
-        e.printStackTrace();
-        return e instanceof CommunicationsException;
     }
 
     @Override
@@ -66,7 +56,7 @@ public class UserImpl implements UserDAO {
             mapper.insertUser(user);
             session.commit();
         } catch (Exception e) {
-            if (catchCommunicationsException(e))
+            if (BaseImpl.catchCommunicationsException(e))
                 return Consts.RESULT_CANCEL;
         } finally {
             session.close();
@@ -74,12 +64,11 @@ public class UserImpl implements UserDAO {
         return Consts.RESULT_OK;
     }
 
-    public static void main(String[] args) {
-        UserImpl imp = new UserImpl();
-        User u = new User();
-        u.setId(5);
+//    public static void main(String[] args) {
+//        UserImpl imp = new UserImpl();
+//        User u = new User();
 //        u.setUsername("zhaoliu");
-        System.out.println(imp.findUser(u).toString());
-    }
+//        System.out.println(imp.findUser(u).toString());
+//    }
 
 }
