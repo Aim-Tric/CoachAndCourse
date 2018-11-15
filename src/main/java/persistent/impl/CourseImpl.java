@@ -1,6 +1,5 @@
 package persistent.impl;
 
-import commons.data.Consts;
 import org.apache.ibatis.session.SqlSession;
 import persistent.dao.course.CourseDAO;
 import persistent.impl.pub.BaseImpl;
@@ -46,19 +45,20 @@ public class CourseImpl implements CourseDAO {
     }
 
     @Override
-    public String insertCourse(Course course) {
+    public int insertCourse(Course course) {
+        int ret;
         try {
             session = SessionFactory.getFactory().openSession();
             CourseDAO mapper = session.getMapper(CourseDAO.class);
-            mapper.insertCourse(course);
+            ret = mapper.insertCourse(course);
             session.commit();
         } catch (Exception e) {
-            if (BaseImpl.catchCommunicationsException(e))
-                return Consts.RESULT_CANCEL;
+            BaseImpl.catchCommunicationsException(e);
+            ret = -1;
         } finally {
             session.close();
         }
-        return Consts.RESULT_OK;
+        return ret;
     }
 
     @Override
@@ -73,15 +73,15 @@ public class CourseImpl implements CourseDAO {
         }
     }
 
-    public static void main(String[] args) {
-        CourseImpl i = new CourseImpl();
-        Course c = new Course();
-        c.setName("数学");
-        c.setOverview("大学数学");
-        c.setTeaid(2);
-        c.setType("数学");
-        i.insertCourse(c);
-        System.out.println(i.findCourse(c));
-    }
+//    public static void main(String[] args) {
+//        CourseImpl i = new CourseImpl();
+//        Course c = new Course();
+//        c.setName("数学");
+//        c.setOverview("大学数学");
+//        c.setTeaid(2);
+//        c.setType("数学");
+//        i.insertCourse(c);
+//        System.out.println(i.findCourse(c));
+//    }
 
 }

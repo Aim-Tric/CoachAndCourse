@@ -11,10 +11,6 @@ public class BaseService {
         return JSONObject.toBean(json, tmp);
     }
 
-    public static User findUser(User user) {
-        return new UserImpl().findUser(user);
-    }
-
     protected boolean isLegal(User user) {
         return !java.util.regex.Pattern.matches(user.getUsername(), Consts.REGEX_ILLEGAL);
     }

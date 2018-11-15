@@ -49,10 +49,13 @@ public class LoginService extends BaseService {
         return ret;
     }
 
-    public static void main(String[] args) {
-        String json = "{\"username\" : \"231235@126.com\", \"password\": \"223344\"}";
-        System.out.println("json = " + json);
-        ifIsEmail(json);
-
+    public static User findUser(User user) {
+        return new UserImpl().findUser(user);
     }
+
+//    public static void main(String[] args) {
+//        String json = "{\"username\" : \"231235@126.com\", \"password\": \"223344\"}";
+//        System.out.println("json = " + json);
+//        ifIsEmail(json);
+//    }
 }
