@@ -1,6 +1,5 @@
 package service.user;
 
-import commons.Utils;
 import persistent.impl.UserImpl;
 import persistent.pojo.user.User;
 import service.pub.BaseService;

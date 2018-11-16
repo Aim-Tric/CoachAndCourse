@@ -3,6 +3,6 @@ function initialLogout() {
         //    TODO: 注销登录
         delCookie('USERID');
         delCookie('CNCSID');
-        window.location.reload(false);
+        window.location.href = '/index.jsp';
     })
 }

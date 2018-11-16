@@ -14,15 +14,15 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <!-- 编辑网站的 Bootstrap 核心 CSS 文件 -->
-    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <%--编辑网站的 Bootstrap 核心 CSS 文件--%>
+    <%--新 Bootstrap 核心 CSS 文件--%>
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <%--jQuery文件。务必在bootstrap.min.js 之前引入--%>
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <%--最新的 Bootstrap 核心 JavaScript 文件--%>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <!-- 用户自定义 -->
+    <%--用户自定义--%>
     <link rel="stylesheet" href="/css/food_style.css">
     <script src="/js/components/header.js"></script>
     <script src="/js/components/login.js"></script>
@@ -70,11 +70,9 @@
                         </a>
                         <ul class="dropdown-menu ">
                             <% if (isLogged) { %>
-                                <li><a>用户名： <span id="user-username"><%=user.getUsername()%></span></a></li>
-                                <li><a href="#"></a></li>
-                                <li><a>邮箱： <span id="user-email"><%=user.getEmail()%></span></a></li>
-                                <li><a href="#"></a></li>
-                                <li><a>ID： <span id="user-id"><%=user.getId()%></span></a></li>
+                                <li><a href="../admin/dashboard.jsp">用户名： <span id="user-username"><%=user.getUsername()%></span></a></li>
+                                <li><a href="../admin/dashboard.jsp">邮箱： <span id="user-email"><%=user.getEmail()%></span></a></li>
+                                <li><a href="../admin/dashboard.jsp">ID： <span id="user-id"><%=user.getId()%></span></a></li>
                                 <li class="divider"></li>
                                 <li><a id="logout-btn">注销登录</a></li>
                             <% } else { %>
@@ -92,11 +90,8 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="#">小零食</a></li>
-                            <li><a href="#"></a></li>
                             <li><a href="#">饭后甜点</a></li>
-                            <li><a href="#"></a></li>
                             <li><a href="#">进口干粮</a></li>
-                            <li><a href="#"></a></li>
                             <li><a href="#">另类零食</a></li>
                         </ul>
                     </li>

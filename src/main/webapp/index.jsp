@@ -1,6 +1,5 @@
-<%@ include file="common/header.jsp" %>
 <%@ page pageEncoding="utf-8" contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ include file="common/header.jsp" %>
 
 <div class="container">
     <div class="row">

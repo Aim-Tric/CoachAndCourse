@@ -5,7 +5,7 @@ function delCookie(name) {
     exp.setTime(exp.getTime() - 1);
     var cval = getCookie(name);
     if (cval != null)
-        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+        document.cookie = name + "=" + cval + ";expires=" + exp.toUTCString() + "; path=/";
 }
 
 function setCookie(name, value, day = '') {
@@ -86,10 +86,20 @@ function showAlert(msg, level = 'warning') {
         'info': '信息',
         'error': '错误',
     };
-    var $alert_div = `<div class="alert alert-${level}"> 
+    var $alert_div = `<div class="alert alert-${level}" id="show-alert"> 
                             <a href='#' class='close' data-dismiss='alert'>&times;</a>
-                            <b>${title[level]}</b>${msg}</div>`;
-    $('body').append($alert_div).css('display', 'none').slideDown('fast', 6000, function () {
-        $(this).remove()
+                            <b>${title[level]} </b>${msg}</div>`;
+    $('body').append($alert_div);
+    $('#show-alert').css({
+        'display': 'none',
+        'position' : 'fixed',
+        'left' : '50%',
+        'top' : '10%',
+        'transform' : 'tansistion(-50%, -50%)',
+    }).slideDown('fast', function () {
+        var self = $(this);
+        setTimeout(function () {
+            self.slideUp('fast')
+        }, 5000);
     })
 };
