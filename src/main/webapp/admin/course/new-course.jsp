@@ -24,10 +24,9 @@
         <label for="type">课程分类</label>
         <%--选框--%>
         <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" name="type" id="type">
-                请选择类别
-                <span class="caret"></span>
-            </button>
+            <input type="button" class="btn btn-default dropdown-toggle" value="请选择类别" data-toggle="dropdown"
+                   name="type" id="type"/>
+
             <ul class="dropdown-menu" role="menu">
                 <li>
                     <a href="#">计算机</a>

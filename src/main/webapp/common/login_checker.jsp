@@ -5,9 +5,10 @@
   Time: 9:12 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page import="persistent.impl.UserImpl" %>
+
 <%@ page import="persistent.pojo.user.User" %>
 <%@ page import="java.util.HashMap" %>
+<%@ page import="service.user.LoginService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     // 在刚加载页面时调用此jsp
@@ -33,7 +34,7 @@
         if (isLogged) {
             // FIXME: 改掉这个简单的登录处理
             user.setId(Integer.parseInt(id));
-            user = new UserImpl().findUser(user);
+            user = LoginService.findUser(user);
         }
     } catch (NullPointerException e) {
         e.printStackTrace();

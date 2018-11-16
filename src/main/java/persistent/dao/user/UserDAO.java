@@ -10,6 +10,6 @@ public interface UserDAO {
 
     User findUser(User user);
 
-    String insertUser(User user);
+    int insertUser(User user);
 
 }

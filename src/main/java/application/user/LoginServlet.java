@@ -55,6 +55,7 @@ public class LoginServlet extends BaseServlet {
             ck.setPath("/");
             resp.addCookie(ck);
         }
+        resp.getWriter().print(ret);
     }
 
 }

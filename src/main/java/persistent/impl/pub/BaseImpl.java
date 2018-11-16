@@ -4,12 +4,13 @@ import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
 
 public class BaseImpl {
 
-    public static boolean catchNullPointerException(Exception e) {
-        return e instanceof NullPointerException;
+    public static void catchNullPointerException(Exception e) {
+        if (e instanceof NullPointerException)
+            System.out.println("空指针异常");
     }
 
-    public static boolean catchCommunicationsException(Exception e) {
-        e.printStackTrace();
-        return e instanceof CommunicationsException;
+    public static void catchCommunicationsException(Exception e) {
+        if (e instanceof CommunicationsException)
+            System.out.println("无法连接到数据库");
     }
 }

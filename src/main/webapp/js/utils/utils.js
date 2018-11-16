@@ -5,7 +5,7 @@ function delCookie(name) {
     exp.setTime(exp.getTime() - 1);
     var cval = getCookie(name);
     if (cval != null)
-        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+        document.cookie = name + "=" + cval + ";expires=" + exp.toUTCString() + "; path=/";
 }
 
 function setCookie(name, value, day = '') {
@@ -28,33 +28,47 @@ function checkSpell(form) {
         "(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@" +
         "(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w]" +
         "(?:[\\w-]*[\\w])?");
-    var msgs = {
-        'usernameIllegal': '用户名存在非法字符，请修改再试',
-        'emailIllegal': '请填写正确的邮箱地址',
-        'passwordDismatch': '两次密码不匹配，请修改再试',
-        'usernameEmpty': '用户名不能为空',
-        'emailEmpty': '邮箱不能为空',
-        'passwordEmpty': '密码不能为空',
-        'nicknameEmpty': '昵称不能为空',
+    var spell_rule = {
+        'usernameIllegal': {
+            msg: '用户名存在非法字符，请修改再试',
+            condition: regex_illegal.test(form[0].value),
+        },
+        'emailIllegal': {
+            msg: '请填写正确的邮箱地址',
+            condition: !regex_email.test(form[1].value),
+        },
+        'passwordDismatch': {
+            msg: '两次密码不匹配，请修改再试',
+            condition: form[3].value !== form[4].value,
+        },
+        'usernameEmpty': {
+            msg: '用户名不能为空',
+            condition: form[0].value === '',
+        },
+        'emailEmpty': {
+            msg: '邮箱不能为空',
+            condition: form[1].value === '',
+        },
+        'passwordEmpty': {
+            msg: '密码不能为空',
+            condition: form[3].value === '',
+        },
+        'nicknameEmpty': {
+            msg: '昵称不能为空',
+            condition: form[2].value === '',
+        },
     };
-    var checks = {
-        'usernameIllegal': regex_illegal.test(form[0].value),
-        'emailIllegal': !regex_email.test(form[1].value),
-        'passwordDismatch': form[3].value !== form[4].value,
-        'usernameEmpty': form[0].value === '',
-        'emailEmpty': form[1].value === '',
-        'passwordEmpty': form[3].value === '',
-        'nicknameEmpty': form[2].value === '',
-    };
+
     var keys = [];
-    for (var key in checks) {
+    for (var key in msgs) {
         keys.push(key)
     }
     for (var i = 0; i < keys.length; i++) {
-        var isVaild = checks[keys[i]];
-        log('test: ', keys[i], isVaild);
+        var k = keys[i];
+        var check = spell_rule[k];
+        var isVaild = check.condition;
         if (isVaild) {
-            showAlert(msgs[keys[i]]);
+            showAlert(check.msg);
             return isVaild;
         }
     }
@@ -72,10 +86,20 @@ function showAlert(msg, level = 'warning') {
         'info': '信息',
         'error': '错误',
     };
-    var $alert_div = `<div class="alert alert-${level}"> 
+    var $alert_div = `<div class="alert alert-${level}" id="show-alert"> 
                             <a href='#' class='close' data-dismiss='alert'>&times;</a>
-                            <b>${title[level]}</b>${msg}</div>`;
-    $('body').append($alert_div).css('display', 'none').slideDown('fast', 6000, function () {
-        $(this).remove()
+                            <b>${title[level]} </b>${msg}</div>`;
+    $('body').append($alert_div);
+    $('#show-alert').css({
+        'display': 'none',
+        'position' : 'fixed',
+        'left' : '50%',
+        'top' : '10%',
+        'transform' : 'tansistion(-50%, -50%)',
+    }).slideDown('fast', function () {
+        var self = $(this);
+        setTimeout(function () {
+            self.slideUp('fast')
+        }, 5000);
     })
 };

@@ -10,7 +10,7 @@ public interface CourseDAO {
 
     Course findCourse(Course course);
 
-    String insertCourse(Course course);
+    int insertCourse(Course course);
 
     void updateCourse(Course course);
 

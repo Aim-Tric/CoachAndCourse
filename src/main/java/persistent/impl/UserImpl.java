@@ -1,6 +1,5 @@
 package persistent.impl;
 
-import commons.data.Consts;
 import org.apache.ibatis.session.SqlSession;
 import persistent.dao.user.UserDAO;
 import persistent.impl.pub.BaseImpl;
@@ -49,25 +48,29 @@ public class UserImpl implements UserDAO {
     }
 
     @Override
-    public String insertUser(User user) {
+    public int insertUser(User user) {
+        int ret = -1;
         try {
             session = SessionFactory.getFactory().openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
-            mapper.insertUser(user);
+            ret = mapper.insertUser(user);
             session.commit();
         } catch (Exception e) {
-            if (BaseImpl.catchCommunicationsException(e))
-                return Consts.RESULT_CANCEL;
+            BaseImpl.catchCommunicationsException(e);
         } finally {
             session.close();
         }
-        return Consts.RESULT_OK;
+        return ret;
     }
 
 //    public static void main(String[] args) {
 //        UserImpl imp = new UserImpl();
 //        User u = new User();
-//        u.setUsername("zhaoliu");
+//        u.setUsername("shadiao");
+//        u.setEmail("123123@qq.com");
+//        u.setNickname("hamapi");
+//        u.setPassword("hello");
+//        imp.insertUser(u);
 //        System.out.println(imp.findUser(u).toString());
 //    }
 
