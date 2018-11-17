@@ -23,45 +23,41 @@ function getCookie(name) {
 }
 
 function checkSpell(form) {
-    var regex_illegal = new RegExp("[\\w!#$%&'*+/=?^_`{|}~-]*([!#$%&'*+/=?^_`{|}~-])[\\w!#$%&'*+/=?^_`{|}~-]*");
-    var regex_email = new RegExp("[\\w!#$%&'*+/=?^_`{|}~-]+" +
-        "(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@" +
-        "(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w]" +
-        "(?:[\\w-]*[\\w])?");
+
     var spell_rule = {
         'usernameIllegal': {
-            msg: '用户名存在非法字符，请修改再试',
-            condition: regex_illegal.test(form[0].value),
+            msg: lang('username_illegal'),
+            condition: regex.illegal.test(form[0].value),
         },
         'emailIllegal': {
-            msg: '请填写正确的邮箱地址',
-            condition: !regex_email.test(form[1].value),
+            msg: lang('email_illegal'),
+            condition: !regex.email.test(form[1].value),
         },
-        'passwordDismatch': {
-            msg: '两次密码不匹配，请修改再试',
+        'passwordMismatch': {
+            msg: lang('password_mismatch'),
             condition: form[3].value !== form[4].value,
         },
         'usernameEmpty': {
-            msg: '用户名不能为空',
+            msg: lang('username_empty'),
             condition: form[0].value === '',
         },
         'emailEmpty': {
-            msg: '邮箱不能为空',
+            msg: lang('email_empty'),
             condition: form[1].value === '',
         },
         'passwordEmpty': {
-            msg: '密码不能为空',
+            msg: lang('password_empty'),
             condition: form[3].value === '',
         },
         'nicknameEmpty': {
-            msg: '昵称不能为空',
+            msg: lang('nickname_empty'),
             condition: form[2].value === '',
         },
     };
 
     var keys = [];
-    for (var key in msgs) {
-        keys.push(key)
+    for (var k in msgs) {
+        keys.push(k)
     }
     for (var i = 0; i < keys.length; i++) {
         var k = keys[i];
@@ -79,27 +75,68 @@ function checkSpell(form) {
     // return emailIllegal && usernameIllegal && isPasswordMatch;
 }
 
-function showAlert(msg, level = 'warning') {
-    var title = {
-        'success': '成功',
-        'warning': '警告',
-        'info': '信息',
-        'error': '错误',
-    };
-    var $alert_div = `<div class="alert alert-${level}" id="show-alert"> 
+function showAdaptAlert(alertAdapter, fadeout_sec = config.delay_short, callback) {
+    showAlert(alertAdapter.msg, alertAdapter.level, fadeout_sec, callback);
+}
+
+function showAlert(msg, level = 'warning', fadeout_sec = config.delay_short, callback) {
+    var $alert_div = `<div class="alert alert-${level} show-alert"> 
                             <a href='#' class='close' data-dismiss='alert'>&times;</a>
-                            <b>${title[level]} </b>${msg}</div>`;
+                            <b>${lang(level)} </b>${msg}</div>`;
     $('body').append($alert_div);
-    $('#show-alert').css({
+    var $alert_obj = $('.show-alert');
+    $alert_obj.css({
         'display': 'none',
         'position' : 'fixed',
         'left' : '50%',
         'top' : '10%',
         'transform' : 'tansistion(-50%, -50%)',
-    }).slideDown('fast', function () {
-        var self = $(this);
-        setTimeout(function () {
-            self.slideUp('fast')
-        }, 5000);
-    })
+    });
+    showThenDie($alert_obj, fadeout_sec, callback)
 };
+
+function showThenDie(target, sec, callback) {
+    $(target).fadeIn('fast', function () {
+        var $self = $(this);
+        setTimeout(function () {
+            $self.fadeOut('fast', function () {
+                $self.remove();
+                callback && callback() // 如果有回调函数，则调用回调函数
+            })
+        }, sec * 1000);
+    })
+}
+
+function form_datas() {
+    var arr = {};
+    var datas = $('form').serializeArray();
+    $.each(datas, function () {
+        arr[this.name] = this.value;
+    });
+    return arr;
+}
+
+function lang(key) {
+    var translation = language[key]; // 拿到存了多们语言翻译句的字典，下一步要判断用的是哪门语言
+    return translation[language.using]; // 把目标语言的翻译句返回
+}
+
+function toggleForm(form) {
+    form.toggleFormKey = !form.toggleFormKey;
+    var arr = [];
+    log('form', form.children('input'))
+    form.find('input').each(function () {
+        arr.push(this);
+    });
+    form.find('button').each(function () {
+        arr.push(this);
+    });
+    form.find('a').each(function () {
+        arr.push(this);
+    });
+
+
+    for (let i = 0; i < arr.length; i++) {
+        arr[i].disabled = form.toggleFormKey || true;
+    }
+}

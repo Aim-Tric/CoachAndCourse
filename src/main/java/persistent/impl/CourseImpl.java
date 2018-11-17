@@ -76,8 +76,8 @@ public class CourseImpl implements CourseDAO {
 //    public static void main(String[] args) {
 //        CourseImpl i = new CourseImpl();
 //        Course c = new Course();
-//        c.setName("数学");
-//        c.setOverview("大学数学");
+//        c.setName("插入课程");
+//        c.setOverview("简介就是没有简介");
 //        c.setTeaid(2);
 //        c.setType("数学");
 //        i.insertCourse(c);

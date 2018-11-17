@@ -266,6 +266,11 @@ footer hr {
     width: -moz-fit-content;
 }
 
+/*#type {*/
+/*display: none;*/
+/*}*/
+
+
 .navbar-default .navbar-nav>.open>a,
 .navbar-default .navbar-nav>.open>a:focus,
 .navbar-default .navbar-nav>.open>a:hover {

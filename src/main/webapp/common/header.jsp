@@ -21,16 +21,18 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <%--最新的 Bootstrap 核心 JavaScript 文件--%>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%--<script src="https://raw.githubusercontent.com/emn178/js-md5/master/build/md5.min.js"></script>--%>
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <%--用户自定义--%>
     <link rel="stylesheet" href="/css/food_style.css">
+    <script src="/js/utils/utils.js"></script>
     <script src="/js/components/header.js"></script>
     <script src="/js/components/login.js"></script>
     <script src="/js/components/course.js"></script>
     <script src="/js/components/register.js"></script>
     <script src="/js/components/sidebar.js"></script>
     <script src="/js/consts/config.js"></script>
-    <script src="/js/utils/utils.js"></script>
+    <script src="/js/consts/data.js"></script>
     <script src="/js/main.js"></script>
 </head>
 <body>

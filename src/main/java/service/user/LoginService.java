@@ -39,7 +39,7 @@ public class LoginService extends UserService {
                 ret = Consts.RESULT_OK;
             }
         } catch (NullPointerException npe) {
-            // TODO: 用户不存在
+            // 用户不存在
             ret = Consts.RESULT_CANCEL;
         }
         return ret;

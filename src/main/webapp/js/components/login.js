@@ -15,30 +15,17 @@ function initialLogin() {
             data: {'user': JSON.stringify(arr)},
             success: function (result) {
                 var ret = JSON.parse(result);
-                var pw = $('#alert-pw');
-                pw.removeClass("hidden");
-                if (ret['result'] == 'RESULT_FAILED') {
-                    return;
-                }
-                pw.removeClass('alert-warning')
-                    .addClass('alert-success')
-                    .text(arr['username'] + " 登陆成功! ");
-                var fadeSec = 3;
-                setInterval(function () {
-                    pw.text(arr['username'] + " 登陆成功! " + fadeSec + "s 后此对话框消失");
-                    fadeSec -= 1
-                }, 1000);
-                $('form').children(':not(".alert")').remove();
+                var key = ret['result'];
+                var adapter = alert_dict[key];
+                var parent = $form.parents('.panel');
+                showAlert(adapter.msg, adapter.level);
+                toggleForm($form);
                 setTimeout(function () {
-                    $('form').parent().hide('slow', function () {
-                        // you can do any animation effect here
-                        window.location.reload(false);
-                    });
-                }, 3000);
-
+                    window.location.reload(false);
+                }, config.delay_short * 1000);
             },
             error: function () {
-                $('#alert-pw').removeClass("hidden").children('span').text("网络出错，请检查你的网络和防火墙设置");
+                showAlert(lang('network_disconnect'), 'error');
             }
         });
     });
