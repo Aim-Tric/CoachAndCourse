@@ -13,7 +13,7 @@
     </div>
     <div class="form-group">
         <label for="overview">课程简介</label>
-        <textarea name="overview" cols="30" rows="10" class="form-control" id="overview"></textarea>
+        <textarea name="overview" cols="30" rows="10" class="form-control" id="overview" maxlength="400"></textarea>
     </div>
     <div class="form-group">
         <%--课程目录--%>

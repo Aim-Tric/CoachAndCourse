@@ -9,9 +9,10 @@ public class AddCourseService extends BaseService {
 
     public String addCourse(String courseJson) {
         Course course = (Course) getBeanFromJson(courseJson, Course.class);
+        // FIXME: 待会删掉这个硬编码操作
+        course.setTeaid(2);
         CourseImpl impl = new CourseImpl();
         int key = impl.insertCourse(course);
-        // FIXME: 永远都是-1
         return Utils.getResult(key);
     }
 
