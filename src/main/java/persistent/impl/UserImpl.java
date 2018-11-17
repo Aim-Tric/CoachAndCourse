@@ -1,9 +1,9 @@
 package persistent.impl;
 
 import org.apache.ibatis.session.SqlSession;
-import persistent.dao.user.UserDAO;
+import persistent.dao.UserDAO;
 import persistent.impl.pub.BaseImpl;
-import persistent.impl.util.SessionFactory;
+import persistent.impl.utils.SessionFactory;
 import persistent.pojo.user.User;
 
 import java.io.IOException;

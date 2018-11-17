@@ -1,4 +1,4 @@
-package persistent.dao.user;
+package persistent.dao;
 
 import persistent.pojo.user.User;
 

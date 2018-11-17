@@ -1,4 +1,4 @@
-package persistent.dao.course;
+package persistent.dao;
 
 import persistent.pojo.course.Course;
 

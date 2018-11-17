@@ -2,9 +2,8 @@ package service.user;
 
 import persistent.impl.UserImpl;
 import persistent.pojo.user.User;
-import service.pub.BaseService;
 
-public class RegisterService extends BaseService {
+public class RegisterService extends UserService {
 
     public RegisterService() {
     }

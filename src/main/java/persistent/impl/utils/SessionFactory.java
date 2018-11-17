@@ -1,4 +1,4 @@
-package persistent.impl.util;
+package persistent.impl.utils;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
