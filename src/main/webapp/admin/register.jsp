@@ -51,8 +51,8 @@
                     </div>
                     <div class="form-group">
                         <label class="checkbox-custom checkbox-default">
-                            <input type="checkbox" id="remenberme" name="rememberme" value="1"/>
-                            <label for="remenberme">我已阅读并接受<a href="#">使用条约</a></label>
+                            <input type="checkbox" id="accept-checkbox" value="1"/>
+                            <label for="accept-checkbox">我已阅读并接受<a href="#">使用条约</a></label>
                         </label>
                     </div>
                     <div class="form-group col-md-offset-3 login-panel-button-group">

@@ -13,11 +13,14 @@
  * 方法：小驼峰，动词加名词，定义时参数要写全名称 findArray()，showAlert()
  *
  */
+var config = {
+    delay_short: 2,
+};
 
 var sidebar_list = {
     'new-course': {
         id: '#new-course',
-        url: '../admin/course/new-course.jsp',
+        url: '../admin/course/add-course.jsp',
         type: 'submit',
         submitUrl: '/application/course/add-course',
     },
@@ -53,9 +56,67 @@ var sidebar_list = {
     },
 };
 
-var alert_dict = {
-    'RESULT_OK': ['操作成功', 'success'],
-    'RESULT_FAILED': ['操作失败', 'warning'],
-    'RESULT_CANCEL': ['网络错误', 'error'],
+var language = {
+    using: 'CH_ZN',
+    'operation_success': {
+        'CH_ZN': '操作成功',
+    },
+    'operation_failed': {
+        'CH_ZN': '操作失败',
+    },
+    'network_disconnect': {
+        'CH_ZN': '网络状态不好，请检查你的网络和防火墙设置',
+    },
+    'login_success': {
+        'CH_ZN': ' 登陆成功！ ',
+    },
+    'sec_to_fadeout': {
+        'CH_ZN': ' 秒后此对话框消失',
+    },
+    'username_illegal': {
+        'CH_ZN': '用户名存在非法字符，请修改再试',
+    },
+    'email_illegal': {
+        'CH_ZN': '请填写正确的邮箱地址',
+    },
+    'password_mismatch': {
+        'CH_ZN': '两次密码不匹配，请修改再试',
+    },
+    'username_empty': {
+        'CH_ZN': '用户名不能为空',
+    },
+    'email_empty': {
+        'CH_ZN': '邮箱不能为空',
+    },
+    'nickname_empty': {
+        'CH_ZN': '昵称不能为空',
+    },
+    'success': {
+        'CH_ZN': '成功',
+    },
+    'warning': {
+        'CH_ZN': '警告',
+    },
+    'info': {
+        'CH_ZN': '信息',
+    },
+    'error': {
+        'CH_ZN': '错误',
+    },
+    'undefined': {
+        'CH_ZN': 'undefined',
+    },
+    'undefined': {
+        'CH_ZN': 'undefined',
+    },
+    'undefined': {
+        'CH_ZN': 'undefined',
+    },
+    'undefined': {
+        'CH_ZN': 'undefined',
+    },
+
 };
+
+
 

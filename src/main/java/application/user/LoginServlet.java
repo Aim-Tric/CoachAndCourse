@@ -30,7 +30,6 @@ public class LoginServlet extends BaseServlet {
         // 验证是用户名登录还是邮箱登录
         json = LoginService.ifIsEmail(json);
         user = (User) LoginService.getBeanFromJson(json, User.class);
-//      FIXME user为NULL
         String result = LoginService.verify(user);
         HashMap<String, String> retMap = new HashMap<>();
         retMap.put("result", result);

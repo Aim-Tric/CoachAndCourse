@@ -23,30 +23,24 @@
     <div class="form-group">
         <label for="type">课程分类</label>
         <%--选框--%>
-        <div class="btn-group">
-            <input type="button" class="btn btn-default dropdown-toggle" value="请选择类别" data-toggle="dropdown"
-                   name="type" id="type"/>
-
-            <ul class="dropdown-menu" role="menu">
-                <li>
-                    <a href="#">计算机</a>
-                </li>
-                <li>
-                    <a href="#">财经</a>
-                </li>
-                <li>
-                    <a href="#">心理学</a>
-                </li>
-                <li>
-                    <a href="#">外语</a>
-                </li>
-                <li>
-                    <a href="#">文学</a>
-                </li>
-                <li>
-                    <a href="#">设计</a>
-                </li>
-            </ul>
+        <div class="btn-group" role="form">
+            <div class="dropdown dropdown-select">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"
+                        aria-expanded="true">
+                    请选择类别
+                    <span class="caret"></span>
+                </button>
+                <input type="hidden" name="type" value="" id="type" placeholder="你的浏览器版本太低">
+                <ul class="dropdown-menu" role="menu" aria-labelledby="type">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">计算机</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">财经</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">心理学</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">外语</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">文学</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">设计</a></li>
+                </ul>
+            </div>
+        </div>
         </div>
     </div>
     <div class="form-group">

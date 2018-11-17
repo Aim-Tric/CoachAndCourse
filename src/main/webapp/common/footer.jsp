@@ -4,28 +4,25 @@
 <footer>
     <div class="card-header">
         <!--  # 块形文字内容  -->
-        <div class="card-contents">
+        <div class="card-contents clearfix">
             <div class="card-contents-inner">
                 <p>This Site is a sample site,All of this is previous it belongs to none of a company or ognazation
                     all of contents from outer site is foke.</p>
             </div>
             <div class="card-contents-inner">
-                <p>Gdaib Paly College | Librarians Community Libvary Mail Syste m |Write to the Director Userful
+                <p>Gdaib Paly College | Librarians Community Libvary Mail System |Write to the Director Userful
                     Links | Site Map | Old Version</p>
             </div>
-            <div class="clear"></div>
         </div>
-        <div class="clear"></div>
 
         <!-- # 分割线 -->
-        <div class="card-line">
+        <div class="card-line clearfix">
             <hr>
             <div class="line-fnd-mobile">鲜极味水果© 移动端</div>
-            <div class="clear"></div>
         </div>
 
         <!-- # 二维码 -->
-        <div class="div-qrcode">
+        <div class="div-qrcode clearfix">
             <div class="div-qrcode-inner">
                 <img src="/img/Android.png" alt="anndroid">
                 <p>Andoird</p>
@@ -38,9 +35,8 @@
             <div class="clear"></div>
         </div>
 
-
     </div>
-    <div class="card-footer">
+    <div class="card-footer clearfix">
         <h4 class="copyright-text">Copyright 2018, 610 Team, All Right Reserved.</h4>
         <div class="card-label">
             <ul>
@@ -50,7 +46,6 @@
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>
-        <div class="clear"></div>
 
     </div>
 </footer>

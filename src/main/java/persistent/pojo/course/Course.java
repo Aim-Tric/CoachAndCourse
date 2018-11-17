@@ -91,7 +91,7 @@ public class Course {
     }
 
     public String toString() {
-        return "name = " + this.name;
+        return "name = " + this.name + ", type = " + type;
     }
 
 }
