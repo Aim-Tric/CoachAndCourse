@@ -4,22 +4,21 @@ import commons.data.Consts;
 import org.mortbay.util.ajax.JSON;
 import persistent.impl.UserImpl;
 import persistent.pojo.user.User;
-import service.pub.BaseService;
+import service.utils.UtilService;
 
 import java.util.Map;
 
-public class LoginService extends BaseService {
+public class LoginService extends UserService {
 
     public LoginService() {
     }
 
     /**
-     * 在数据库验证从前端拿到的用户和密码是否正确
-     *
+     * 检验用户是用户名登录还是邮箱登录
      * @param json <@link>String</@link> 如果username传过来是email，则设置username这个key变成email
      * @return
      */
-    public static String ifIsEmail(String json) {
+    public static String changeToEmail(String json) {
         Map<String, String> map = (Map) JSON.parse(json);
         boolean isMail = map.get("username").matches(Consts.REGEX_MAIL);
         if (!isMail)
@@ -39,23 +38,16 @@ public class LoginService extends BaseService {
             if (u != null) {
                 ret = Consts.RESULT_OK;
             }
-            System.out.println("User = " + u);
-
         } catch (NullPointerException npe) {
             // TODO: 用户不存在
             ret = Consts.RESULT_CANCEL;
         }
-
         return ret;
-    }
-
-    public static User findUser(User user) {
-        return new UserImpl().findUser(user);
     }
 
 //    public static void main(String[] args) {
 //        String json = "{\"username\" : \"231235@126.com\", \"password\": \"223344\"}";
 //        System.out.println("json = " + json);
-//        ifIsEmail(json);
+//        changeToEmail(json);
 //    }
 }

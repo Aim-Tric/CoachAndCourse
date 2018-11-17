@@ -5,14 +5,18 @@ import commons.data.Consts;
 import net.sf.json.JSONObject;
 import persistent.pojo.user.User;
 import service.user.LoginService;
+import service.utils.UtilService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 
 /**
@@ -25,37 +29,43 @@ public class LoginServlet extends BaseServlet {
     protected void Handle(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         PrintWriter out = resp.getWriter();
         User user;
-        String json;
-        json = req.getParameter("user");
+        String json = req.getParameter("user");;
         // 验证是用户名登录还是邮箱登录
-        json = LoginService.ifIsEmail(json);
-        user = (User) LoginService.getBeanFromJson(json, User.class);
-//      FIXME user为NULL
-        String result = LoginService.verify(user);
-        HashMap<String, String> retMap = new HashMap<>();
-        retMap.put("result", result);
-        JSONObject ret = JSONObject.fromObject(retMap);
+        json = LoginService.changeToEmail(json);
+        user = (User) UtilService.getBeanFromJson(json, User.class);
         // 密码错误，直接跳出
+        String result = LoginService.verify(user);
         if (!result.equals(Consts.RESULT_OK)) {
             return;
         }
-        // 登录成功，从数据库取正确的用户信息
-        user = LoginService.findUser(user);
 
+        // 登录成功，从数据库取正确的用户信息
+        HashMap<String, String> retMap = new HashMap<>();
+        retMap.put("result", result);
+        user = LoginService.findUser(user);
         retMap.put("nickname", user.getNickname());
-        ret = JSONObject.fromObject(retMap);
+        JSONObject ret = JSONObject.fromObject(retMap);
+        resp.getWriter().print(ret);
+
         // 数据预处理与存储
+        HttpSession session = req.getSession();
         HashMap<String, String> map = new HashMap<>();
-        map.put("CNCSID", req.getSession().getId());
-        map.put("USERID", user.getId() + "");
-        req.getSession().setAttribute("nickname", user.getNickname());
-        for (HashMap.Entry<String, String> entry: map.entrySet()) {
-            Cookie ck = new Cookie(entry.getKey(), entry.getValue());
+        map.put("CNCSID", session.getId());
+        map.put("USERID", String.valueOf(user.getId()));
+        session.setAttribute("nickname", user.getNickname());
+
+        // 添加到Cookies
+        Cookie ck;
+        Set<HashMap.Entry<String, String>> entrySet  = map.entrySet();
+        Iterator<HashMap.Entry<String, String>> iter = entrySet.iterator();
+        while(iter.hasNext()){
+            HashMap.Entry<String, String> entry = iter.next();
+            ck = new Cookie(entry.getKey(), entry.getValue());
             ck.setMaxAge(Consts.COOKIE_EXPIRED_SEC);
             ck.setPath("/");
             resp.addCookie(ck);
         }
-        resp.getWriter().print(ret);
+
     }
 
 }

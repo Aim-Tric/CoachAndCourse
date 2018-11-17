@@ -1,18 +1,13 @@
-package service.pub;
+package service.user;
 
 import commons.data.Consts;
-import net.sf.json.JSONObject;
 import persistent.impl.UserImpl;
 import persistent.pojo.user.User;
 
-public class BaseService {
-    public static Object getBeanFromJson(String param, Class tmp) {
-        JSONObject json = JSONObject.fromObject(param);
-        return JSONObject.toBean(json, tmp);
-    }
+public class UserService {
 
-    protected boolean isLegal(User user) {
-        return !java.util.regex.Pattern.matches(user.getUsername(), Consts.REGEX_ILLEGAL);
+    public static User findUser(User user) {
+        return new UserImpl().findUser(user);
     }
 
     protected boolean isExist(User user) {
@@ -25,4 +20,7 @@ public class BaseService {
         return true;
     }
 
+    protected boolean isLegal(User user) {
+        return !java.util.regex.Pattern.matches(user.getUsername(), Consts.REGEX_ILLEGAL);
+    }
 }
