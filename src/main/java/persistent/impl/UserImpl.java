@@ -15,12 +15,12 @@ public class UserImpl implements UserDAO {
     private SqlSession session = null;
 
     @Override
-    public List<User> findUsers() {
+    public List<User> findUsers(User user, int start, int maxLimit) {
         List<User> users = new ArrayList<>();
         try {
             session = SessionFactory.getFactory().openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
-            users = mapper.findUsers();
+            users = mapper.findUsers(user, start, maxLimit);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

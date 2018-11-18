@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserDAO {
 
-    List<User> findUsers();
+    List<User> findUsers(User user, int start, int maxLimit);
 
     User findUser(User user);
 
