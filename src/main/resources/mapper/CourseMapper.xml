@@ -2,33 +2,19 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="persistent.dao.CourseDAO">
-    <select id="findCourses" resultType="java.util.List">
-        select * from course
+    <select id="findCourses" resultType="persistent.pojo.course.Course">
+        select * from course ORDER BY id desc limit ${(start-1)*maxLimit}, ${maxLimit}
     </select>
     <select id="findCourse" resultType="persistent.pojo.course.Course">
         select * from course
         <trim prefix="WHERE" prefixOverrides="AND">
-            <if test="id != 0">
-                AND id = #{id}
-            </if>
-            <if test="name != null">
-                AND name = #{name}
-            </if>
-            <if test="teaid != 0">
-                AND teaid = #{teaid}
-            </if>
-            <if test="overview != null">
-                AND overview = #{overview}
-            </if>
-            <if test="sourse != null">
-                AND sourse = #{sourse}
-            </if>
-            <if test="type != null">
-                AND type = #{type}
-            </if>
-            <if test="imageview">
-                AND imageview = #{imageview}
-            </if>
+            <if test="id != 0">AND id = #{id}</if>
+            <if test="name != null">AND name = #{name}</if>
+            <if test="teaid != 0">AND teaid = #{teaid}</if>
+            <if test="overview != null">AND overview = #{overview}</if>
+            <if test="sourse != null">AND sourse = #{sourse}</if>
+            <if test="type != null">AND type = #{type}</if>
+            <if test="imageview">AND imageview = #{imageview}</if>
         </trim>
     </select>
     <insert id="insertCourse" parameterType="persistent.pojo.course.Course">

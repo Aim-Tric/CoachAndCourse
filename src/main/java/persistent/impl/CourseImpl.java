@@ -8,18 +8,19 @@ import persistent.pojo.course.Course;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class CourseImpl implements CourseDAO {
     private SqlSession session;
 
     @Override
-    public List<Course> findCourses(Course course) {
+    public List<Course> findCourses(Course course, int start, int maxLimit) {
         List<Course> courses = new ArrayList<>();
         try {
             session = SessionFactory.getFactory().openSession();
             CourseDAO mapper = session.getMapper(CourseDAO.class);
-            courses = mapper.findCourses(course);
+            courses = mapper.findCourses(course, start, maxLimit);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -80,8 +81,13 @@ public class CourseImpl implements CourseDAO {
 //        c.setOverview("简介就是没有简介");
 //        c.setTeaid(2);
 //        c.setType("数学");
+//        List<Course> clist = new ArrayList<>();
 //        i.insertCourse(c);
-//        System.out.println(i.findCourse(c));
+//        clist = i.findCourses(c, 3, 6);
+//        Iterator it = clist.iterator();
+//        while(it.hasNext()){
+//            System.out.println(it.next());
+//        }
 //    }
 
 }

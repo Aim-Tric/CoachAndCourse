@@ -106,7 +106,9 @@
 
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 template">
-            <%@include file="course/my-course.jsp" %>
+            <jsp:include page="/admin/course/my-course.jsp">
+                <jsp:param name="page" value="2" />
+            </jsp:include>
         </div>
     </div>
 </div>

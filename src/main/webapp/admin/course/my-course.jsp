@@ -1,4 +1,6 @@
-<%--
+<%@ page import="persistent.pojo.course.Course" %>
+<%@ page import="service.course.CourseService" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Aim-Trick
   Date: 2018/11/13
@@ -9,13 +11,21 @@
 <form class="template-inner">
     <h1 class="page-header">我的课程</h1>
 
-    <div class="row placeholders">
-        <div class="col-xs-6 col-sm-3 placeholder">
-            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-                 width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-            <h4>Label</h4>
-            <span class="text-muted">Something else</span>
-        </div>
+
+    <div class="row" id="courseGallery">
+        <%
+            int courseListPageCount = Integer.valueOf(request.getParameter("page"));
+            // TODO: 传入页码参数，根据账号查询课程
+            List<Course> courseList = new CourseService().SearchCourses(1);
+            for (Course c : courseList) {
+                out.print("<div class='col-xs-6 col-sm-3'>");
+                out.print("    <img src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='");
+                out.print("         width='200' height='200' alt=''>");
+                out.print("    <h4>"+c.getName()+"</h4>");
+                out.print("    <span class='text-muted'>" + c.getType() + "</span>");
+                out.print("</div>");
+            }
+        %>
 
     </div>
 

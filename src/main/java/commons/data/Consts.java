@@ -17,4 +17,6 @@ public class Consts {
 
     public static final int COOKIE_EXPIRED_SEC = 3 * 60;
 
+    public static final int MAXLIMIT = 12;
+
 }

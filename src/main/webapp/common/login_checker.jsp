@@ -20,7 +20,8 @@
     for (Cookie ck : request.getCookies()) {
         map.put(ck.getName(), ck.getValue());
     }
-    /**
+
+    /*
      * TODO:
      * 在数据库中找到CNCSID是否已存在
      * 存在则为已登录
