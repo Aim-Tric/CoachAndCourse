@@ -1,14 +1,14 @@
 var alert_dict = {
     'RESULT_OK': {
-        msg: lang('operation_success'),
+        msg: lang('login_success'),
         level: 'success',
     },
     'RESULT_FAILED': {
-        msg: lang('operation_failed'),
+        msg: lang('login_failed'),
         level: 'warning',
     },
     'RESULT_CANCEL': {
-        msg: lang('network_disconnect'),
+        msg: lang('account_do_not_exist'),
         level: 'error',
     },
 };

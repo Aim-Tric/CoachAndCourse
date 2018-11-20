@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page pageEncoding="utf-8" contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="login_checker.jsp" %>
 
 <html lang="en">
 
@@ -30,16 +29,16 @@
     <script type="text/javascript" src="/js/plugins/dateTimePicker/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
     <script src="/js/plugins/dateTimePicker/config.js"></script>
     <%--用户自定义--%>
-    <link rel="stylesheet" href="/css/food_style.css">
-    <script src="/js/utils/utils.js"></script>
-    <script src="/js/components/header.js"></script>
-    <script src="/js/components/login.js"></script>
-    <script src="/js/components/course.js"></script>
-    <script src="/js/components/register.js"></script>
-    <script src="/js/components/sidebar.js"></script>
-    <script src="/js/consts/config.js"></script>
-    <script src="/js/consts/data.js"></script>
-    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/common/css/food_style.css">
+    <script src="/common/js/utils/utils.js"></script>
+    <script src="/common/js/components/header.js"></script>
+    <script src="/common/js/components/login.js"></script>
+    <script src="/common/js/components/course.js"></script>
+    <script src="/common/js/components/register.js"></script>
+    <script src="/common/js/components/sidebar.js"></script>
+    <script src="/common/js/consts/config.js"></script>
+    <script src="/common/js/consts/data.js"></script>
+    <script src="/common/js/main.js"></script>
 </head>
 <body>
 <header>
@@ -49,14 +48,10 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse"
                         data-target="#example-navbar-collapse">
                     <span class="sr-only">切换导航</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
                 </button>
-                <a class="logo-text" href="#">
-                    <img id="logo" src="./img/logo.png" alt="">
-                    <a class="navbar-brand" href="#">Coach&Course</a>
-
+                <a class="logo-text" href="/index.jsp">
+                    <img id="logo" src="/common/img/logo.png" alt="">
+                    <a class="navbar-brand" href="/index.jsp">Coach&Course</a>
                 </a>
             </div>
 
@@ -67,25 +62,23 @@
                     <li class="dropdown dropdown-default" id="user-panel">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span id="user-nickname">
-                                    <% if (isLogged) { %>
-                                <%=user.getNickname()%>
+                                <% if (session.getAttribute("isLogged") != null) { %>
+                                    <%=session.getAttribute("nickname")%>
                                 <% } else { %>
-                                未登陆
+                                    未登陆
                                 <% } %>
                             </span>
 
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu ">
-                            <% if (isLogged) { %>
-                                <li><a href="../admin/dashboard.jsp">用户名： <span id="user-username"><%=user.getUsername()%></span></a></li>
-                                <li><a href="../admin/dashboard.jsp">邮箱： <span id="user-email"><%=user.getEmail()%></span></a></li>
-                                <li><a href="../admin/dashboard.jsp">ID： <span id="user-id"><%=user.getId()%></span></a></li>
+                            <% if (session.getAttribute("isLogged") != null) { %>
+                            <li><a href="./admin/dashboard.jsp">个人中心</a></li>
                                 <li class="divider"></li>
                                 <li><a id="logout-btn">注销登录</a></li>
                             <% } else { %>
-                                <li><a href="/index.jsp" id="#login-btn">登录</a></li>
-                                <li><a href="#"></a></li>
+                            <li><a href="/admin/login.jsp" id="#login-btn">登录</a></li>
+                            <li class="divider"></li>
                                 <li><a href="/admin/register.jsp">注册</a></li>
                             <% } %>
                         </ul>

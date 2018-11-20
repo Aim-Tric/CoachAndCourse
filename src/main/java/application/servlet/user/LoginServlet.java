@@ -30,15 +30,18 @@ public class LoginServlet extends BaseServlet {
         System.out.println("here");
         PrintWriter out = resp.getWriter();
         User user;
-        String json = req.getParameter("user");
+        String json = req.getParameter("json");
+
         // 验证是用户名登录还是邮箱登录
-        json = LoginService.changeToEmail(json);
+        json = LoginService.changeToEmail(json); // 如果他是用email登录，才改变用户名为email
         user = (User) UtilService.getBeanFromJson(json, User.class);
         // 密码错误，直接跳出
         String result = LoginService.verify(user);
         if (!result.equals(Consts.RESULT_OK)) {
             return;
         }
+
+        ;
 
         // 登录成功，从数据库取正确的用户信息
         HashMap<String, String> retMap = new HashMap<>();
