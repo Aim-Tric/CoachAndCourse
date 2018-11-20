@@ -10,9 +10,9 @@ function initialLogin() {
         });
         $.ajax({
             type: 'POST',
-            url: './application/user/login',
+            url: '../application/user/login',
             dataType: 'text',
-            data: {'user': JSON.stringify(arr)},
+            data: {'json': JSON.stringify(arr)},
             success: function (result) {
                 var ret = JSON.parse(result);
                 var key = ret['result'];
@@ -21,7 +21,7 @@ function initialLogin() {
                 showAlert(adapter.msg, adapter.level);
                 toggleForm($form);
                 setTimeout(function () {
-                    window.location.reload(false);
+                    window.location.href = "dashboard.jsp";
                 }, config.delay_short * 1000);
             },
             error: function () {

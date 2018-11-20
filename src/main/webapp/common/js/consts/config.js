@@ -70,6 +70,12 @@ var language = {
     'login_success': {
         'CH_ZN': ' 登陆成功！ ',
     },
+    'login_failed': {
+        'CH_ZN': ' 登陆失败！用户名或密码错误 ',
+    },
+    'account_do_not_exist': {
+        'CH_ZN': ' 登陆失败！用户名不存在 ',
+    },
     'sec_to_fadeout': {
         'CH_ZN': ' 秒后此对话框消失',
     },

@@ -8,12 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../common/header.jsp" %>
 
-<% if (!isLogged) { %>
-<%--<script>--%>
-    <%--window.location.href = '../index.jsp'--%>
-<%--</script>--%>
-
-<% } %>
 
 <div class="container-fluid">
     <div class="row">

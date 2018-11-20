@@ -10,7 +10,7 @@
 
 <div class="container">
     <div class="form row">
-        <form class="form-horizontal col-md-offset-3" id="login_form">
+        <form class="form-horizontal col-md-offset-3" id="register_form">
             <div class="col-md-9">
                 <h3 class="form-title">注册</h3>
 
