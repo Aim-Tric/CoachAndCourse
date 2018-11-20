@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8 col-lg-<%if (!isLogged) {%>9<%}else{%>12<%}%>">
+        <div class="col-md-8 col-lg-12">
             <div class="carousel slide" id="carousel-13519">
                 <ol class="carousel-indicators">
                     <li class="active" data-slide-to="0" data-target="#carousel-13519"></li>
@@ -28,14 +28,14 @@
                 <div class="carousel-inner">
 
                     <div class="item active">
-                        <img alt="" src="img/1.jpg"/>
+                        <img alt="" src="common/img/1.jpg"/>
                         <div class="carousel-caption"><h4>自制风味酱料秘籍</h4>
                             <p>酱料是一种神奇的存在，它们可蘸食、可调味，甚至有的可以当作小菜，来看看自己怎么做才好吃吧！</p>
                         </div>
                     </div>
 
                     <div class="item">
-                        <img alt="" src="img/2.jpg"/>
+                        <img alt="" src="common/img/2.jpg"/>
                         <div class="carousel-caption"><h4>
                             百吃不厌的南瓜菜单
 
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="item">
-                        <img alt="" src="img/3.jpg"/>
+                        <img alt="" src="common/img/3.jpg"/>
                         <div class="carousel-caption">
                             <h4>自行车</h4>
                             <p>
@@ -60,9 +60,7 @@
             </div>
         </div>
 
-            <% if (!isLogged) { %>
-                <%@include file="/admin/login.jsp" %>
-            <% } %>
+
 
     </div>
 
@@ -119,7 +117,7 @@
         <ul class="thumbnails">
             <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="thumbnail">
-                    <img alt="300x200" src="img/thumbnail1.jpg"/>
+                    <img alt="300x200" src="common/img/thumbnail1.jpg"/>
                     <div class="caption">
                         <h3>蜘蛛饼干</h3>
                         <p>
@@ -133,7 +131,7 @@
             </li>
             <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="thumbnail">
-                    <img alt="300x200" src="img/thumbnail2.jpg"/>
+                    <img alt="300x200" src="common/img/thumbnail2.jpg"/>
                     <div class="caption">
                         <h3>咸口南瓜饼</h3>
                         <p>
@@ -148,7 +146,7 @@
             </li>
             <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="thumbnail">
-                    <img alt="300x200" src="img/thumbnail3.jpg"/>
+                    <img alt="300x200" src="common/img/thumbnail3.jpg"/>
                     <div class="caption">
                         <h3>云顶曲奇</h3>
                         <p>
@@ -162,7 +160,7 @@
             </li>
             <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="thumbnail">
-                    <img alt="300x200" src="img/thumbnail4.jpg"/>
+                    <img alt="300x200" src="common/img/thumbnail4.jpg"/>
                     <div class="caption">
                         <h3>蔓越莓玛德琳</h3>
                         <p>
@@ -182,7 +180,7 @@
         <ul class="thumbnails">
             <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="thumbnail">
-                    <img alt="300x200" src="img/thumbnail1.jpg"/>
+                    <img alt="300x200" src="common/img/thumbnail1.jpg"/>
                     <div class="caption">
                         <h3>
                             蜘蛛饼干
@@ -198,7 +196,7 @@
             </li>
             <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="thumbnail">
-                    <img alt="300x200" src="img/thumbnail2.jpg"/>
+                    <img alt="300x200" src="common/img/thumbnail2.jpg"/>
                     <div class="caption">
                         <h3>
                             咸口南瓜饼
@@ -215,7 +213,7 @@
             </li>
             <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="thumbnail">
-                    <img alt="300x200" src="img/thumbnail3.jpg"/>
+                    <img alt="300x200" src="common/img/thumbnail3.jpg"/>
                     <div class="caption">
                         <h3>
                             云顶曲奇
@@ -231,7 +229,7 @@
             </li>
             <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="thumbnail">
-                    <img alt="300x200" src="img/thumbnail4.jpg"/>
+                    <img alt="300x200" src="common/img/thumbnail4.jpg"/>
                     <div class="caption">
                         <h3>蔓越莓玛德琳
                         </h3>
