@@ -4,7 +4,6 @@ import commons.data.Consts;
 import org.mortbay.util.ajax.JSON;
 import persistent.impl.UserImpl;
 import persistent.pojo.user.User;
-import service.utils.UtilService;
 
 import java.util.Map;
 

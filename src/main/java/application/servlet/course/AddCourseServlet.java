@@ -1,6 +1,6 @@
-package application.course;
+package application.servlet.course;
 
-import application.pub.BaseServlet;
+import application.servlet.pub.BaseServlet;
 import service.course.CourseService;
 
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/application/course/add-course")
+@WebServlet("/application/servlet/course/add-course")
 public class AddCourseServlet extends BaseServlet {
 
     @Override

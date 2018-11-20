@@ -2,13 +2,16 @@ package persistent.pojo.course;
 
 import persistent.pojo.user.User;
 
+import java.util.Date;
 import java.util.List;
 
 public class Course {
 
     private long id, teaid;
     private List<User> students;
-    private String name, overview, sourse, type, imageview, index;
+    private String name, overview, source, type, poster, index, status;
+    private int score, max_person;
+    private Date start_time, end_time;
 
     public Course(){}
     public Course(long teaid, String name, String overview, String type) {
@@ -66,20 +69,20 @@ public class Course {
         this.overview = overview;
     }
 
-    public String getSourse() {
-        return sourse;
+    public String getSource() {
+        return source;
     }
 
-    public void setSourse(String sourse) {
-        this.sourse = sourse;
+    public void setSource(String source) {
+        this.source = source;
     }
 
-    public String getImageview() {
-        return imageview;
+    public String getPoster() {
+        return poster;
     }
 
-    public void setImageview(String imageview) {
-        this.imageview = imageview;
+    public void setPoster(String poster) {
+        this.poster = poster;
     }
 
     public List<User> getStudents() {
@@ -89,6 +92,26 @@ public class Course {
     public void setStudents(List<User> students) {
         this.students = students;
     }
+
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status; }
+
+    public int getMax_person() { return max_person; }
+
+    public void setMax_person(int max_person) { this.max_person = max_person; }
+
+    public int getScore() { return score; }
+
+    public void setScore(int score) { this.score = score; }
+
+    public Date getStart_time() { return start_time; }
+
+    public void setStart_time(Date start_time) { this.start_time = start_time; }
+
+    public Date getEnd_time() { return end_time; }
+
+    public void setEnd_time(Date end_time) { this.end_time = end_time; }
 
     public String toString() {
         return "name = " + this.name + ", type = " + type;

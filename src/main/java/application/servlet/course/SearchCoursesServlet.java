@@ -1,6 +1,6 @@
-package application.course;
+package application.servlet.course;
 
-import application.pub.BaseServlet;
+import application.servlet.pub.BaseServlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

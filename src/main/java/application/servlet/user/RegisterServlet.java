@@ -1,6 +1,6 @@
-package application.user;
+package application.servlet.user;
 
-import application.pub.BaseServlet;
+import application.servlet.pub.BaseServlet;
 import persistent.pojo.user.User;
 import service.user.RegisterService;
 import service.utils.UtilService;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/application/user/register")
+@WebServlet("/application/servlet/user/register")
 public class RegisterServlet extends BaseServlet {
 
     protected void Handle(HttpServletRequest req, HttpServletResponse resp) {

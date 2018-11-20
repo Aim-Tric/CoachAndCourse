@@ -12,9 +12,14 @@
             <if test="name != null">AND name = #{name}</if>
             <if test="teaid != 0">AND teaid = #{teaid}</if>
             <if test="overview != null">AND overview = #{overview}</if>
-            <if test="sourse != null">AND sourse = #{sourse}</if>
+            <if test="source != null">AND source = #{source}</if>
             <if test="type != null">AND type = #{type}</if>
-            <if test="imageview">AND imageview = #{imageview}</if>
+            <if test="poster != null">AND poster = #{poster}</if>
+            <if test="status != null">AND status = #{status}</if>
+            <if test="score != 0">AND score = #{score}</if>
+            <if test="max_person != null">AND max_person = #{max_person}</if>
+            <if test="start_time != null">AND start_time = #{start_time}</if>
+            <if test="end_time != null">AND end_time = #{end_time}</if>
         </trim>
     </select>
     <insert id="insertCourse" parameterType="persistent.pojo.course.Course">
@@ -24,16 +29,16 @@
             <if test="teaid != 0">teaid,</if>
             <if test="type != null">type,</if>
             <if test="overview != null">overview,</if>
-            <if test="sourse != null">sourse,</if>
-            <if test="imageview != null">imageview</if>
+            <if test="source != null">source,</if>
+            <if test="poster != null">poster</if>
         </trim>
         <trim prefix="values(" suffix=")" suffixOverrides=",">
             <if test="name != null">#{name},</if>
             <if test="teaid != 0">#{teaid},</if>
             <if test="type != null">#{type},</if>
             <if test="overview != null">#{overview},</if>
-            <if test="sourse != null">#{sourse},</if>
-            <if test="imageview != null">#{imageview},</if>
+            <if test="source != null">#{source},</if>
+            <if test="poster != null">#{poster},</if>
         </trim>
     </insert>
 
@@ -43,8 +48,8 @@
             <if test="name != null">name = #{name},</if>
             <if test="type != null">type = #{type},</if>
             <if test="overview != null">overview = #{overview},</if>
-            <if test="sourse != null">sourse = #{sourse},</if>
-            <if test="imageview != null">imageview = #{imageview},</if>
+            <if test="source != null">source = #{source},</if>
+            <if test="poster != null">poster = #{poster},</if>
         </trim>
         where teaid = #{teaid}
     </update>

@@ -1,6 +1,6 @@
-package application.user;
+package application.servlet.user;
 
-import application.pub.BaseServlet;
+import application.servlet.pub.BaseServlet;
 import commons.data.Consts;
 import net.sf.json.JSONObject;
 import persistent.pojo.user.User;
@@ -23,13 +23,14 @@ import java.util.Set;
  * 接收返回登录操作
  */
 
-@WebServlet("/application/user/login")
+@WebServlet("/application/servlet/user/login")
 public class LoginServlet extends BaseServlet {
 
     protected void Handle(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println("here");
         PrintWriter out = resp.getWriter();
         User user;
-        String json = req.getParameter("user");;
+        String json = req.getParameter("user");
         // 验证是用户名登录还是邮箱登录
         json = LoginService.changeToEmail(json);
         user = (User) UtilService.getBeanFromJson(json, User.class);
@@ -45,14 +46,14 @@ public class LoginServlet extends BaseServlet {
         user = LoginService.findUser(user);
         retMap.put("nickname", user.getNickname());
         JSONObject ret = JSONObject.fromObject(retMap);
-        resp.getWriter().print(ret);
+        out.print(ret);
 
         // 数据预处理与存储
         HttpSession session = req.getSession();
         HashMap<String, String> map = new HashMap<>();
         map.put("CNCSID", session.getId());
         map.put("USERID", String.valueOf(user.getId()));
-        session.setAttribute("nickname", user.getNickname());
+        session.setAttribute("user", user);
 
         // 添加到Cookies
         Cookie ck;

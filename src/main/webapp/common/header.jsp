@@ -23,6 +23,12 @@
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <%--<script src="https://raw.githubusercontent.com/emn178/js-md5/master/build/md5.min.js"></script>--%>
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <%--Plugins--%>
+    <%--dateTimePicker--%>
+    <link href="/css/plugins/dateTimePicker/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="/js/plugins/dateTimePicker/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/js/plugins/dateTimePicker/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+    <script src="/js/plugins/dateTimePicker/config.js"></script>
     <%--用户自定义--%>
     <link rel="stylesheet" href="/css/food_style.css">
     <script src="/js/utils/utils.js"></script>

@@ -1,4 +1,4 @@
-package application.pub;
+package application.servlet.pub;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
