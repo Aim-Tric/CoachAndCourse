@@ -10,12 +10,12 @@ function initialLogin() {
         });
         $.ajax({
             type: 'POST',
-            url: '../application/user/login',
+            url: '/application/servlet/user/login',
             dataType: 'text',
             data: {'json': JSON.stringify(arr)},
             success: function (result) {
                 var ret = JSON.parse(result);
-                var key = ret['result'];
+                var key = ret['result_code'];
                 var adapter = alert_dict[key];
                 var parent = $form.parents('.panel');
                 showAlert(adapter.msg, adapter.level);

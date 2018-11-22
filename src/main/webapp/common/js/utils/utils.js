@@ -59,6 +59,7 @@ function checkSpell(form) {
     for (var k in msgs) {
         keys.push(k)
     }
+
     for (var i = 0; i < keys.length; i++) {
         var k = keys[i];
         var check = spell_rule[k];
@@ -75,6 +76,12 @@ function checkSpell(form) {
     // return emailIllegal && usernameIllegal && isPasswordMatch;
 }
 
+/**
+ * 提示框组件
+ * @param alertAdapter 提示框的内容信息对象
+ * @param fadeout_sec 淡出时间
+ * @param callback 处理后续事件的回调方法
+ */
 function showAdaptAlert(alertAdapter, fadeout_sec = config.delay_short, callback) {
     showAlert(alertAdapter.msg, alertAdapter.level, fadeout_sec, callback);
 }
@@ -107,6 +114,9 @@ function showThenDie(target, sec, callback) {
     })
 }
 
+/**
+ * 获取表单中的数据，以键值对形式返回
+ */
 function form_datas() {
     var arr = {};
     var datas = $('form').serializeArray();
@@ -116,11 +126,9 @@ function form_datas() {
     return arr;
 }
 
-function lang(key) {
-    var translation = language[key]; // 拿到存了多们语言翻译句的字典，下一步要判断用的是哪门语言
-    return translation[language.using]; // 把目标语言的翻译句返回
-}
-
+/**
+ * 在表单发送完成后才能再次点击
+ */
 function toggleForm(form) {
     form.toggleFormKey = !form.toggleFormKey;
     var arr = [];
@@ -134,9 +142,10 @@ function toggleForm(form) {
     form.find('a').each(function () {
         arr.push(this);
     });
-
-
     for (let i = 0; i < arr.length; i++) {
+        // 如果toggle存在就是toggle 否则就是true
         arr[i].disabled = form.toggleFormKey || true;
     }
 }
+
+

@@ -1,3 +1,4 @@
+<%@ page import="persistent.pojo.user.User" %>
 <%--
   Created by IntelliJ IDEA.
   User: Aim-Trick
@@ -24,24 +25,28 @@
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <%--Plugins--%>
     <%--dateTimePicker--%>
-    <link href="/css/plugins/dateTimePicker/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-    <script type="text/javascript" src="/js/plugins/dateTimePicker/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="/js/plugins/dateTimePicker/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-    <script src="/js/plugins/dateTimePicker/config.js"></script>
+    <link href="../common/css/plugins/dateTimePicker/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="../common/js/plugins/dateTimePicker/bootstrap-datetimepicker.min.js"
+            charset="UTF-8"></script>
+    <script type="text/javascript" src="../common/js/plugins/dateTimePicker/bootstrap-datetimepicker.zh-CN.js"
+            charset="UTF-8"></script>
+    <script src="../common/js/plugins/dateTimePicker/config.js"></script>
     <%--用户自定义--%>
-    <link rel="stylesheet" href="/common/css/food_style.css">
-    <script src="/common/js/utils/utils.js"></script>
-    <script src="/common/js/components/header.js"></script>
-    <script src="/common/js/components/login.js"></script>
-    <script src="/common/js/components/course.js"></script>
-    <script src="/common/js/components/register.js"></script>
-    <script src="/common/js/components/sidebar.js"></script>
-    <script src="/common/js/consts/config.js"></script>
-    <script src="/common/js/consts/data.js"></script>
-    <script src="/common/js/main.js"></script>
+    <link rel="stylesheet" href="../common/css/food_style.css">
+    <script src="../common/js/utils/language.js"></script>
+    <script src="../common/js/utils/utils.js"></script>
+    <script src="../common/js/consts/config.js"></script>
+    <script src="../common/js/consts/data.js"></script>
+    <script src="../common/js/utils/listener.js"></script>
+    <script src="../common/js/components/header.js"></script>
+    <script src="../common/js/components/login.js"></script>
+    <script src="../common/js/components/register.js"></script>
+    <script src="../common/js/components/sidebar.js"></script>
+    <script src="../common/js/main.js"></script>
 </head>
 <body>
 <header>
+    <% boolean isLogged = "true".equals(session.getAttribute("INFO")); %>
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -62,8 +67,11 @@
                     <li class="dropdown dropdown-default" id="user-panel">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span id="user-nickname">
-                                <% if (session.getAttribute("isLogged") != null) { %>
-                                    <%=session.getAttribute("nickname")%>
+                                <%
+                                    if (isLogged) {
+                                        User user = (User) session.getAttribute("CNC");
+                                %>
+                                    <%=user.getNickname()%>
                                 <% } else { %>
                                     未登陆
                                 <% } %>
@@ -72,14 +80,14 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu ">
-                            <% if (session.getAttribute("isLogged") != null) { %>
-                            <li><a href="./admin/dashboard.jsp">个人中心</a></li>
-                                <li class="divider"></li>
-                                <li><a id="logout-btn">注销登录</a></li>
+                            <% if (isLogged) { %>
+                            <li><a href="/admin/dashboard.jsp">个人中心</a></li>
+                            <li class="divider"></li>
+                            <li><a id="logout-btn">注销登录</a></li>
                             <% } else { %>
                             <li><a href="/admin/login.jsp" id="#login-btn">登录</a></li>
                             <li class="divider"></li>
-                                <li><a href="/admin/register.jsp">注册</a></li>
+                            <li><a href="/admin/register.jsp">注册</a></li>
                             <% } %>
                         </ul>
                     </li>

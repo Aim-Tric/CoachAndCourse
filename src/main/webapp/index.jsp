@@ -18,7 +18,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8 col-lg-12">
+        <div class="col-md-6 col-lg-12">
             <div class="carousel slide" id="carousel-13519">
                 <ol class="carousel-indicators">
                     <li class="active" data-slide-to="0" data-target="#carousel-13519"></li>

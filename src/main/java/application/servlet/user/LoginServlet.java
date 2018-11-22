@@ -11,12 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
 
 /**
@@ -26,50 +23,82 @@ import java.util.Set;
 @WebServlet("/application/servlet/user/login")
 public class LoginServlet extends BaseServlet {
 
-    protected void Handle(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        System.out.println("here");
-        PrintWriter out = resp.getWriter();
-        User user;
-        String json = req.getParameter("json");
+    private HttpServletRequest request;
+    private HttpServletResponse response;
+    private boolean isLoginSuccess;
+    private User user;
+    private String status, result;
+
+    protected void Handle(HttpServletRequest req, HttpServletResponse resp) {
+        onCreate(req, resp);
+        // 处理登录，密码正确时，isLogged就会为true
+        loginHandle();
+
+//        将登陆信息存入session中
+        if (isLoginSuccess) {
+            dataBuild();
+        }
+        responseRequest();
+    }
+
+    private void responseRequest() {
+        try {
+            PrintWriter out = response.getWriter();
+            out.print(status);
+        } catch (IOException ioe) {
+            System.out.println("LoginServlet.responseRequest, 发生了 IOE");
+            ioe.printStackTrace();
+        }
+    }
+
+    private void dataBuild() {
+        HashMap<String, String> returnMap = new HashMap<>();
+        user = LoginService.findUser(user);
+        returnMap.put("result_code", result);
+        returnMap.put("nickname", user.getNickname());
+        System.out.println();
+        JSONObject ret = JSONObject.fromObject(returnMap);
+        status = ret.toString();
+
+        // 数据预处理与存储
+        request.getSession().setAttribute("CNC", user);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("CNCID", String.valueOf(user.getUsername().hashCode()));
+        // 添加到Cookies
+        addCookiesAndSessionByMap(map);
+
+    }
+
+    private void loginHandle() {
+        String json = request.getParameter("json");
 
         // 验证是用户名登录还是邮箱登录
         json = LoginService.changeToEmail(json); // 如果他是用email登录，才改变用户名为email
         user = (User) UtilService.getBeanFromJson(json, User.class);
         // 密码错误，直接跳出
-        String result = LoginService.verify(user);
-        if (!result.equals(Consts.RESULT_OK)) {
+        result = LoginService.verify(user);
+        if (result.equals(Consts.RESULT_OK)) {
+            isLoginSuccess = true;
             return;
         }
+    }
 
-        ;
+    private void onCreate(HttpServletRequest req, HttpServletResponse resp) {
+        request = req;
+        response = resp;
+    }
 
-        // 登录成功，从数据库取正确的用户信息
-        HashMap<String, String> retMap = new HashMap<>();
-        retMap.put("result", result);
-        user = LoginService.findUser(user);
-        retMap.put("nickname", user.getNickname());
-        JSONObject ret = JSONObject.fromObject(retMap);
-        out.print(ret);
-
-        // 数据预处理与存储
-        HttpSession session = req.getSession();
-        HashMap<String, String> map = new HashMap<>();
-        map.put("CNCSID", session.getId());
-        map.put("USERID", String.valueOf(user.getId()));
-        session.setAttribute("user", user);
-
-        // 添加到Cookies
+    private void addCookiesAndSessionByMap(HashMap<String, String> map) {
         Cookie ck;
-        Set<HashMap.Entry<String, String>> entrySet  = map.entrySet();
-        Iterator<HashMap.Entry<String, String>> iter = entrySet.iterator();
-        while(iter.hasNext()){
-            HashMap.Entry<String, String> entry = iter.next();
+        for (HashMap.Entry<String, String> entry : map.entrySet()) {
             ck = new Cookie(entry.getKey(), entry.getValue());
             ck.setMaxAge(Consts.COOKIE_EXPIRED_SEC);
             ck.setPath("/");
-            resp.addCookie(ck);
+            request.getSession().setAttribute(entry.getKey(), entry.getValue());
+            response.addCookie(ck);
         }
 
     }
+
 
 }

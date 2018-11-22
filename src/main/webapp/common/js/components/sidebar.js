@@ -10,6 +10,4 @@ function initialSidebar() {
         addClickListener(obj);
     }
 
-    myCourse();
-
 }

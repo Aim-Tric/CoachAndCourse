@@ -16,13 +16,16 @@
 var config = {
     delay_short: 2,
 };
-
+/**
+ * sidebar配置列表
+ * key：事件名称，value：{id：按钮的id值, url：目标页面模板, type：页面注册事件类型, submitUrl：页面注册对应的servlet}
+ */
 var sidebar_list = {
     'new-course': {
         id: '#new-course',
         url: '../admin/course/add-course.jsp',
         type: 'submit',
-        submitUrl: '/application/course/add-course',
+        submitUrl: '/application/servlet/course/add-course',
     },
     'my-course': {
         id: '#my-course',
@@ -56,73 +59,7 @@ var sidebar_list = {
     },
 };
 
-var language = {
-    using: 'CH_ZN',
-    'operation_success': {
-        'CH_ZN': '操作成功',
-    },
-    'operation_failed': {
-        'CH_ZN': '操作失败',
-    },
-    'network_disconnect': {
-        'CH_ZN': '网络状态不好，请检查你的网络和防火墙设置',
-    },
-    'login_success': {
-        'CH_ZN': ' 登陆成功！ ',
-    },
-    'login_failed': {
-        'CH_ZN': ' 登陆失败！用户名或密码错误 ',
-    },
-    'account_do_not_exist': {
-        'CH_ZN': ' 登陆失败！用户名不存在 ',
-    },
-    'sec_to_fadeout': {
-        'CH_ZN': ' 秒后此对话框消失',
-    },
-    'username_illegal': {
-        'CH_ZN': '用户名存在非法字符，请修改再试',
-    },
-    'email_illegal': {
-        'CH_ZN': '请填写正确的邮箱地址',
-    },
-    'password_mismatch': {
-        'CH_ZN': '两次密码不匹配，请修改再试',
-    },
-    'username_empty': {
-        'CH_ZN': '用户名不能为空',
-    },
-    'email_empty': {
-        'CH_ZN': '邮箱不能为空',
-    },
-    'nickname_empty': {
-        'CH_ZN': '昵称不能为空',
-    },
-    'success': {
-        'CH_ZN': '成功',
-    },
-    'warning': {
-        'CH_ZN': '警告',
-    },
-    'info': {
-        'CH_ZN': '信息',
-    },
-    'error': {
-        'CH_ZN': '错误',
-    },
-    'undefined': {
-        'CH_ZN': 'undefined',
-    },
-    'undefined': {
-        'CH_ZN': 'undefined',
-    },
-    'undefined': {
-        'CH_ZN': 'undefined',
-    },
-    'undefined': {
-        'CH_ZN': 'undefined',
-    },
 
-};
 
 
 
