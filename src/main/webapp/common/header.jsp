@@ -33,15 +33,15 @@
     <script src="../common/js/plugins/dateTimePicker/config.js"></script>
     <%--用户自定义--%>
     <link rel="stylesheet" href="../common/css/food_style.css">
+    <script src="../common/js/consts/data.js"></script>
     <script src="../common/js/utils/language.js"></script>
     <script src="../common/js/utils/utils.js"></script>
     <script src="../common/js/consts/config.js"></script>
-    <script src="../common/js/consts/data.js"></script>
-    <script src="../common/js/utils/listener.js"></script>
+    <script src="../common/js/components/sidebar.js"></script>
     <script src="../common/js/components/header.js"></script>
     <script src="../common/js/components/login.js"></script>
     <script src="../common/js/components/register.js"></script>
-    <script src="../common/js/components/sidebar.js"></script>
+    <script src="../common/js/utils/listener.js"></script>
     <script src="../common/js/main.js"></script>
 </head>
 <body>
@@ -59,6 +59,10 @@
                     <a class="navbar-brand" href="/index.jsp">Coach&Course</a>
                 </a>
             </div>
+            <%
+                User user = (User) session.getAttribute("CNC");
+                String who = isLogged ? user.getNickname() : "未登陆";
+            %>
 
 
             <div class="collapse navbar-collapse" id="example-navbar-collapse">
@@ -66,17 +70,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown dropdown-default" id="user-panel">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span id="user-nickname">
-                                <%
-                                    if (isLogged) {
-                                        User user = (User) session.getAttribute("CNC");
-                                %>
-                                    <%=user.getNickname()%>
-                                <% } else { %>
-                                    未登陆
-                                <% } %>
-                            </span>
-
+                            <img src="" alt="">
+                            <span id="user-nickname"><%=who%></span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu ">
