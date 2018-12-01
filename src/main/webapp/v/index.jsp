@@ -13,7 +13,7 @@
 </div>
 <script src="/common/js/utils/video.js"></script>
 <script>
-    var url = '/v/git的简介与使用.mp4';  // url
+    var url = '/v/new.mp4';  // url
     var mimeCodec = 'video/mp4; codecs="avc1.640028, mp4a.40.2"'; // 编码格式
     display(url, mimeCodec);
 
