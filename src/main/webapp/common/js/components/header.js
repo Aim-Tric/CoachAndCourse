@@ -1,8 +1,7 @@
 function initialLogout() {
-    $('#logout-btn').click(function (e) {
+    $('#logout-btn').click(function () {
         //    TODO: 注销登录
-        delCookie('USERID');
-        delCookie('CNCSID');
+        delCookie('CNCID');
         window.location.href = '/index.jsp';
     })
 }

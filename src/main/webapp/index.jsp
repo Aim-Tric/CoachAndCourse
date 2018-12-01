@@ -1,3 +1,7 @@
+<%@ page import="persistent.impl.CourseImpl" %>
+<%@ page import="persistent.pojo.course.Course" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.List" %>
 <%@ page pageEncoding="utf-8" contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="common/header.jsp" %>
 
@@ -18,7 +22,11 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="col-md-8 col-lg-12">
+=======
+        <div class="col-md-6 col-lg-12">
+>>>>>>> upstream/master
             <div class="carousel slide" id="carousel-13519">
                 <ol class="carousel-indicators">
                     <li class="active" data-slide-to="0" data-target="#carousel-13519"></li>
@@ -60,7 +68,10 @@
             </div>
         </div>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/master
 
     </div>
 
@@ -112,9 +123,16 @@
 
 
     <!-- 第一行 -->
+    <%
+        CourseImpl cs = new CourseImpl();
+        List<Course> list = cs.findNewestCourses(new Date());
+        request.setAttribute("courses", list);
 
+    %>
     <div class="row">
+        <h2 class="page-header">最新课程</h2>
         <ul class="thumbnails">
+<<<<<<< HEAD
             <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
                 <div class="thumbnail">
                     <img alt="300x200" src="common/img/thumbnail1.jpg"/>
@@ -207,8 +225,24 @@
                         <p>
                             <a class="btn btn-primary" href="#">浏览</a> <a class="btn btn-default" href="#">分享</a>
                         </p>
+=======
+>>>>>>> upstream/master
 
+            <c:forEach items="${courses}" var="course" end="3">
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="thumbnail">
+                        <a href="./admin/course.jsp"><img alt="300x200" src="common/img/thumbnail1.jpg"/></a>
+                        <div class="caption">
+                            <h3>${course.name}</h3>
+                            <p>
+                                <span class="label label-success">${course.status}</span>
+                            </p>
+                            <p>
+                                <a class="btn btn-primary" href="#">浏览</a> <a class="btn btn-default" href="#">分享</a>
+                            </p>
+                        </div>
                     </div>
+<<<<<<< HEAD
                 </div>
             </li>
             <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
@@ -240,6 +274,10 @@
                     </div>
                 </div>
             </li>
+=======
+                </li>
+            </c:forEach>
+>>>>>>> upstream/master
 
         </ul>
     </div>

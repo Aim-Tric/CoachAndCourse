@@ -7,20 +7,33 @@ import persistent.impl.utils.SessionFactory;
 import persistent.pojo.course.Course;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class CourseImpl implements CourseDAO {
     private SqlSession session;
 
     @Override
-    public List<Course> findCourses(Course course, int start, int maxLimit) {
-        List<Course> courses = new ArrayList<>();
+    public List<Course> findCourses(int id, int start, int maxLimit) {
+        List<Course> courses = new ArrayList<Course>();
         try {
             session = SessionFactory.getFactory().openSession();
             CourseDAO mapper = session.getMapper(CourseDAO.class);
-            courses = mapper.findCourses(course, start, maxLimit);
+            courses = mapper.findCourses(id, start, maxLimit);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return courses;
+    }
+
+    @Override
+    public List<Course> findNewestCourses(java.util.Date date) {
+        List<Course> courses = new ArrayList<Course>();
+        try {
+            session = SessionFactory.getFactory().openSession();
+            CourseDAO mapper = session.getMapper(CourseDAO.class);
+            courses = mapper.findNewestCourses(new Date(date.getTime()));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,19 +88,7 @@ public class CourseImpl implements CourseDAO {
     }
 
 //    public static void main(String[] args) {
-//        CourseImpl i = new CourseImpl();
-//        Course c = new Course();
-//        c.setName("插入课程");
-//        c.setOverview("简介就是没有简介");
-//        c.setTeaid(2);
-//        c.setType("数学");
-//        List<Course> clist = new ArrayList<>();
-//        i.insertCourse(c);
-//        clist = i.findCourses(c, 3, 6);
-//        Iterator it = clist.iterator();
-//        while(it.hasNext()){
-//            System.out.println(it.next());
-//        }
+//
 //    }
 
 }

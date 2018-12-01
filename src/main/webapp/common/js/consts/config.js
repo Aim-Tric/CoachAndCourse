@@ -16,13 +16,16 @@
 var config = {
     delay_short: 2,
 };
-
+/**
+ * sidebar配置列表
+ * key：事件名称，value：{id：按钮的id值, url：目标页面模板, type：页面注册事件类型, submitUrl：页面注册对应的servlet}
+ */
 var sidebar_list = {
     'new-course': {
         id: '#new-course',
         url: '../admin/course/add-course.jsp',
         type: 'submit',
-        submitUrl: '/application/course/add-course',
+        submitUrl: '/application/servlet/course/add-course',
     },
     'my-course': {
         id: '#my-course',
@@ -56,6 +59,7 @@ var sidebar_list = {
     },
 };
 
+<<<<<<< HEAD:src/main/webapp/common/js/consts/config.js
 var language = {
     using: 'CH_ZN',
     'operation_success': {
@@ -126,8 +130,9 @@ var language = {
     'undefined': {
         'CH_ZN': 'undefined',
     },
+=======
+>>>>>>> upstream/master:src/main/webapp/common/js/consts/config.js
 
-};
 
 
 

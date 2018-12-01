@@ -1,6 +1,8 @@
 <%@ page import="persistent.pojo.course.Course" %>
+<%@ page import="persistent.pojo.user.User" %>
 <%@ page import="service.course.CourseService" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%--
   Created by IntelliJ IDEA.
   User: Aim-Trick
   Date: 2018/11/13
@@ -13,16 +15,17 @@
 
 
     <div class="row" id="courseGallery">
+
         <%
-            int courseListPageCount = Integer.valueOf(request.getParameter("page"));
-            // TODO: 传入页码参数，根据账号查询课程
-            List<Course> courseList = new CourseService().SearchCourses(1);
-            for (Course c : courseList) {
+            CourseService cs = new CourseService();
+            User user = (User) session.getAttribute("CNC");
+            List<Course> list = cs.searchCourses((int) user.getId(), 1);
+            for (Course c : list) {
                 out.print("<div class='col-xs-6 col-sm-3'>");
-                out.print("    <img src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='");
-                out.print("         width='200' height='200' alt=''>");
-                out.print("    <h4>"+c.getName()+"</h4>");
-                out.print("    <span class='text-muted'>" + c.getType() + "</span>");
+                out.print("<a herf=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw'\n" +
+                        "width='200' height='200' alt=''></a>");
+                out.print("<h4>" + c.getName() + "</h4>");
+                out.print("<span class='text-muted'>" + c.getStatus() + "</span>");
                 out.print("</div>");
             }
         %>
@@ -49,3 +52,6 @@
         </ul>
     </nav>
 </form>
+<script>
+
+</script>

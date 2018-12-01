@@ -22,9 +22,9 @@ function initialRegister() {
         });
         $.ajax({
             type: 'POST',
-            url: './application/user/register',
+            url: '/application/servlet/user/register',
             dataType: 'text',
-            data: {'user': JSON.stringify(arr)},
+            data: {'json': JSON.stringify(arr)},
             success: function (result) {
                 var pw = $('#showAlert-pw');
                 var popText = '注册失败，该用户已被注册'

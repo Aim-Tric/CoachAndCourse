@@ -16,7 +16,7 @@ public class UserImpl implements UserDAO {
 
     @Override
     public List<User> findUsers(User user, int start, int maxLimit) {
-        List<User> users = new ArrayList<>();
+        List<User> users = new ArrayList<User>();
         try {
             session = SessionFactory.getFactory().openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
