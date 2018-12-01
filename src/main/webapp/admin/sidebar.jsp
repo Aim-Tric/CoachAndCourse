@@ -47,29 +47,26 @@
             </div>
             <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel"
                  aria-labelledby="headingTwo">
-                <ul>
-                    <%
-                        User u = (User) session.getAttribute("CNC");
-                        boolean isTeacher = "tea".equals(u.getRole());
-                    %>
-                    <li class="active"><a role="button" id="my-course">
-                        <div class="panel-body">
-                            我的课程
-                        </div>
-                    </a></li>
-                    <% if (isTeacher) {%>
-                    <li><a role="button" id="new-course">
-                        <div class="panel-body">
-                            创建课程
-                        </div>
-                    </a></li>
-                    <li><a role="button" id="update-course">
-                        <div class="panel-body">
-                            修改课程
-                        </div>
-                    </a></li>
-                    <%}%>
-                </ul>
+                <a id="my-course">
+                    <div class="panel-body">
+                        我的课程
+                    </div>
+                </a>
+                <%
+                    String role = (String) session.getAttribute("ROLE");
+                    if ("tea".equals(role)) {
+                %>
+                <a id="update-course">
+                    <div class="panel-body">
+                        修改课程
+                    </div>
+                </a>
+                <a id="new-course">
+                    <div class="panel-body">
+                        创建课程
+                    </div>
+                </a>
+                <%}%>
             </div>
         </div>
         <div class="panel panel-default">

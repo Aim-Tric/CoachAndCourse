@@ -7,12 +7,21 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page pageEncoding="utf-8" contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!--输出,条件,迭代标签库-->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fmt" %>
+<!--数据格式化标签库-->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="sql" %>
+<!--数据库相关标签库-->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fn" %>
+<!--常用函数标签库-->
+<%@ page isELIgnored="false" %>
+<!--支持EL表达式，不设的话，EL表达式不会解析-->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <%--编辑网站的 Bootstrap 核心 CSS 文件--%>
     <%--新 Bootstrap 核心 CSS 文件--%>
@@ -46,7 +55,9 @@
 </head>
 <body>
 <header>
-    <% boolean isLogged = "true".equals(session.getAttribute("INFO")); %>
+    <%
+        boolean isLogged = "true".equals(session.getAttribute("INFO"));
+    %>
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">

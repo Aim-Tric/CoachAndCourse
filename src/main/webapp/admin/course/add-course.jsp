@@ -96,5 +96,7 @@
     <button type="submit" class="btn btn-default" name="submit-btn" id="submit-btn">创建课程</button>
 </form>
 <script>
-    initTimePicker();
+    document.ready = function () {
+        initTimePicker();
+    }
 </script>

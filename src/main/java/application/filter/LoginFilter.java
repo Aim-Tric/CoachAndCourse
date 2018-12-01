@@ -1,5 +1,7 @@
 package application.filter;
 
+import persistent.pojo.user.User;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
@@ -8,6 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.regex.Pattern;
+
+/**
+ * 对一些访问进行限制，并完成简单的免登录验证
+ */
 
 @WebFilter("*.jsp")
 public class LoginFilter implements Filter {
@@ -21,16 +27,17 @@ public class LoginFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
-
 //        获取Cookies并查询session中的信息
         HttpSession session = req.getSession();
         Cookie[] cks = req.getCookies();
         session.setAttribute("INFO", "false");
         if (cks != null) {
+            String ip = req.getRemoteAddr();
             for (Cookie ck : cks) {
                 if ("CNCID".equals(ck.getName()) &&
                         ck.getValue().equals(session.getAttribute("CNCID"))) {
                     session.setAttribute("INFO", "true");
+                    User user = (User) session.getAttribute("CNC");
                     break;
                 }
             }

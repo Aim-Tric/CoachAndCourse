@@ -1,3 +1,7 @@
+<%@ page import="persistent.impl.CourseImpl" %>
+<%@ page import="persistent.pojo.course.Course" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.util.List" %>
 <%@ page pageEncoding="utf-8" contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="common/header.jsp" %>
 
@@ -61,7 +65,6 @@
         </div>
 
 
-
     </div>
 
     <div class="row">
@@ -112,134 +115,32 @@
 
 
     <!-- 第一行 -->
+    <%
+        CourseImpl cs = new CourseImpl();
+        List<Course> list = cs.findNewestCourses(new Date());
+        request.setAttribute("courses", list);
 
+    %>
     <div class="row">
+        <h2 class="page-header">最新课程</h2>
         <ul class="thumbnails">
-            <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                <div class="thumbnail">
-                    <img alt="300x200" src="common/img/thumbnail1.jpg"/>
-                    <div class="caption">
-                        <h3>蜘蛛饼干</h3>
-                        <p>
-                            <span>万圣节是西方的传统节日，这两年国内也开始流行过万圣节，在万圣节来临的前夜孩子们会装扮成各种可爱的鬼怪去敲门讨糖果吃。前两年小朋友还会有好朋友们一起去讨糖果，随着年龄的增长不再愿意去参与讨糖活动</span>
-                        </p>
-                        <p>
-                            <a class="btn btn-primary" href="#">浏览</a> <a class="btn btn-default" href="#">分享</a>
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                <div class="thumbnail">
-                    <img alt="300x200" src="common/img/thumbnail2.jpg"/>
-                    <div class="caption">
-                        <h3>咸口南瓜饼</h3>
-                        <p>
-                            <span>朋友们往常吃的都是豆沙版本的南瓜饼对吗？其实做成咸口的风味也不错呢。备好了食材我发现家里的低筋粉没有了，于是就用金龙鱼面包用小麦粉来代替。</span><span>本来做中式的面食最好是低高筋混合起来。不过这样子也好。</span>
-                        </p>
-                        <p>
-                            <a class="btn btn-primary" href="#">浏览</a> <a class="btn btn-default" href="#">分享</a>
-                        </p>
 
+            <c:forEach items="${courses}" var="course" end="3">
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="thumbnail">
+                        <a href="./admin/course.jsp"><img alt="300x200" src="common/img/thumbnail1.jpg"/></a>
+                        <div class="caption">
+                            <h3>${course.name}</h3>
+                            <p>
+                                <span class="label label-success">${course.status}</span>
+                            </p>
+                            <p>
+                                <a class="btn btn-primary" href="#">浏览</a> <a class="btn btn-default" href="#">分享</a>
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                <div class="thumbnail">
-                    <img alt="300x200" src="common/img/thumbnail3.jpg"/>
-                    <div class="caption">
-                        <h3>云顶曲奇</h3>
-                        <p>
-                            <span>这是一款经久不衰的网红曲奇，独特的形状，酥松的口感，让人欲罢不能！可以替朋友们试一下用高筋面粉来做了中式面食口感会如何?</span>
-                        </p>
-                        <p>
-                            <a class="btn btn-primary" href="#">浏览</a> <a class="btn btn-default" href="#">分享</a>
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                <div class="thumbnail">
-                    <img alt="300x200" src="common/img/thumbnail4.jpg"/>
-                    <div class="caption">
-                        <h3>蔓越莓玛德琳</h3>
-                        <p>
-                            <span>原本是打算做磅蛋糕，苦于模具不知道被我扔去哪， 就用了新到的玛德琳模具代替，成品还很好吃，而且烘烤的时间也 缩短了 不用切开，方便食用。</span>
-                        </p>
-                        <p>
-                            <a class="btn btn-primary" href="#">浏览</a> <a class="btn btn-default" href="#">分享</a>
-                        </p>
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-    </div>
-
-    <div class="row">
-        <ul class="thumbnails">
-            <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                <div class="thumbnail">
-                    <img alt="300x200" src="common/img/thumbnail1.jpg"/>
-                    <div class="caption">
-                        <h3>
-                            蜘蛛饼干
-                        </h3>
-                        <p>
-                            <span>万圣节是西方的传统节日，这两年国内也开始流行过万圣节，在万圣节来临的前夜孩子们会装扮成各种可爱的鬼怪去敲门讨糖果吃。前两年小朋友还会有好朋友们一起去讨糖果，随着年龄的增长不再愿意去参与讨糖活动</span>
-                        </p>
-                        <p>
-                            <a class="btn btn-primary" href="#">浏览</a> <a class="btn btn-default" href="#">分享</a>
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                <div class="thumbnail">
-                    <img alt="300x200" src="common/img/thumbnail2.jpg"/>
-                    <div class="caption">
-                        <h3>
-                            咸口南瓜饼
-                        </h3>
-                        <p>
-                            <span>朋友们往常吃的都是豆沙版本的南瓜饼对吗？其实做成咸口的风味也不错呢。备好了食材我发现家里的低筋粉没有了，于是就用金龙鱼面包用小麦粉来代替。</span><span>本来做中式的面食最好是低高筋混合起来。不过这样子也好。</span>
-                        </p>
-                        <p>
-                            <a class="btn btn-primary" href="#">浏览</a> <a class="btn btn-default" href="#">分享</a>
-                        </p>
-
-                    </div>
-                </div>
-            </li>
-            <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                <div class="thumbnail">
-                    <img alt="300x200" src="common/img/thumbnail3.jpg"/>
-                    <div class="caption">
-                        <h3>
-                            云顶曲奇
-                        </h3>
-                        <p>
-                            <span>这是一款经久不衰的网红曲奇，独特的形状，酥松的口感，让人欲罢不能！可以替朋友们试一下用高筋面粉来做了中式面食口感会如何?</span>
-                        </p>
-                        <p>
-                            <a class="btn btn-primary" href="#">浏览</a> <a class="btn btn-default" href="#">分享</a>
-                        </p>
-                    </div>
-                </div>
-            </li>
-            <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                <div class="thumbnail">
-                    <img alt="300x200" src="common/img/thumbnail4.jpg"/>
-                    <div class="caption">
-                        <h3>蔓越莓玛德琳
-                        </h3>
-                        <p><span>原本是打算做磅蛋糕，苦于模具不知道被我扔去哪， 就用了新到的玛德琳模具代替，成品还很好吃，而且烘烤的时间也 缩短了 不用切开，方便食用。</span>
-                        </p>
-                        <p><a class="btn btn-primary" href="#">浏览</a> <a class="btn btn-default" href="#">分享</a>
-                        </p>
-                    </div>
-                </div>
-            </li>
+                </li>
+            </c:forEach>
 
         </ul>
     </div>

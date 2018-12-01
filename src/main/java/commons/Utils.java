@@ -7,7 +7,7 @@ import java.util.HashMap;
 public class Utils {
 
     private static final Utils instance = new Utils();
-    private HashMap<Integer, String> resultMap = new HashMap<>();
+    private HashMap<Integer, String> resultMap = new HashMap<Integer, String>();
 
     private Utils() {
         resultMap.put(-1, Consts.RESULT_CANCEL);
@@ -20,4 +20,11 @@ public class Utils {
             return instance.resultMap.get(1);
         return instance.resultMap.get(key);
     }
+
+    public static Utils getInstance() {
+        return instance;
+    }
+
+
 }
+

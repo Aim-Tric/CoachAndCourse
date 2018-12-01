@@ -1,15 +1,25 @@
 package service.user;
 
+import commons.DataTransferer;
 import commons.data.Consts;
 import org.mortbay.util.ajax.JSON;
 import persistent.impl.UserImpl;
 import persistent.pojo.user.User;
+import service.utils.UtilService;
 
 import java.util.Map;
 
 public class LoginService extends UserService {
 
     public LoginService() {
+    }
+
+    public static void login(String json) {
+        // 验证是用户名登录还是邮箱登录
+        // 如果他是用email登录，才改变用户名为email
+        json = LoginService.changeToEmail(json);
+        User user = (User) UtilService.getBeanFromJson(json, User.class);
+        DataTransferer.getInstance().put("result", verify(user));
     }
 
     /**
@@ -29,13 +39,20 @@ public class LoginService extends UserService {
         return map.toString();
     }
 
+    /**
+     * 验证传入的user数据是否对应
+     *
+     * @param user
+     * @return
+     */
     public static String verify(User user) {
         String ret = Consts.RESULT_FAILED;
         UserImpl impl = new UserImpl();
         try {
-            User u = impl.findUser(user);
-            if (u != null) {
+            user = impl.findUser(user);
+            if (user != null) {
                 ret = Consts.RESULT_OK;
+                DataTransferer.getInstance().put("user", user);
             }
         } catch (NullPointerException npe) {
             // 用户不存在

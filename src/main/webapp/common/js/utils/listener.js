@@ -1,5 +1,5 @@
 function addClickListener(obj) {
-    $(obj.id).click(function (e, obj, callback) {
+    $(obj.id).click(function (e) {
         e.stopPropagation();
         e.preventDefault();
         $.ajax({

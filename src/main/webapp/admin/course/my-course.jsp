@@ -1,3 +1,7 @@
+<%@ page import="persistent.pojo.course.Course" %>
+<%@ page import="persistent.pojo.user.User" %>
+<%@ page import="service.course.CourseService" %>
+<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: Aim-Trick
@@ -10,14 +14,21 @@
     <h1 class="page-header">我的课程</h1>
 
 
-    <div class="row" id="courseGallery" v-for="() in ">
+    <div class="row" id="courseGallery">
 
-        <div class='col-xs-6 col-sm-3'>
-            <img src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='
-                 width='200' height='200' alt=''>
-            <h4>"+c.getName()+"</h4>
-            <span class='text-muted'> {{data.}} </span>
-        </div>
+        <%
+            CourseService cs = new CourseService();
+            User user = (User) session.getAttribute("CNC");
+            List<Course> list = cs.searchCourses((int) user.getId(), 1);
+            for (Course c : list) {
+                out.print("<div class='col-xs-6 col-sm-3'>");
+                out.print("<a herf=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw'\n" +
+                        "width='200' height='200' alt=''></a>");
+                out.print("<h4>" + c.getName() + "</h4>");
+                out.print("<span class='text-muted'>" + c.getStatus() + "</span>");
+                out.print("</div>");
+            }
+        %>
 
     </div>
 
@@ -41,3 +52,6 @@
         </ul>
     </nav>
 </form>
+<script>
+
+</script>

@@ -132,7 +132,6 @@ function form_datas() {
 function toggleForm(form) {
     form.toggleFormKey = !form.toggleFormKey;
     var arr = [];
-    log('form', form.children('input'))
     form.find('input').each(function () {
         arr.push(this);
     });
