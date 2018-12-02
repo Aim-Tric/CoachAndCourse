@@ -1,6 +1,5 @@
 <%@ page import="persistent.impl.CourseImpl" %>
 <%@ page import="persistent.pojo.course.Course" %>
-<%@ page import="java.util.Date" %>
 <%@ page import="java.util.List" %>
 <%@ page pageEncoding="utf-8" contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="common/header.jsp" %>
@@ -117,12 +116,13 @@
     <!-- 第一行 -->
     <%
         CourseImpl cs = new CourseImpl();
-        List<Course> list = cs.findNewestCourses(new Date());
+        List<Course> list = cs.findNewestCourses();
         request.setAttribute("courses", list);
 
     %>
     <div class="row">
         <h2 class="page-header">最新课程</h2>
+
         <ul class="thumbnails">
 
             <c:forEach items="${courses}" var="course" end="3">
@@ -135,7 +135,8 @@
                                 <span class="label label-success">${course.status}</span>
                             </p>
                             <p>
-                                <a class="btn btn-primary" href="#">浏览</a> <a class="btn btn-default" href="#">分享</a>
+                                <a class="btn btn-primary" href="./admin/course.jsp?id=${course.id}">浏览</a><a
+                                    class="btn btn-default" href="#">分享</a>
                             </p>
                         </div>
                     </div>

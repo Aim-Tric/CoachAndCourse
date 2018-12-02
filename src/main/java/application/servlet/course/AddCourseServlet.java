@@ -19,6 +19,7 @@ public class AddCourseServlet extends BaseServlet {
         User teacher = (User) req.getSession().getAttribute("CNC");
         // TODO:传进来的课程信息，先存表中待审核
         String ret = new CourseService().addCourse(json);
+        System.out.println(ret);
         resp.getWriter().print(ret);
     }
 }

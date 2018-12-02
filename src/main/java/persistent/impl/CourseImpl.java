@@ -7,7 +7,6 @@ import persistent.impl.utils.SessionFactory;
 import persistent.pojo.course.Course;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class CourseImpl implements CourseDAO {
 
     @Override
     public List<Course> findCourses(int id, int start, int maxLimit) {
-        List<Course> courses = new ArrayList<Course>();
+        List<Course> courses = new ArrayList<>();
         try {
             session = SessionFactory.getFactory().openSession();
             CourseDAO mapper = session.getMapper(CourseDAO.class);
@@ -28,12 +27,12 @@ public class CourseImpl implements CourseDAO {
     }
 
     @Override
-    public List<Course> findNewestCourses(java.util.Date date) {
-        List<Course> courses = new ArrayList<Course>();
+    public List<Course> findNewestCourses() {
+        List<Course> courses = new ArrayList<>();
         try {
             session = SessionFactory.getFactory().openSession();
             CourseDAO mapper = session.getMapper(CourseDAO.class);
-            courses = mapper.findNewestCourses(new Date(date.getTime()));
+            courses = mapper.findNewestCourses();
         } catch (IOException e) {
             e.printStackTrace();
         }

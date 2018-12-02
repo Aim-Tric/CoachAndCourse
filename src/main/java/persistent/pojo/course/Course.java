@@ -9,7 +9,8 @@ public class Course {
 
     private long id;
     private String name, overview, source, type, poster, index, status;
-    private int score, max_person;
+    private double score;
+    private int max_person;
     private Date signup_time, start_time, end_time;
 
     public Course(){}
@@ -84,9 +85,13 @@ public class Course {
 
     public void setMax_person(int max_person) { this.max_person = max_person; }
 
-    public int getScore() { return score; }
+    public double getScore() {
+        return score;
+    }
 
-    public void setScore(int score) { this.score = score; }
+    public void setScore(double score) {
+        this.score = score;
+    }
 
     public Date getSignup_time() {
         return signup_time;

@@ -1,4 +1,4 @@
-function addClickListener(obj) {
+function addClickListener(obj, callback = null) {
     $(obj.id).click(function (e) {
         e.stopPropagation();
         e.preventDefault();
