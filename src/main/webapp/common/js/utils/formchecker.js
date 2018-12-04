@@ -150,11 +150,10 @@ class FormChecker {
  * 获取表单中的数据，以键值对形式返回
  */
 function form_datas(object) {
-    // 如果handle存在，则为handle，否则为selector，cancel同理
-    var sel = object.handle || object.selector;
-    var cancel = object.cancel || [];
+    // 如果cancel存在，则为cancel，否则为空集
+    var cancel = object && object.cancel ? object.cancel : [];
     var arr = {};
-    var datas = $(sel).serializeArray();
+    var datas = $('form').serializeArray();
     $.each(datas, function () {
         if (cancel.includes(this.name))
             return;

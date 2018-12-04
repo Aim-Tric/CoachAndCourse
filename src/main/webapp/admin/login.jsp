@@ -47,37 +47,67 @@
 
 </div>
 <script>
-    $('#do-login').click(function (e) {
-        e.stopPropagation();
-        e.preventDefault();
-        var arr = {};
-        var $form = $('form');
-        var form = $form.serializeArray();
-        $.each(form, function () {
-            arr[this.name] = this.value;
-        });
-        $.ajax({
-            type: 'POST',
-            url: '/application/servlet/user/login',
-            dataType: 'text',
-            data: {'json': JSON.stringify(arr)},
-            success: function (result) {
-                var ret = JSON.parse(result);
-                var key = ret['result_code'];
-                var adapter = alert_dict[key];
-                showAdaptAlert({
-                    msg: adapter.msg,
-                    level: adapter.level,
-                    callback: function () {
-                        window.location.href = '/index.jsp'
-                    }
-                });
-                toggleForm($form);
-            },
-            error: function () {
-                showAlert(lang('network_disconnect'), 'error');
-            }
-        });
-    });
+    var rules = {}
+
+    class FormFactory {
+        constructor(builder, onClickCallback) {
+            this.elem = builder
+            this.formChecker = this.elem.formChecker
+            this.registerButtonClickEvent(onClickCallback)
+        }
+
+        registerButtonClickEvent(callback) {
+            var self = this
+            $('[type="submit"]').click(function (e) {
+                e.stopPropagation()
+                toggleForm('form')
+                this.formChecker.check();
+                self.defaultAjax()
+                callBack && callback()
+            })
+        }
+
+        static defaultData() {
+            return {json: JSON.stringify(form_datas())}
+        }
+
+        defaultAjax() {
+            var o = this.elem
+            $.ajax({
+                type: o.type || o.method || 'get',
+                dataType: o.dataType || 'text',
+                data: o.data || FormFactory.defaultData(),
+                url: o.url,
+                success: function (result) {
+                    var callback = o.callback || o.success
+                    callback(result)
+                },
+                error: function () {
+                    showAdaptAlert({
+                        msg: lang('network_disconnect'),
+                        level: 'error'
+                    })
+                }
+            })
+        }
+
+    }
+
+    var option = {
+        formChecker: new FormChecker(rules),
+        url: '/application/servlet/user/login',
+        callback: function () {
+            var ret = JSON.parse(result)
+            var key = ret['result_code']
+            var adapter = alert_dict[key]
+            showAdaptAlert({
+                adapter: adapter,
+                callback: function () {
+                    window.location.href = '/index.jsp'
+                }
+            })
+        }
+    }
+    new FormFactory(option)
 </script>
 <%@include file="../common/footer.jsp" %>

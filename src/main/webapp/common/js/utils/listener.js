@@ -49,13 +49,11 @@ function setSubmitBtnListener(targetObj, sender) {
     targetObj.click(function (e) {
         e.stopPropagation();
         e.preventDefault();
-        var datas = form_datas();
-
         $.ajax({
             method: 'Post',
             url: sender.submitUrl,
             dataType: 'text',
-            data: {'json': JSON.stringify(datas)},
+            data: {'json': JSON.stringify(form_datas())},
             success: function (result) {
                 var results = JSON.parse(result);
                 // 对应返回的值做对应的操作弹窗提示
@@ -73,7 +71,7 @@ function setSubmitBtnListener(targetObj, sender) {
 
 var registerAction = {
     'submit': function (form, obj) {
-        var $button = form.find('button[type=submit]');
+        var $button = form.find('[type=submit]');
         var $dropdown = $('.dropdown-select');
 
         // 如果提交按钮存在，注册点击事件

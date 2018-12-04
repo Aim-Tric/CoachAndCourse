@@ -30,11 +30,17 @@ function getCookie(name) {
  * @param callback 处理后续事件的回调方法
  */
 function showAdaptAlert(alertAdapter) {
-    var fadeout_sec = alertAdapter.fadeout_sec || alertAdapter.sec || config.delay_short;
-    showAlert(alertAdapter.msg, alertAdapter.level, fadeout_sec, alertAdapter.callback);
+    var a = alertAdapter;
+    var fadeout_sec = a.fadeout_sec || a.sec || config.delay_short;
+    if (a.adapter) {
+        var adapter = a.adapter
+        __showAlert(adapter.msg, adapter.level, fadeout_sec, a.callback);
+    } else {
+        __showAlert(a.msg, a.level, fadeout_sec, a.callback);
+    }
 }
 
-function showAlert(msg, level = 'warning', fadeout_sec = config.delay_short, callback) {
+function __showAlert(msg, level = 'warning', fadeout_sec = config.delay_short, callback) {
     var $alert_div = `<div class="alert alert-${level} show-alert"> 
                             <a href='#' class='close' data-dismiss='alert'>&times;</a>
                             <b>${lang(level)} </b>${msg}</div>`;
@@ -47,10 +53,10 @@ function showAlert(msg, level = 'warning', fadeout_sec = config.delay_short, cal
         'top' : '10%',
         'transform' : 'tansistion(-50%, -50%)',
     });
-    showThenDie($alert_obj, fadeout_sec, callback)
+    __showThenDie($alert_obj, fadeout_sec, callback)
 };
 
-function showThenDie(target, sec, callback) {
+function __showThenDie(target, sec, callback) {
     $(target).fadeIn('fast', function () {
         var $self = $(this);
         setTimeout(function () {
@@ -66,7 +72,8 @@ function showThenDie(target, sec, callback) {
 /**
  * 在表单发送完成后才能再次点击
  */
-function toggleForm(form) {
+function toggleForm(selector) {
+    var form = $(selector);
     form.toggleFormKey = !form.toggleFormKey;
     var arr = [];
     form.find('input').each(function () {

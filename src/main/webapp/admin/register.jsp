@@ -75,10 +75,8 @@
         e.stopPropagation();
         e.preventDefault();
         var form = form_datas({
-            handle: 'form',
             cancel: 'password_again',
         });
-
 
         /**
          * 1. 用户名密码不能为空
@@ -93,9 +91,8 @@
             url: '/application/servlet/user/register',
             dataType: 'text',
             data: {'json': JSON.stringify(form)},
-            success: function (result) {
-
-                location.href = '/index.jsp'
+            success: function () {
+                location.href = '${last_page}'
             },
             error: function () {
                 $('#showAlert-pw').removeClass("hidden").children('span').text("网络出错，请检查你的网络和防火墙设置");

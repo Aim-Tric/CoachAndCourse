@@ -72,25 +72,27 @@ function addClickListener(obj) {
         targetObj.click(function (e) {
             e.stopPropagation();
             e.preventDefault();
-            var datas = form_datas();
 
             $.ajax({
                 method: 'Post',
                 url: sender.submitUrl,
                 dataType: 'text',
-                data: {'json': JSON.stringify(datas)},
+                data: {'json': JSON.stringify(form_datas())},
                 success: function (result) {
                     log('result', result);
                     var results = JSON.parse(result);
                     // 对应返回的值做对应的操作弹窗提示
                     var key = results['result'];
                     var adapter = alert_dict[key];
-                    showAdaptAlert(adapter, config.delay_short, function () {
-
+                    showAdaptAlert({
+                        adapter: adapter,
                     });
                 },
                 error: function (result) {
-                    showAlert(lang('network_disconnect'));
+                    showAdaptAlert({
+                        msg: lang('network_disconnect'),
+                        level: 'error',
+                    });
                 },
             })
         });
