@@ -23,6 +23,8 @@ public class CourseImpl implements CourseDAO {
             courses = mapper.findCourses(id, start, maxLimit);
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return courses;
     }
@@ -36,6 +38,8 @@ public class CourseImpl implements CourseDAO {
             courses = mapper.findNewestCourses(new Date(date.getTime()));
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return courses;
     }
@@ -57,6 +61,7 @@ public class CourseImpl implements CourseDAO {
         }
         return c;
     }
+
 
     @Override
     public int insertCourse(Course course) {
@@ -84,6 +89,8 @@ public class CourseImpl implements CourseDAO {
             session.commit();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            session.close();
         }
     }
 

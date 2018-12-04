@@ -8,10 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="../common/header.jsp" %>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> upstream/master
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12 col-sm-3 col-md-2 sidebar">

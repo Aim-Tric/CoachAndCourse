@@ -18,7 +18,7 @@ function addClickListener(obj) {
                 }).fail(function () {
                     log('失败了')
                 });
-                callback && callback();
+                obj.callback && obj.callback();
             },
             error: function () {
                 showAlert("网络出错，请检查你的网络和防火墙设置")
@@ -45,7 +45,7 @@ function setDropdownListener(targetObj) {
  * @param targetObj 注册点击事件的目标
  * @param sender 用来指明ajax的目标地址，其含有一个submitUrl
  */
-function setSubmitListener(targetObj, sender) {
+function setSubmitBtnListener(targetObj, sender) {
     targetObj.click(function (e) {
         e.stopPropagation();
         e.preventDefault();
@@ -59,7 +59,7 @@ function setSubmitListener(targetObj, sender) {
             success: function (result) {
                 var results = JSON.parse(result);
                 // 对应返回的值做对应的操作弹窗提示
-                var key = results['result'];
+                var key = results['resultCode'];
                 var adapter = alert_dict[key];
                 showAdaptAlert(adapter, config.delay_short, function () {
                 });
@@ -77,7 +77,7 @@ var registerAction = {
         var $dropdown = $('.dropdown-select');
 
         // 如果提交按钮存在，注册点击事件
-        $button.length && setSubmitListener($button, obj);
+        $button.length && setSubmitBtnListener($button, obj);
         // 如果下拉菜单存在，注册点击事件
         $dropdown.length && setDropdownListener($dropdown);
     },

@@ -1,11 +1,11 @@
 package application.user;
 
-import application.pub.BaseServlet;
+import application.servlet.pub.BaseServlet;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import commons.data.Consts;
-import net.sf.json.JSONObject;
 import persistent.pojo.user.User;
 import service.user.LoginService;
-import service.utils.UtilService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -32,22 +32,21 @@ public class LoginServlet extends BaseServlet {
         String json = req.getParameter("json");
         // 验证是用户名登录还是邮箱登录
         json = LoginService.changeToEmail(json); // 如果他是用email登录，才改变用户名为email
-        user = (User) UtilService.getBeanFromJson(json, User.class);
+        user = JSON.parseObject(json, User.class);
         // 密码错误，直接跳出
         String result = LoginService.verify(user);
         if (!result.equals(Consts.RESULT_OK)) {
             return;
         }
 
-        ;
 
         // 登录成功，从数据库取正确的用户信息
         HashMap<String, String> retMap = new HashMap<>();
         retMap.put("result", result);
         user = LoginService.findUser(user);
         retMap.put("nickname", user.getNickname());
-        JSONObject ret = JSONObject.fromObject(retMap);
-        resp.getWriter().print(ret);
+        System.out.println("0x1101 JSONObject.toJSON(retMap) = " + JSONObject.toJSON(retMap));
+        resp.getWriter().print(JSONObject.toJSON(retMap));
 
         // 数据预处理与存储
         HttpSession session = req.getSession();

@@ -1,14 +1,10 @@
 $(function () {
-    initial_components();
+    initialSidebar();
+    initialLogout();
     initTimePicker();
+
 });
 
-function initial_components() {
-    initialLogin();
-    initialRegister();
-    initialLogout();
-    initialSidebar();
-}
 
 
 

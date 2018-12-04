@@ -7,9 +7,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page pageEncoding="utf-8" contentType="text/html;charset=UTF-8" language="java" %>
-<<<<<<< HEAD
-
-=======
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!--输出,条件,迭代标签库-->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="fmt" %>
@@ -20,7 +17,6 @@
 <!--常用函数标签库-->
 <%@ page isELIgnored="false" %>
 <!--支持EL表达式，不设的话，EL表达式不会解析-->
->>>>>>> upstream/master
 <html lang="en">
 
 <head>
@@ -38,37 +34,25 @@
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <%--Plugins--%>
     <%--dateTimePicker--%>
-    <link href="../common/css/plugins/dateTimePicker/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-    <script type="text/javascript" src="../common/js/plugins/dateTimePicker/bootstrap-datetimepicker.min.js"
+    <% request.setAttribute("base_url", request.getContextPath()); %>
+    <link href="${base_url}/common/css/plugins/dateTimePicker/bootstrap-datetimepicker.min.css" rel="stylesheet"
+          media="screen">
+    <script type="text/javascript" src="${base_url}/common/js/plugins/dateTimePicker/bootstrap-datetimepicker.min.js"
             charset="UTF-8"></script>
-    <script type="text/javascript" src="../common/js/plugins/dateTimePicker/bootstrap-datetimepicker.zh-CN.js"
+    <script type="text/javascript" src="${base_url}/common/js/plugins/dateTimePicker/bootstrap-datetimepicker.zh-CN.js"
             charset="UTF-8"></script>
-    <script src="../common/js/plugins/dateTimePicker/config.js"></script>
+    <script src="${base_url}/common/js/plugins/dateTimePicker/config.js"></script>
     <%--用户自定义--%>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="/common/css/food_style.css">
-    <script src="/common/js/utils/utils.js"></script>
-    <script src="/common/js/components/header.js"></script>
-    <script src="/common/js/components/login.js"></script>
-    <script src="/common/js/components/course.js"></script>
-    <script src="/common/js/components/register.js"></script>
-    <script src="/common/js/components/sidebar.js"></script>
-    <script src="/common/js/consts/config.js"></script>
-    <script src="/common/js/consts/data.js"></script>
-    <script src="/common/js/main.js"></script>
-=======
-    <link rel="stylesheet" href="../common/css/food_style.css">
-    <script src="../common/js/consts/data.js"></script>
-    <script src="../common/js/utils/language.js"></script>
-    <script src="../common/js/utils/utils.js"></script>
-    <script src="../common/js/consts/config.js"></script>
-    <script src="../common/js/components/sidebar.js"></script>
-    <script src="../common/js/components/header.js"></script>
-    <script src="../common/js/components/login.js"></script>
-    <script src="../common/js/components/register.js"></script>
-    <script src="../common/js/utils/listener.js"></script>
-    <script src="../common/js/main.js"></script>
->>>>>>> upstream/master
+    <link rel="stylesheet" href="${base_url}/common/css/food_style.css">
+    <script src="${base_url}/common/js/consts/data.js"></script>
+    <script src="${base_url}/common/js/utils/language.js"></script>
+    <script src="${base_url}/common/js/utils/utils.js"></script>
+    <script src="${base_url}/common/js/consts/config.js"></script>
+    <script src="${base_url}/common/js/components/sidebar.js"></script>
+    <script src="${base_url}/common/js/components/header.js"></script>
+    <script src="${base_url}/common/js/utils/listener.js"></script>
+    <script src="${base_url}/common/js/main.js"></script>
+    <script src="${base_url}/common/js/utils/formchecker.js"></script>
 </head>
 <body>
 <header>
@@ -98,27 +82,6 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown dropdown-default" id="user-panel">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-<<<<<<< HEAD
-                            <span id="user-nickname">
-                                <% if (session.getAttribute("isLogged") != null) { %>
-                                    <%=session.getAttribute("nickname")%>
-                                <% } else { %>
-                                    未登陆
-                                <% } %>
-                            </span>
-
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu ">
-                            <% if (session.getAttribute("isLogged") != null) { %>
-                            <li><a href="./admin/dashboard.jsp">个人中心</a></li>
-                                <li class="divider"></li>
-                                <li><a id="logout-btn">注销登录</a></li>
-                            <% } else { %>
-                            <li><a href="/admin/login.jsp" id="#login-btn">登录</a></li>
-                            <li class="divider"></li>
-                                <li><a href="/admin/register.jsp">注册</a></li>
-=======
                             <img src="" alt="">
                             <span id="user-nickname"><%=who%></span>
                             <b class="caret"></b>
@@ -132,7 +95,6 @@
                             <li><a href="/admin/login.jsp" id="#login-btn">登录</a></li>
                             <li class="divider"></li>
                             <li><a href="/admin/register.jsp">注册</a></li>
->>>>>>> upstream/master
                             <% } %>
                         </ul>
                     </li>

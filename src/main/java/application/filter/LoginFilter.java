@@ -1,7 +1,5 @@
 package application.filter;
 
-import persistent.pojo.user.User;
-
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
@@ -32,21 +30,19 @@ public class LoginFilter implements Filter {
         Cookie[] cks = req.getCookies();
         session.setAttribute("INFO", "false");
         if (cks != null) {
-            String ip = req.getRemoteAddr();
             for (Cookie ck : cks) {
                 if ("CNCID".equals(ck.getName()) &&
                         ck.getValue().equals(session.getAttribute("CNCID"))) {
                     session.setAttribute("INFO", "true");
-                    User user = (User) session.getAttribute("CNC");
                     break;
                 }
             }
         }
 
         String regex = "http:\\/\\/(\\w.*((index)|(login)|(register)).jsp)|(\\w.*\\/)";
-        boolean isVaild = Pattern.matches(regex, req.getRequestURL());
-        boolean islogged = session.getAttribute("INFO") != null;
-        if (!islogged && !isVaild) {
+        boolean unValid = !Pattern.matches(regex, req.getRequestURL());
+        boolean unLogged = session.getAttribute("INFO").equals("false");
+        if (unLogged && unValid) {
             String ip = req.getRemoteAddr();
             System.out.println(ip + " 试图访问 " + req.getRequestURL() + "，但未登录，页面开始跳转");
             resp.sendRedirect("/index.jsp");

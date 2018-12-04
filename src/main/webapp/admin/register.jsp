@@ -67,5 +67,42 @@
     </div>
 
 </div>
+
+<script>
+
+
+    $('#do-register').click(function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var form = form_datas({
+            handle: 'form',
+            cancel: 'password_again',
+        });
+
+
+        /**
+         * 1. 用户名密码不能为空
+         * 2. 两次密码必须匹配
+         * 3. 用户名密码,邮箱，必须符合规则
+         */
+        if (checkSpell()) {
+            return;
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/application/servlet/user/register',
+            dataType: 'text',
+            data: {'json': JSON.stringify(form)},
+            success: function (result) {
+
+                location.href = '/index.jsp'
+            },
+            error: function () {
+                $('#showAlert-pw').removeClass("hidden").children('span').text("网络出错，请检查你的网络和防火墙设置");
+            }
+        });
+    });
+</script>
+
 <%@include file="../common/footer.jsp" %>
 

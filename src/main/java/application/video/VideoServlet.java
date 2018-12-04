@@ -1,6 +1,6 @@
 package application.video;
 
-import application.pub.BaseServlet;
+import application.servlet.pub.BaseServlet;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;

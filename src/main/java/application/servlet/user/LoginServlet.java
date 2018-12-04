@@ -1,9 +1,9 @@
 package application.servlet.user;
 
 import application.servlet.pub.BaseServlet;
+import com.alibaba.fastjson.JSONObject;
 import commons.DataTransferer;
 import commons.data.Consts;
-import net.sf.json.JSONObject;
 import persistent.pojo.user.User;
 import service.user.LoginService;
 
@@ -21,7 +21,6 @@ import java.util.HashMap;
 
 @WebServlet("/application/servlet/user/login")
 public class LoginServlet extends BaseServlet {
-
     private HttpServletRequest request;
     private HttpServletResponse response;
     private boolean isLoginSuccess;
@@ -47,13 +46,13 @@ public class LoginServlet extends BaseServlet {
 
 
     private void dataBuild() {
+
         HttpSession session = request.getSession();
         HashMap<String, String> returnMap = new HashMap<String, String>();
         user = LoginService.findUser(user);
         returnMap.put("result_code", result);
         returnMap.put("nickname", user.getNickname());
-        JSONObject ret = JSONObject.fromObject(returnMap);
-        status = ret.toString();
+        status = JSONObject.toJSONString(returnMap);
         // 数据预处理与存储
         session.setAttribute("CNC", user);
         session.setAttribute("INFO", "true");
