@@ -15,6 +15,8 @@ public interface CourseDAO {
 
     int insertCourse(Course course);
 
+    int joinCourse(@Param("c_id") int course_id, @Param("s_id") int stu_id);
+
     void updateCourse(Course course);
 
 

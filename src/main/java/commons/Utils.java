@@ -21,10 +21,6 @@ public class Utils {
         return instance.resultMap.get(key);
     }
 
-    public static Utils getInstance() {
-        return instance;
-    }
-
 
 }
 

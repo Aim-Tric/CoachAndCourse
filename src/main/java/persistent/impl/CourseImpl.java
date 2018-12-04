@@ -75,6 +75,23 @@ public class CourseImpl implements CourseDAO {
     }
 
     @Override
+    public int joinCourse(int course_id, int stu_id) {
+        int ret;
+        try {
+            session = SessionFactory.getFactory().openSession();
+            CourseDAO mapper = session.getMapper(CourseDAO.class);
+            ret = mapper.joinCourse(course_id, stu_id);
+            session.commit();
+        } catch (Exception e) {
+            BaseImpl.catchCommunicationsException(e);
+            ret = -1;
+        } finally {
+            session.close();
+        }
+        return ret;
+    }
+
+    @Override
     public void updateCourse(Course course) {
         try {
             session = SessionFactory.getFactory().openSession();
@@ -86,8 +103,5 @@ public class CourseImpl implements CourseDAO {
         }
     }
 
-//    public static void main(String[] args) {
-//
-//    }
 
 }

@@ -4,8 +4,10 @@ $(function () {
 });
 
 function initial_components() {
-    initialLogin();
-    initialRegister();
+    registerEvent('login');
+    registerEvent('register');
+    // initialLogin();
+    // initialRegister();
     initialLogout();
     initialSidebar();
 }

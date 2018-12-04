@@ -59,6 +59,62 @@ var sidebar_list = {
     },
 };
 
+/**
+ * @type {事件名{ id：按钮的id值, url：目标页面模板, type：页面注册事件类型, submitUrl：页面注册对应的servlet}}
+ */
+// @test
+var action_config = {
+
+    // 获取表单
+    // ajax
+    // 根据结果完成响应
+    'login': {
+        id: '#do-login',
+        url: '/application/servlet/user/login',
+        type: 'post',
+        callback: function (result) {
+            var ret = JSON.parse(result);
+            var key = ret['result_code'];
+            var adapter = alert_dict[key];
+            showAlert(adapter.msg, adapter.level);
+            setTimeout(function () {
+                window.location.href = "dashboard.jsp";
+            }, config.delay_short * 1000);
+        }
+    },
+    'register': {
+        id: '#do-register',
+        url: '/application/servlet/user/register',
+        type: 'post',
+        callback: function (result) {
+            var ret = JSON.parse(result);
+            var key = ret['result_code'];
+            var adapter = alert_dict[key];
+            showAlert(adapter.msg, adapter.level);
+            setTimeout(function () {
+                window.location.href = "/index.jsp";
+            }, config.delay_short * 1000);
+        }
+    },
+
+
+    // ajax
+    // 根据结果完成响应
+    'query-course': {},
+
+};
+
+
+// var registerAction = function (object) {
+
+// $("button[type='submit']");
+
+
+// do-ajax
+// 根据结果完成响应
+
+
+// };
 
 
 

@@ -54,6 +54,12 @@
         </trim>
     </insert>
 
+    <insert id="joinCourse">
+        insert into course_stu
+        value (#{c_id}, #{s_id})
+    </insert>
+
+
     <update id="updateCourse">
         update course
         <trim prefix="set" suffixOverrides=",">

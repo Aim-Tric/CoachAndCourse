@@ -14,6 +14,11 @@ public class LoginService extends UserService {
     public LoginService() {
     }
 
+    /**
+     * 完成登录操作
+     *
+     * @param json 包含表单数据的json
+     */
     public static void login(String json) {
         // 验证是用户名登录还是邮箱登录
         // 如果他是用email登录，才改变用户名为email
@@ -41,9 +46,9 @@ public class LoginService extends UserService {
 
     /**
      * 验证传入的user数据是否对应
-     *
-     * @param user
-     * @return
+     * 这里用了DataTransferer来作数据传输，不知道直接返回值传参还是用第三方传输好
+     * @param user 需要验证的用户数据
+     * @return 返回验证结果，用户不存在则返回操作取消，存在则返回验证结果
      */
     public static String verify(User user) {
         String ret = Consts.RESULT_FAILED;

@@ -44,9 +44,9 @@ public class LoginFilter implements Filter {
         }
 
         String regex = "http:\\/\\/(\\w.*((index)|(login)|(register)).jsp)|(\\w.*\\/)";
-        boolean isVaild = Pattern.matches(regex, req.getRequestURL());
-        boolean islogged = session.getAttribute("INFO") != null;
-        if (!islogged && !isVaild) {
+        boolean unVaild = !Pattern.matches(regex, req.getRequestURL());
+        boolean unLogged = session.getAttribute("INFO").equals("false");
+        if (unLogged && unVaild) {
             String ip = req.getRemoteAddr();
             System.out.println(ip + " 试图访问 " + req.getRequestURL() + "，但未登录，页面开始跳转");
             resp.sendRedirect("/index.jsp");

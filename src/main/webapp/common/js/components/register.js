@@ -5,8 +5,6 @@ function initialRegister() {
         var arr = {};
         var $form = $('form');
         var form = $form.serializeArray();
-
-
         /**
          * 1. 用户名密码不能为空
          * 2. 两次密码必须匹配

@@ -63,6 +63,20 @@ public class UserImpl implements UserDAO {
         return ret;
     }
 
+    public User findUserByEmail(String email) {
+        User user = null;
+        try {
+            session = SessionFactory.getFactory().openSession();
+            UserDAO mapper = session.getMapper(UserDAO.class);
+            user = mapper.findUserByEmail(email);
+        } catch (Exception e) {
+            BaseImpl.catchCommunicationsException(e);
+        } finally {
+            session.close();
+        }
+        return user;
+    }
+
 //    public static void main(String[] args) {
 //        UserImpl imp = new UserImpl();
 //        User u = new User();

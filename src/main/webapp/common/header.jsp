@@ -18,7 +18,6 @@
 <%@ page isELIgnored="false" %>
 <!--支持EL表达式，不设的话，EL表达式不会解析-->
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title></title>

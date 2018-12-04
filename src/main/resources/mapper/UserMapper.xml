@@ -3,7 +3,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="persistent.dao.UserDAO">
     <select id="findUsers" resultType="persistent.pojo.user.User">
-        select * from user limit ${start}, ${maxLimit}
+        select *
+        from user
+        limit ${start}, ${maxLimit}
     </select>
 
     <select id="findUser" resultType="persistent.pojo.user.User">

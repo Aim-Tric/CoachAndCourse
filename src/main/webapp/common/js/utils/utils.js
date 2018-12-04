@@ -121,6 +121,8 @@ function form_datas() {
     var arr = {};
     var datas = $('form').serializeArray();
     $.each(datas, function () {
+        if (this.name === 'password_again')
+            return;
         arr[this.name] = this.value;
     });
     return arr;

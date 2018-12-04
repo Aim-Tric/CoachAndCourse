@@ -17,7 +17,6 @@ function initialLogin() {
                 var ret = JSON.parse(result);
                 var key = ret['result_code'];
                 var adapter = alert_dict[key];
-                var parent = $form.parents('.panel');
                 showAlert(adapter.msg, adapter.level);
                 toggleForm($form);
                 setTimeout(function () {

@@ -52,7 +52,7 @@ function setSubmitListener(targetObj, sender) {
         var datas = form_datas();
 
         $.ajax({
-            method: 'Post',
+            type: 'Post',
             url: sender.submitUrl,
             dataType: 'text',
             data: {'json': JSON.stringify(datas)},
@@ -83,7 +83,7 @@ var registerAction = {
     },
     'query': function (obj) {
         $.ajax({
-            method: 'Get',
+            type: 'Get',
             url: obj.submitUrl,
             success: function (result) {
 
@@ -94,3 +94,26 @@ var registerAction = {
         })
     },
 };
+
+
+// @test
+var registerEvent = function (name) {
+    var obj = action_config[name];
+    $(obj.id).on('click', function () {
+        var datas = form_datas();
+        var $form = $('form');
+        $form && toggleForm($form);
+        $.ajax({
+            type: obj.type,
+            url: obj.url,
+            data: {'json': JSON.stringify(datas)},
+            success: function (result) {
+                obj.callback(result);
+            },
+            error: function () {
+                showAlert(lang('network_disconnect'));
+            },
+        });
+    })
+};
+

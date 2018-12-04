@@ -12,4 +12,6 @@ public interface UserDAO {
 
     int insertUser(User user);
 
+    User findUserByEmail(String email);
+
 }

@@ -14,14 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 public class RegisterServlet extends BaseServlet {
 
     protected void Handle(HttpServletRequest req, HttpServletResponse resp) {
-        String json = req.getParameter("user");
+        String json = req.getParameter("json");
         RegisterService rs = new RegisterService();
         User user = (User) UtilService.getBeanFromJson(json, User.class);
-        try {
-            resp.getWriter().print(rs.register(user));
-        } catch (Exception e) {
-
-        }
+        responseRequest(resp, rs.register(user));
     }
 
 }

@@ -39,7 +39,7 @@ public class LoginServlet extends BaseServlet {
             if (isLoginSuccess) {
                 dataBuild();
             }
-
+            System.out.println(user);
             responseRequest(response, status);
         }
 
