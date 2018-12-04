@@ -33,24 +33,25 @@
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <%--Plugins--%>
     <%--dateTimePicker--%>
-    <link href="../common/css/plugins/dateTimePicker/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-    <script type="text/javascript" src="../common/js/plugins/dateTimePicker/bootstrap-datetimepicker.min.js"
+    <% request.setAttribute("base_url", request.getContextPath()); %>
+    <link href="${base_url}/common/css/plugins/dateTimePicker/bootstrap-datetimepicker.min.css" rel="stylesheet"
+          media="screen">
+    <script type="text/javascript" src="${base_url}/common/js/plugins/dateTimePicker/bootstrap-datetimepicker.min.js"
             charset="UTF-8"></script>
-    <script type="text/javascript" src="../common/js/plugins/dateTimePicker/bootstrap-datetimepicker.zh-CN.js"
+    <script type="text/javascript" src="${base_url}/common/js/plugins/dateTimePicker/bootstrap-datetimepicker.zh-CN.js"
             charset="UTF-8"></script>
-    <script src="../common/js/plugins/dateTimePicker/config.js"></script>
+    <script src="${base_url}/common/js/plugins/dateTimePicker/config.js"></script>
     <%--用户自定义--%>
-    <link rel="stylesheet" href="../common/css/food_style.css">
-    <script src="../common/js/consts/data.js"></script>
-    <script src="../common/js/utils/language.js"></script>
-    <script src="../common/js/utils/utils.js"></script>
-    <script src="../common/js/consts/config.js"></script>
-    <script src="../common/js/components/sidebar.js"></script>
-    <script src="../common/js/components/header.js"></script>
-    <script src="../common/js/components/login.js"></script>
-    <script src="../common/js/components/register.js"></script>
-    <script src="../common/js/utils/listener.js"></script>
-    <script src="../common/js/main.js"></script>
+    <link rel="stylesheet" href="${base_url}/common/css/food_style.css">
+    <script src="${base_url}/common/js/consts/data.js"></script>
+    <script src="${base_url}/common/js/utils/language.js"></script>
+    <script src="${base_url}/common/js/utils/utils.js"></script>
+    <script src="${base_url}/common/js/consts/config.js"></script>
+    <script src="${base_url}/common/js/components/sidebar.js"></script>
+    <script src="${base_url}/common/js/components/header.js"></script>
+    <script src="${base_url}/common/js/utils/listener.js"></script>
+    <script src="${base_url}/common/js/main.js"></script>
+    <script src="${base_url}/common/js/utils/formchecker.js"></script>
 </head>
 <body>
 <header>

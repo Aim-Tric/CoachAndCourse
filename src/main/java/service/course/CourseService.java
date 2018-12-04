@@ -1,10 +1,10 @@
 package service.course;
 
+import com.alibaba.fastjson.JSON;
 import commons.Utils;
 import commons.data.Consts;
 import persistent.impl.CourseImpl;
 import persistent.pojo.course.Course;
-import service.utils.UtilService;
 
 import java.util.List;
 
@@ -24,9 +24,8 @@ public class CourseService {
      * @return 返回插入课程的结果
      */
     public String addCourse(String courseJson) {
-        Course course = (Course) UtilService.getBeanFromJson(courseJson, Course.class);
-        int key = -1;
-        key = impl.insertCourse(course);
+        Course course = JSON.parseObject(courseJson, Course.class);
+        int key = impl.insertCourse(course);
         return Utils.getResult(key);
     }
 

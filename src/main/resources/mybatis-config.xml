@@ -18,7 +18,12 @@
         <setting name="localCacheScope" value="SESSION"/>
         <setting name="jdbcTypeForNull" value="OTHER"/>
         <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+
     </settings>
+
+    <typeAliases>
+        <typeAlias alias="course" type="persistent.pojo.course.Course"/>
+    </typeAliases>
 
     <!-- Continue editing here -->
 
@@ -42,7 +47,6 @@
         <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="mapper/CourseMapper.xml"/>
     </mappers>
-
 
 
 </configuration>

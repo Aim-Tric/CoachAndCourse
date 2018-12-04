@@ -1,8 +1,11 @@
 $(function () {
-    initial_components();
+    initialSidebar();
+    initialLogout();
     initTimePicker();
+
 });
 
+<<<<<<< HEAD
 function initial_components() {
     registerEvent('login');
     registerEvent('register');
@@ -11,6 +14,8 @@ function initial_components() {
     initialLogout();
     initialSidebar();
 }
+=======
+>>>>>>> byoukinn-master
 
 
 

@@ -3,6 +3,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="persistent.dao.CourseDAO">
     <!-- 查找个人课程 -->
+    <!--<resultMap id="coursesMap" type="course">-->
+    <!--<id property="id" javaType="Integer"></id>-->
+    <!--</resultMap>-->
     <select id="findCourses" resultType="persistent.pojo.course.Course">
         select * from course c, course_stu cs
         <trim prefix="WHERE" prefixOverrides="and">

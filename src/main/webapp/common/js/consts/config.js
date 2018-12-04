@@ -59,6 +59,7 @@ var sidebar_list = {
     },
 };
 
+<<<<<<< HEAD
 /**
  * @type {事件名{ id：按钮的id值, url：目标页面模板, type：页面注册事件类型, submitUrl：页面注册对应的servlet}}
  */
@@ -119,3 +120,5 @@ var action_config = {
 
 
 
+=======
+>>>>>>> byoukinn-master

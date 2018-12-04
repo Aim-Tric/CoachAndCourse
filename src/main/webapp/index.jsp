@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-lg-12">
+        <div class="col-md-8 col-lg-12">
             <div class="carousel slide" id="carousel-13519">
                 <ol class="carousel-indicators">
                     <li class="active" data-slide-to="0" data-target="#carousel-13519"></li>
@@ -63,10 +63,10 @@
             </div>
         </div>
 
-
     </div>
 
     <div class="row">
+
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 md-toggle-row-fl">
             <div class="bg-grey-op-5">
                 <div class="hero-unit">
@@ -81,7 +81,7 @@
                 </div>
             </div>
         </div>
-        <div class="md-toggle-row">
+        <div class="md-toggle-row-fl">
             <div class="col-xs-12 col-md-6 col-lg-6 ">
                 <div class="col-xs-6 col-md-12 ">
                     <div class="well">
@@ -140,8 +140,10 @@
                             </p>
                         </div>
                     </div>
+
                 </li>
             </c:forEach>
+
 
         </ul>
     </div>

@@ -22,59 +22,6 @@ function getCookie(name) {
     return ret;
 }
 
-function checkSpell(form) {
-
-    var spell_rule = {
-        'usernameIllegal': {
-            msg: lang('username_illegal'),
-            condition: regex.illegal.test(form[0].value),
-        },
-        'emailIllegal': {
-            msg: lang('email_illegal'),
-            condition: !regex.email.test(form[1].value),
-        },
-        'passwordMismatch': {
-            msg: lang('password_mismatch'),
-            condition: form[3].value !== form[4].value,
-        },
-        'usernameEmpty': {
-            msg: lang('username_empty'),
-            condition: form[0].value === '',
-        },
-        'emailEmpty': {
-            msg: lang('email_empty'),
-            condition: form[1].value === '',
-        },
-        'passwordEmpty': {
-            msg: lang('password_empty'),
-            condition: form[3].value === '',
-        },
-        'nicknameEmpty': {
-            msg: lang('nickname_empty'),
-            condition: form[2].value === '',
-        },
-    };
-
-    var keys = [];
-    for (var k in msgs) {
-        keys.push(k)
-    }
-
-    for (var i = 0; i < keys.length; i++) {
-        var k = keys[i];
-        var check = spell_rule[k];
-        var isVaild = check.condition;
-        if (isVaild) {
-            showAlert(check.msg);
-            return isVaild;
-        }
-    }
-    // var usernameIllegal = regex_illegal.test(form[0].value); // 用户名
-    // var emailIllegal = regex_email.test(form[1].value);
-    // var isPasswordMatch = form[3].value == form[4].value;
-    //
-    // return emailIllegal && usernameIllegal && isPasswordMatch;
-}
 
 /**
  * 提示框组件
@@ -82,8 +29,9 @@ function checkSpell(form) {
  * @param fadeout_sec 淡出时间
  * @param callback 处理后续事件的回调方法
  */
-function showAdaptAlert(alertAdapter, fadeout_sec = config.delay_short, callback) {
-    showAlert(alertAdapter.msg, alertAdapter.level, fadeout_sec, callback);
+function showAdaptAlert(alertAdapter) {
+    var fadeout_sec = alertAdapter.fadeout_sec || alertAdapter.sec || config.delay_short;
+    showAlert(alertAdapter.msg, alertAdapter.level, fadeout_sec, alertAdapter.callback);
 }
 
 function showAlert(msg, level = 'warning', fadeout_sec = config.delay_short, callback) {
@@ -114,6 +62,7 @@ function showThenDie(target, sec, callback) {
     })
 }
 
+<<<<<<< HEAD
 /**
  * 获取表单中的数据，以键值对形式返回
  */
@@ -127,6 +76,8 @@ function form_datas() {
     });
     return arr;
 }
+=======
+>>>>>>> byoukinn-master
 
 /**
  * 在表单发送完成后才能再次点击

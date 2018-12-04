@@ -45,4 +45,40 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#do-login').click(function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var arr = {};
+        var $form = $('form');
+        var form = $form.serializeArray();
+        $.each(form, function () {
+            arr[this.name] = this.value;
+        });
+        $.ajax({
+            type: 'POST',
+            url: '/application/servlet/user/login',
+            dataType: 'text',
+            data: {'json': JSON.stringify(arr)},
+            success: function (result) {
+                var ret = JSON.parse(result);
+                var key = ret['result_code'];
+                var adapter = alert_dict[key];
+                showAdaptAlert({
+                    msg: adapter.msg,
+                    level: adapter.level,
+                    callback: function () {
+                        window.location.href = '/index.jsp'
+                    }
+                });
+                toggleForm($form);
+            },
+            error: function () {
+                showAlert(lang('network_disconnect'), 'error');
+            }
+        });
+    });
+</script>
+
 <%@include file="../common/footer.jsp" %>

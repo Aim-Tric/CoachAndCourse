@@ -1,11 +1,10 @@
 package service.user;
 
+import com.alibaba.fastjson.JSON;
 import commons.DataTransferer;
 import commons.data.Consts;
-import org.mortbay.util.ajax.JSON;
 import persistent.impl.UserImpl;
 import persistent.pojo.user.User;
-import service.utils.UtilService;
 
 import java.util.Map;
 
@@ -23,7 +22,7 @@ public class LoginService extends UserService {
         // 验证是用户名登录还是邮箱登录
         // 如果他是用email登录，才改变用户名为email
         json = LoginService.changeToEmail(json);
-        User user = (User) UtilService.getBeanFromJson(json, User.class);
+        User user = JSON.parseObject(json, User.class);
         DataTransferer.getInstance().put("result", verify(user));
     }
 
@@ -33,8 +32,11 @@ public class LoginService extends UserService {
      * @return
      */
     public static String changeToEmail(String json) {
-        Map<String, String> map = (Map) JSON.parse(json);
-        boolean isMail = map.get("username").matches(Consts.REGEX_MAIL);
+        Map<String, String> map = (Map<String, String>) JSON.parse(json);
+        String username = map.get("username");
+        boolean isMail = username.matches(Consts.REGEX_MAIL);
+        System.out.println("jsonMAP = " + map + " 和 username=" + map.get("username"));
+
         if (!isMail)
             return json;
         // 如果是请求登录用的是邮箱地址，则设置为邮箱来查询数据库
