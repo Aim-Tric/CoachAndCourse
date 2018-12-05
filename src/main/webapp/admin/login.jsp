@@ -47,9 +47,51 @@
 
 </div>
 <script>
-    var rules = {}
+    /**
+     * rules用于设定FormChecker，为表单制定输入规则
+     * 期望的rules的样例，但目前不是这样的
+     * @type {{username: {len: number[], msg: string}, password: {}}}
+     */
+    var rules = {
+        username: {
+            len: [2, 8],
+            msg: '用户名必须在2到8个字符之间',
+        },
+        password: {}, // 最后的逗号也要写上
+    }
 
-    class FormFactory {
+
+    /**
+     * option用于设定FormPatcher，
+     *          规定表单要提交到哪里，
+     *          设定单独不提交的表单项（可以做成多个不提交的表单项。
+     * FormPatcher的第二个参数是，提交完成，响应成功之后调用的函数，
+     *              一般用于根据返回值决定跳转页面或是提示错误。
+     * @type {{formChecker: FormChecker, cancel: null, url: string}}
+     */
+    var option = {
+        formChecker: new FormChecker(rules),
+        cancel: null,
+        url: '/application/servlet/user/login',
+    }
+    new FormPatcher(option, function () {
+        var ret = JSON.parse(result)
+        var key = ret['result_code']
+        var adapter = alert_dict[key]
+        showAdaptAlert({
+            adapter: adapter,
+            callback: function () {
+                window.location.href = '/index.jsp'
+            }
+        })
+    })
+
+
+    /**
+     * 这玩意要放到一个新的文件里面，并在header.jsp或者footer.jsp里引入他
+     * FIXME: formchecker的check()没实现
+     */
+    class FormPatcher {
         constructor(builder, onClickCallback) {
             this.elem = builder
             this.formChecker = this.elem.formChecker
@@ -76,7 +118,7 @@
             $.ajax({
                 type: o.type || o.method || 'get',
                 dataType: o.dataType || 'text',
-                data: o.data || FormFactory.defaultData(),
+                data: o.data || FormPatcher.defaultData(),
                 url: o.url,
                 success: function (result) {
                     var callback = o.callback || o.success
@@ -93,21 +135,5 @@
 
     }
 
-    var option = {
-        formChecker: new FormChecker(rules),
-        url: '/application/servlet/user/login',
-        callback: function () {
-            var ret = JSON.parse(result)
-            var key = ret['result_code']
-            var adapter = alert_dict[key]
-            showAdaptAlert({
-                adapter: adapter,
-                callback: function () {
-                    window.location.href = '/index.jsp'
-                }
-            })
-        }
-    }
-    new FormFactory(option)
 </script>
 <%@include file="../common/footer.jsp" %>

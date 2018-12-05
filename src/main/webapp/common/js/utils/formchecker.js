@@ -1,4 +1,4 @@
-/*==================
+/**==================
 *  formchecker.js
 * ==================
 *
@@ -11,9 +11,9 @@
 *     └ 参数: length 目标输入框的文本长度
 * cmp ┬ 作用: 对给定文本进行内容比较
 *     └ 参数: ┬ value 目标输入框的文本
-*			 └ value_from_file ┬ 是一个字符串,
-*                              | 从'goods.txt'文件读取到的字符串数组
-*                              └ 在函数执行的时候，将自动的取出每一个字符串做参数用来比较
+ *              └ value_from_file ┬ 是一个字符串,
+ *                               | 从'goods.txt'文件读取到的字符串数组
+ *                               └ 在函数执行的时候，将自动的取出每一个字符串做参数用来比较
 * range ┬ 作用： 限制给定文本的内容范围
 *       └ 参数： num 目标输入框的文本字符串, 需要手动转换成数字
 * optional      作用： 标记目标文本框是可选填的
@@ -50,7 +50,7 @@ class FormChecker {
     }
 
     registerAction(selector, key) {
-        var o = this;
+        var o = this
         selector.on('blur', function () {
             var value = this.value
             var r = rules[key] // r 第一次进入此函数时是 rules 的 title，以此类推
@@ -71,7 +71,7 @@ class FormChecker {
             false: {
                 msg: ruleMap.msg_error || '填写错误',
                 class: 'tip-error',
-            }
+            },
         }
         return tips[result]
     }
@@ -111,14 +111,22 @@ class FormChecker {
             dataType: "text",
             success(response) {
                 if (response.statusCode == 200)
-                    o.response = JSON.parse(response);
+                    o.response = JSON.parse(response)
             },
             error: function () {
                 alert('你的网络环境不正确，请检查你的网络和防火墙，或是你在本地计算机运行本脚本')
             }
-        });
+        })
     }
 
+
+    /**
+     * 实现显示提示的功能，
+     * 可以让他图标化，更美观。
+     * FIXME： siblings(tip)是不存在的，要改成凭空造出来
+     * @param selector 触发显示提示的输入框，一般来说他是jq对象，但保险起见给他重新构造一次了
+     * @param tip 提示对象，会存有提示信息，和对应的提示class
+     */
     showTips(selector, tip) {
         $(selector).siblings('.tip')
             .text(tip.msg)
@@ -126,6 +134,10 @@ class FormChecker {
             .show()
     }
 
+    /**
+     * FIXME： 上面是凭空造出来的话，清除时就要把他给删掉
+     * @param selectior 触发清除提示的输入框，一般来说他是jq对象，但保险起见给他重新构造一次了
+     */
     clearTips(selectior) {
         $(selectior).siblings('.tip')
             .removeClass('tip-success')
@@ -139,7 +151,7 @@ class FormChecker {
                 var obj = JSON.parse(str)
                 return typeof obj == 'object' && obj
             } catch (e) {
-                return false;
+                return false
             }
         }
         console.warn(str, 'It is not a string!')
@@ -151,13 +163,13 @@ class FormChecker {
  */
 function form_datas(object) {
     // 如果cancel存在，则为cancel，否则为空集
-    var cancel = object && object.cancel ? object.cancel : [];
-    var arr = {};
-    var datas = $('form').serializeArray();
+    var cancel = object && object.cancel ? object.cancel : []
+    var arr = {}
+    var datas = $('form').serializeArray()
     $.each(datas, function () {
         if (cancel.includes(this.name))
-            return;
-        arr[this.name] = this.value;
-    });
-    return arr;
+            return
+        arr[this.name] = this.value
+    })
+    return arr
 }
