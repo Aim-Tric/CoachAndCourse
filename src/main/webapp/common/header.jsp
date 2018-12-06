@@ -43,6 +43,7 @@
     <script src="${base_url}/common/js/plugins/dateTimePicker/config.js"></script>
     <%--用户自定义--%>
     <link rel="stylesheet" href="${base_url}/common/css/food_style.css">
+    <link rel="stylesheet" href="${base_url}/common/css/style.css">
     <script src="${base_url}/common/js/consts/data.js"></script>
     <script src="${base_url}/common/js/utils/language.js"></script>
     <script src="${base_url}/common/js/utils/utils.js"></script>

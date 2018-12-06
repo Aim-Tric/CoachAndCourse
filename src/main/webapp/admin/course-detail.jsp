@@ -14,50 +14,39 @@
     Course course = new Course();
     String id = request.getParameter("id");
     course.setId(Integer.valueOf(id));
-    request.setAttribute("course", cs.findCourse(course));
+    request.setAttribute("detail", cs.findCourse(course));
 %>
 <div class="container">
-    <%--<div class="row breadcrumb">--%>
-    <%--<div class="col-md-8 col-md-offset-2">--%>
-    <%--<ol class="breadcrumb">--%>
-    <%--<li><a href="#">Home</a></li>--%>
-    <%--<li><a href="#">Library</a></li>--%>
-    <%--<li class="active">Data</li>--%>
-    <%--</ol>--%>
-    <%--</div>--%>
-    <%--</div>--%>
     <div class="row">
-        <div class="col-md-6 col-lg-12">
-            <%--<div class="col-md-4 col-lg-4">--%>
-            <%--<img alt="300x200" src="../common/img/thumbnail1.jpg" style="max-width: 200px">--%>
-            <%--</div>--%>
-            <div class="page-header col-md-12 col-lg-12">
-                <h2>${course.name}</h2>
-            </div>
+        <div class="col-md-12 col-lg-12">
+            <ol class="breadcrumb">
+                <li><a href="#">首页</a></li>
+                <li>${detail.type}</li>
+            </ol>
         </div>
-    </div>
-    <div class="row">
         <div class="col-md-4 col-lg-4">
-            <img alt="300x200" src="../common/img/thumbnail1.jpg" style="max-width: 200px">
+            <img alt="300x200" src="../common/img/thumbnail1.jpg" class="img-thumbnail">
         </div>
         <div class="col-md-8 col-lg-8">
             <div class="row">
                 <div class="well">
-                    <p>${course.overview}&nbsp&nbsp<span class="label label-success">${course.status}</span></span></p>
-                    <p>课程最大人数:${course.max_person}</p>
-                    <p>开始时间:${course.start_time}</p>
+                    <strong>${detail.name}&nbsp&nbsp<span class="label label-success">${detail.status}</span></strong>
+                    <p>
+                        ${detail.overview}
+                    </p>
+                    <p>课程最大人数:${detail.max_person}</p>
+                    <p>开始时间:${detail.start_time}</p>
                 </div>
             </div>
             <div class="row">
-                <!-- Single button -->
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary">
-                        加入课程
+                        <%--TODO:检查是否已加入该课程--%>
+                        <a href="../application/servlet/course/joinCourse?cid=${detail.id}&status=${detail.status}&sid=<%=user.getId()%>">加入课程</a>
                     </button>
                     <button type="button" class="btn">
                         咨询
                     </button>
-
                 </div>
             </div>
         </div>

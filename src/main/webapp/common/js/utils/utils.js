@@ -62,22 +62,6 @@ function showThenDie(target, sec, callback) {
     })
 }
 
-<<<<<<< HEAD
-/**
- * 获取表单中的数据，以键值对形式返回
- */
-function form_datas() {
-    var arr = {};
-    var datas = $('form').serializeArray();
-    $.each(datas, function () {
-        if (this.name === 'password_again')
-            return;
-        arr[this.name] = this.value;
-    });
-    return arr;
-}
-=======
->>>>>>> byoukinn-master
 
 /**
  * 在表单发送完成后才能再次点击

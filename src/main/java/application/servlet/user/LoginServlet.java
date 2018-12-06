@@ -1,9 +1,10 @@
 package application.servlet.user;
 
 import application.servlet.pub.BaseServlet;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import commons.DataTransferer;
 import commons.data.Consts;
+import persistent.impl.UserImpl;
 import persistent.pojo.user.User;
 import service.user.LoginService;
 
@@ -26,7 +27,6 @@ public class LoginServlet extends BaseServlet {
     private boolean isLoginSuccess;
     private User user;
     private String status, result;
-    DataTransferer transferer;
 
     protected void Handle(HttpServletRequest req, HttpServletResponse resp) {
         synchronized (this) {
@@ -34,11 +34,9 @@ public class LoginServlet extends BaseServlet {
             // 处理登录，密码正确时，isLogged就会为true
             loginHandle();
 //        将登陆信息存入session中
-
             if (isLoginSuccess) {
                 dataBuild();
             }
-            System.out.println(user);
             responseRequest(response, status);
         }
 
@@ -66,11 +64,9 @@ public class LoginServlet extends BaseServlet {
 
     private void loginHandle() {
         String json = request.getParameter("json");
-        LoginService.login(json);
-        transferer = DataTransferer.getInstance();
-        // TODO:需要改进此数据传输方式
-        user = (User) transferer.getData("user");
-        result = (String) transferer.getData("result");
+
+        user = new UserImpl().findUser(JSON.parseObject(json, User.class));
+        result = LoginService.login(json);
         // 密码错误，直接跳出
         if (Consts.RESULT_OK.equals(result)) {
             isLoginSuccess = true;

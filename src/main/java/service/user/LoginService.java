@@ -1,7 +1,6 @@
 package service.user;
 
 import com.alibaba.fastjson.JSON;
-import commons.DataTransferer;
 import commons.data.Consts;
 import persistent.impl.UserImpl;
 import persistent.pojo.user.User;
@@ -18,12 +17,12 @@ public class LoginService extends UserService {
      *
      * @param json 包含表单数据的json
      */
-    public static void login(String json) {
+    public static String login(String json) {
         // 验证是用户名登录还是邮箱登录
         // 如果他是用email登录，才改变用户名为email
         json = LoginService.changeToEmail(json);
         User user = JSON.parseObject(json, User.class);
-        DataTransferer.getInstance().put("result", verify(user));
+        return verify(user);
     }
 
     /**
@@ -35,7 +34,6 @@ public class LoginService extends UserService {
         Map<String, String> map = (Map<String, String>) JSON.parse(json);
         String username = map.get("username");
         boolean isMail = username.matches(Consts.REGEX_MAIL);
-        System.out.println("jsonMAP = " + map + " 和 username=" + map.get("username"));
 
         if (!isMail)
             return json;
@@ -59,7 +57,6 @@ public class LoginService extends UserService {
             user = impl.findUser(user);
             if (user != null) {
                 ret = Consts.RESULT_OK;
-                DataTransferer.getInstance().put("user", user);
             }
         } catch (NullPointerException npe) {
             // 用户不存在

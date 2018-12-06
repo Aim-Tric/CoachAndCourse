@@ -7,7 +7,7 @@
  *
  * 分号：每逻辑行都要写
  * 优先度: 吊桥 > 山谷 > 小驼峰 > 匈牙利 > 大驼峰
- * url：用吊桥  profile-view, /update-course.jsp
+ * url：用吊桥  profile-view, /update-course-detail.jsp
  * 常量：从JAVA里来的，就用全大写山谷 RESULT_OK, RESULT_CALCEL
  * 数组：存的元素的英语原型加s结尾  vertex => vertexs !> verties,  potato => potatos !> potatoes
  * 方法：小驼峰，动词加名词，定义时参数要写全名称 findArray()，showAlert()
@@ -23,19 +23,19 @@ var config = {
 var sidebar_list = {
     'new-course': {
         id: '#new-course',
-        url: '../admin/course/add-course.jsp',
+        url: '../admin/course/add-course-detail.jsp',
         type: 'submit',
         submitUrl: '/application/servlet/course/add-course',
     },
     'my-course': {
         id: '#my-course',
-        url: '../admin/course/my-course.jsp',
+        url: '../admin/course/my-course-detail.jsp',
         type: 'query',
         submitUrl: '',
     },
     'update-course': {
         id: '#update-course',
-        url: '../admin/course/update-course.jsp',
+        url: '../admin/course/update-course-detail.jsp',
         type: '',
         submitUrl: '',
     },
@@ -59,66 +59,4 @@ var sidebar_list = {
     },
 };
 
-<<<<<<< HEAD
-/**
- * @type {事件名{ id：按钮的id值, url：目标页面模板, type：页面注册事件类型, submitUrl：页面注册对应的servlet}}
- */
-// @test
-var action_config = {
 
-    // 获取表单
-    // ajax
-    // 根据结果完成响应
-    'login': {
-        id: '#do-login',
-        url: '/application/servlet/user/login',
-        type: 'post',
-        callback: function (result) {
-            var ret = JSON.parse(result);
-            var key = ret['result_code'];
-            var adapter = alert_dict[key];
-            showAlert(adapter.msg, adapter.level);
-            setTimeout(function () {
-                window.location.href = "dashboard.jsp";
-            }, config.delay_short * 1000);
-        }
-    },
-    'register': {
-        id: '#do-register',
-        url: '/application/servlet/user/register',
-        type: 'post',
-        callback: function (result) {
-            var ret = JSON.parse(result);
-            var key = ret['result_code'];
-            var adapter = alert_dict[key];
-            showAlert(adapter.msg, adapter.level);
-            setTimeout(function () {
-                window.location.href = "/index.jsp";
-            }, config.delay_short * 1000);
-        }
-    },
-
-
-    // ajax
-    // 根据结果完成响应
-    'query-course': {},
-
-};
-
-
-// var registerAction = function (object) {
-
-// $("button[type='submit']");
-
-
-// do-ajax
-// 根据结果完成响应
-
-
-// };
-
-
-
-
-=======
->>>>>>> byoukinn-master

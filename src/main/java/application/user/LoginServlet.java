@@ -57,9 +57,9 @@ public class LoginServlet extends BaseServlet {
 
         // 添加到Cookies
         Cookie ck;
-        Set<HashMap.Entry<String, String>> entrySet  = map.entrySet();
+        Set<HashMap.Entry<String, String>> entrySet = map.entrySet();
         Iterator<HashMap.Entry<String, String>> iter = entrySet.iterator();
-        while(iter.hasNext()){
+        while (iter.hasNext()) {
             HashMap.Entry<String, String> entry = iter.next();
             ck = new Cookie(entry.getKey(), entry.getValue());
             ck.setMaxAge(Consts.COOKIE_EXPIRED_SEC);

@@ -20,7 +20,7 @@ public class CourseService {
      * 新建课程
      * 收到包含课程信息的json，转换成Javabean，将其插入到数据库中
      *
-     * @param courseJson 传入一个课程的数据
+     * @param courseJson 传入一个课程的json数据
      * @return 返回插入课程的结果
      */
     public String addCourse(String courseJson) {
@@ -39,6 +39,13 @@ public class CourseService {
     public String joinCourse(int course_id, int stu_id) {
         int key = impl.joinCourse(course_id, stu_id);
         return Utils.getResult(key);
+    }
+
+    public Course courseDetail(int id) {
+        Course c = new Course();
+        c.setId(id);
+        c = impl.findCourse(c);
+        return c;
     }
 
     /**

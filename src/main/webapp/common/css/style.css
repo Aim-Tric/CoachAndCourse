@@ -1,6 +1,6 @@
 body {
-    background: url("../img/bg1.jpg");
-    background-size: 100%;
+    /*background: url("../img/bg1.jpg");*/
+    /*background-size: 100%;*/
     /*animation-name: myfirst;*/
     /*animation-duration: 12s;*/
     /*变换时间*/
@@ -49,4 +49,8 @@ input[type="text"], input[type="password"] {
 
 .checkbox {
     padding-left: 21px;
+}
+
+.breadcrumb {
+    background-color: #fff;
 }

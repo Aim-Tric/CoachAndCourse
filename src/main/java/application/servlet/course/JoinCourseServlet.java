@@ -1,8 +1,6 @@
 package application.servlet.course;
 
 import application.servlet.pub.BaseServlet;
-import persistent.pojo.course.Course;
-import persistent.pojo.user.User;
 import service.course.CourseService;
 
 import javax.servlet.annotation.WebServlet;
@@ -19,11 +17,15 @@ public class JoinCourseServlet extends BaseServlet {
      */
     @Override
     protected void Handle(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        Course course = (Course) req.getAttribute("course");
-        if ("报名中".equals(course.getStatus())) {
-            User stu = (User) req.getSession().getAttribute("CNC");
-            String ret = new CourseService().joinCourse((int) course.getId(), (int) stu.getId());
+        String status = req.getParameter("status");
+        int cid = Integer.valueOf(req.getParameter("cid"));
+        int sid = Integer.valueOf(req.getParameter("sid"));
+//        检查是否已加入该课程
+        if ("报名中".equals(status)) {
+            String ret = new CourseService().joinCourse(cid, sid);
+            System.out.println();
             responseRequest(resp, ret);
+
         }
     }
 

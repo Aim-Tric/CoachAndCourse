@@ -17,8 +17,8 @@ import java.util.List;
 /**
  * 处理查询个人所加入的课程的servlet
  */
-@WebServlet("/application/c")
-public class SearchCoursesServlet extends BaseServlet {
+@WebServlet("/application/servlet/course/myCourse")
+public class MyCoursesServlet extends BaseServlet {
 
     @Override
     protected void Handle(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -27,14 +27,14 @@ public class SearchCoursesServlet extends BaseServlet {
 
         // 开始查询课程
         CourseService cs = new CourseService();
-        //先拿到当前的用户信息
+        // 先拿到当前的用户信息
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("CNC");
 //        int page = Integer.valueOf(json);
-        int page = Integer.valueOf(req.getParameter("cid"));
+        int page = Integer.valueOf(json);
         // 根据用户信息查询相关课程，并根据页码实现分页功能
-        List<Course> list = cs.searchCourses(1, page);
-        //将查询结果转成json对象并response回到前端
+        List<Course> list = cs.searchCourses((int) user.getId(), page);
+        // 将查询结果转成json对象并response回到前端
         JSONArray ja = new JSONArray();
         for (Course c : list) {
             JSONObject jo = new JSONObject();
