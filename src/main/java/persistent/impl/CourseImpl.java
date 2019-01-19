@@ -14,12 +14,12 @@ public class CourseImpl implements CourseDAO {
     private SqlSession session;
 
     @Override
-    public List<Course> findCourses(int id, int start, int maxLimit) {
+    public List<Course> findCourses(int id, int page, int maxLimit) {
         List<Course> courses = new ArrayList<>();
         try {
             session = SessionFactory.getFactory().openSession();
             CourseDAO mapper = session.getMapper(CourseDAO.class);
-            courses = mapper.findCourses(id, start, maxLimit);
+            courses = mapper.findCourses(id, page, maxLimit);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -109,6 +109,5 @@ public class CourseImpl implements CourseDAO {
             session.close();
         }
     }
-
 
 }

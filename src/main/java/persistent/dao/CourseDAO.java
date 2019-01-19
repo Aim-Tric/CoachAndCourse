@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CourseDAO {
 
-    List<Course> findCourses(@Param("id") int id, @Param("start") int start, @Param("maxLimit") int maxLimit);
+    List<Course> findCourses(@Param("id") int id, @Param("page") int page, @Param("maxLimit") int maxLimit);
 
     List<Course> findNewestCourses();
 

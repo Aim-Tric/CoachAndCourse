@@ -7,6 +7,10 @@ import persistent.pojo.user.User;
 
 import java.util.Map;
 
+/**
+ * 用户登录服务
+ *
+ */
 public class LoginService extends UserService {
 
     public LoginService() {
@@ -17,10 +21,10 @@ public class LoginService extends UserService {
      *
      * @param json 包含表单数据的json
      */
-    public static String login(String json) {
+    public String login(String json) {
         // 验证是用户名登录还是邮箱登录
         // 如果他是用email登录，才改变用户名为email
-        json = LoginService.changeToEmail(json);
+        json = changeToEmail(json);
         User user = JSON.parseObject(json, User.class);
         return verify(user);
     }
@@ -30,11 +34,10 @@ public class LoginService extends UserService {
      * @param json <@link>String</@link> 如果username传过来是email，则设置username这个key变成email
      * @return
      */
-    public static String changeToEmail(String json) {
+    public String changeToEmail(String json) {
         Map<String, String> map = (Map<String, String>) JSON.parse(json);
         String username = map.get("username");
         boolean isMail = username.matches(Consts.REGEX_MAIL);
-
         if (!isMail)
             return json;
         // 如果是请求登录用的是邮箱地址，则设置为邮箱来查询数据库
@@ -50,17 +53,14 @@ public class LoginService extends UserService {
      * @param user 需要验证的用户数据
      * @return 返回验证结果，用户不存在则返回操作取消，存在则返回验证结果
      */
-    public static String verify(User user) {
-        String ret = Consts.RESULT_FAILED;
+    public String verify(User user) {
+        String ret;
         UserImpl impl = new UserImpl();
-        try {
-            user = impl.findUser(user);
-            if (user != null) {
-                ret = Consts.RESULT_OK;
-            }
-        } catch (NullPointerException npe) {
-            // 用户不存在
-            ret = Consts.RESULT_CANCEL;
+        user = impl.findUser(user);
+        if (user != null) {
+            ret = Consts.RESULT_OK;
+        }else{
+            ret = Consts.RESULT_FAILED;
         }
         return ret;
     }

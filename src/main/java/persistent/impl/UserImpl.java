@@ -36,11 +36,11 @@ public class UserImpl implements UserDAO {
             session = SessionFactory.getFactory().openSession();
             UserDAO mapper = session.getMapper(UserDAO.class);
             user = mapper.findUser(u);
-        } catch (IOException e) {
+        }  catch (Exception e) {
+          //  BaseImpl.catchCommunicationsException(e);
+           // BaseImpl.catchNullPointerException(e);
             e.printStackTrace();
-        } catch (Exception e) {
-            BaseImpl.catchCommunicationsException(e);
-            BaseImpl.catchNullPointerException(e);
+            return null;
         } finally {
             session.close();
         }

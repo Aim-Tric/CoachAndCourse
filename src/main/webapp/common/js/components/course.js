@@ -7,6 +7,7 @@ function addClickListener(obj) {
             url: obj.url,
             success: function (result) {
                 $('.template-inner').html(result);
+                console.log(result)
                 $.when($('form')).done(function (form) {
                     // TODO:为提交按钮添加ajax
                     // 这里registerAction[obj.type]拿到的是一个函数
