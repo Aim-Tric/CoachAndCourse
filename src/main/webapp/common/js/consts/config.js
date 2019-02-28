@@ -23,19 +23,19 @@ var config = {
 var sidebar_list = {
     'new-course': {
         id: '#new-course',
-        url: '../admin/course/add-course.jsp',
+        url: '../admin/course/add-course-detail.jsp',
         type: 'submit',
         submitUrl: '/application/servlet/course/add-course',
     },
     'my-course': {
         id: '#my-course',
-        url: '../admin/course/my-course.jsp',
+        url: '../admin/course/my-course-detail.jsp',
         type: 'query',
         submitUrl: '',
     },
     'update-course': {
         id: '#update-course',
-        url: '../admin/course/update-course.jsp',
+        url: '../admin/course/update-course-detail.jsp',
         type: '',
         submitUrl: '',
     },
