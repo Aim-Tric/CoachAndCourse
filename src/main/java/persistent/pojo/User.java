@@ -1,20 +1,27 @@
-package persistent.pojo.user;
+package persistent.pojo;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class User {
-    private long id;
+    private Integer id;
     private String username, sex, email, nickname, password;
     private Byte[] avatar;
     private String role;
+    private List<Course> Courses;
 
     public User() {
     }
 
-    public User(String username, String sex, String email, String nickName, String password) {
+    public User(Integer id, String username, String sex, String email, String nickname, String password, Byte[] avatar, String role) {
+        this.id = id;
         this.username = username;
         this.sex = sex;
         this.email = email;
-        this.nickname = nickName;
+        this.nickname = nickname;
         this.password = password;
+        this.avatar = avatar;
+        this.role = role;
     }
 
     public String getEmail() {
@@ -41,11 +48,11 @@ public class User {
         this.password = password;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -81,10 +88,26 @@ public class User {
         this.role = role;
     }
 
+    public List<Course> getCourses() {
+        return Courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        Courses = courses;
+    }
+
+    @Override
     public String toString() {
-        return "id = " + id +
-                " username = " + username +
-                " email = " + email +
-                " sex = " + sex;
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", sex='" + sex + '\'' +
+                ", email='" + email + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", password='" + password + '\'' +
+                ", avatar=" + Arrays.toString(avatar) +
+                ", role='" + role + '\'' +
+                ", Courses=" + Courses +
+                '}';
     }
 }

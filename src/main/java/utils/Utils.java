@@ -1,6 +1,6 @@
-package commons;
+package utils;
 
-import commons.data.Consts;
+import utils.data.Consts;
 
 import java.util.HashMap;
 
@@ -19,10 +19,6 @@ public class Utils {
         if (key > 0)
             return instance.resultMap.get(1);
         return instance.resultMap.get(key);
-    }
-
-    public static Utils getInstance() {
-        return instance;
     }
 
 

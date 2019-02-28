@@ -52,7 +52,7 @@
 
     <div class="form-group">
         <label for="max-person">人数上限:</label>
-        <input type="number" min="0" id="max-person" class="form-control" name="max-person">
+        <input type="number" min="0" id="max-person" class="form-control" name="max_person">
     </div>
 
     <div class="form-group">
@@ -96,7 +96,5 @@
     <button type="submit" class="btn btn-default" name="submit-btn" id="submit-btn">创建课程</button>
 </form>
 <script>
-    document.ready = function () {
         initTimePicker();
-    }
 </script>

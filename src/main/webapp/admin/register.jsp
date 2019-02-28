@@ -85,9 +85,6 @@
          * 2. 两次密码必须匹配
          * 3. 用户名密码,邮箱，必须符合规则
          */
-        if (checkSpell()) {
-            return;
-        }
         $.ajax({
             type: 'POST',
             url: '/application/servlet/user/register',

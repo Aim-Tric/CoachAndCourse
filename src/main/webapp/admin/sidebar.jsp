@@ -58,7 +58,7 @@
                 %>
                 <a id="update-course">
                     <div class="panel-body">
-                        修改课程
+                        修改课程信息
                     </div>
                 </a>
                 <a id="new-course">
@@ -94,3 +94,7 @@
         </div>
     </div>
 </ul>
+<script>
+    initialSidebar();
+</script>
+

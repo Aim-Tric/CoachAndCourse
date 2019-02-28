@@ -1,6 +1,6 @@
-<%@ page import="persistent.pojo.course.Course" %>
-<%@ page import="persistent.pojo.user.User" %>
-<%@ page import="service.course.CourseService" %>
+<%@ page import="persistent.pojo.Course" %>
+<%@ page import="persistent.pojo.User" %>
+<%@ page import="service.CourseService" %>
 <%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
@@ -19,7 +19,7 @@
         <%
             CourseService cs = new CourseService();
             User user = (User) session.getAttribute("CNC");
-            List<Course> list = cs.searchCourses((int) user.getId(), 1);
+            List<Course> list = cs.searchCourses(user.getId(), 1);
             for (Course c : list) {
                 out.print("<div class='col-xs-6 col-sm-3'>");
                 out.print("<a herf=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw'\n" +

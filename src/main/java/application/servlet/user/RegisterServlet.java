@@ -2,8 +2,8 @@ package application.servlet.user;
 
 import application.servlet.pub.BaseServlet;
 import com.alibaba.fastjson.JSON;
-import persistent.pojo.user.User;
-import service.user.RegisterService;
+import persistent.pojo.User;
+import service.UserService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,14 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 public class RegisterServlet extends BaseServlet {
 
     protected void Handle(HttpServletRequest req, HttpServletResponse resp) {
-        String json = req.getParameter("user");
-        RegisterService rs = new RegisterService();
+        String json = req.getParameter("json");
+        UserService service = new UserService();
         User user = JSON.parseObject(json, User.class);
-        try {
-            resp.getWriter().print(rs.register(user));
-        } catch (Exception e) {
-
-        }
+        responseRequest(resp, service.register(user));
     }
 
 }

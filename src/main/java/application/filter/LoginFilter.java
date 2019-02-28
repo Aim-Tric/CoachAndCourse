@@ -39,13 +39,15 @@ public class LoginFilter implements Filter {
             }
         }
 
-        String regex = "http:\\/\\/(\\w.*((index)|(login)|(register)).jsp)|(\\w.*\\/)";
-        boolean unValid = !Pattern.matches(regex, req.getRequestURL());
+//        String regex = "http:\\/\\/(\\w.*((index)|(login)|(register)).jsp)|(\\w.*\\/)";
+        String regex = "http:\\/\\/(\\w.*(dashboard).jsp)|(\\w.*\\/)";
+//
+        boolean unValid = Pattern.matches(regex, req.getRequestURL());
         boolean unLogged = session.getAttribute("INFO").equals("false");
         if (unLogged && unValid) {
             String ip = req.getRemoteAddr();
             System.out.println(ip + " 试图访问 " + req.getRequestURL() + "，但未登录，页面开始跳转");
-            resp.sendRedirect("/index.jsp");
+            resp.sendRedirect("./admin/login.jsp");
         }
 
         filterChain.doFilter(req, resp);

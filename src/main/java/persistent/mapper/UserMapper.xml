@@ -1,15 +1,18 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="persistent.dao.UserDAO">
-    <select id="findUsers" resultType="persistent.pojo.user.User">
-        select * from user limit ${start}, ${maxLimit}
+<mapper namespace="persistent.mapper.UserMapper">
+    <select id="findUsers" resultType="User">
+        select u.id,u.username,u.sex,u.email,u.nickname,u.password,u.avatar
+        from user u
+        limit ${start}, ${maxLimit}
     </select>
 
-    <select id="findUser" resultType="persistent.pojo.user.User">
-        select * from user
+    <select id="findUser" resultType="User" parameterType="User">
+        select u.id,u.username,u.sex,u.email,u.nickname,u.password,u.avatar
+        from user u
         <trim prefix="WHERE" prefixOverrides="AND">
-            <if test="id != 0">AND id = #{id}</if>
+            <if test="id != null">AND id = #{id}</if>
             <if test="username != null">AND username = #{username}</if>
             <if test="sex != null">AND sex = #{sex}</if>
             <if test="email != null">AND email = #{email}</if>
@@ -19,7 +22,7 @@
         </trim>
     </select>
 
-    <insert id="insertUser" parameterType="persistent.pojo.user.User">
+    <insert id="insertUser" parameterType="User">
         insert into user (username, sex, password, email, nickname)
         values (#{username}, #{sex}, #{password}, #{email}, #{nickname})
     </insert>

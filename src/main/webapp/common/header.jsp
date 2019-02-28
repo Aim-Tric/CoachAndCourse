@@ -1,4 +1,4 @@
-<%@ page import="persistent.pojo.user.User" %>
+<%@ page import="persistent.pojo.User" %>
 <%--
   Created by IntelliJ IDEA.
   User: Aim-Trick
@@ -18,7 +18,6 @@
 <%@ page isELIgnored="false" %>
 <!--支持EL表达式，不设的话，EL表达式不会解析-->
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title></title>
@@ -44,6 +43,7 @@
     <script src="${base_url}/common/js/plugins/dateTimePicker/config.js"></script>
     <%--用户自定义--%>
     <link rel="stylesheet" href="${base_url}/common/css/food_style.css">
+    <link rel="stylesheet" href="${base_url}/common/css/style.css">
     <script src="${base_url}/common/js/consts/data.js"></script>
     <script src="${base_url}/common/js/utils/language.js"></script>
     <script src="${base_url}/common/js/utils/utils.js"></script>
@@ -88,13 +88,13 @@
                         </a>
                         <ul class="dropdown-menu ">
                             <% if (isLogged) { %>
-                            <li><a href="/admin/dashboard.jsp">个人中心</a></li>
+                            <li><a href="../admin/dashboard.jsp">个人中心</a></li>
                             <li class="divider"></li>
                             <li><a id="logout-btn">注销登录</a></li>
                             <% } else { %>
-                            <li><a href="/admin/login.jsp" id="#login-btn">登录</a></li>
+                            <li><a href="../admin/login.jsp" id="#login-btn">登录</a></li>
                             <li class="divider"></li>
-                            <li><a href="/admin/register.jsp">注册</a></li>
+                            <li><a href="../admin/register.jsp">注册</a></li>
                             <% } %>
                         </ul>
                     </li>

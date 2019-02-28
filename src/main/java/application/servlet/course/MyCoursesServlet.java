@@ -3,9 +3,9 @@ package application.servlet.course;
 import application.servlet.pub.BaseServlet;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import persistent.pojo.course.Course;
-import persistent.pojo.user.User;
-import service.course.CourseService;
+import persistent.pojo.Course;
+import persistent.pojo.User;
+import service.CourseService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,8 +17,8 @@ import java.util.List;
 /**
  * 处理查询个人所加入的课程的servlet
  */
-@WebServlet("/application/c")
-public class SearchCoursesServlet extends BaseServlet {
+@WebServlet("/application/servlet/course/my-course")
+public class MyCoursesServlet extends BaseServlet {
 
     @Override
     protected void Handle(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -27,14 +27,18 @@ public class SearchCoursesServlet extends BaseServlet {
 
         // 开始查询课程
         CourseService cs = new CourseService();
-        //先拿到当前的用户信息
+        // 先拿到当前的用户信息
         HttpSession session = req.getSession();
+//        TODO: session中存的应该是一个user的唯一标识信息，在需要的时候在此执行查询
         User user = (User) session.getAttribute("CNC");
 //        int page = Integer.valueOf(json);
-        int page = Integer.valueOf(req.getParameter("cid"));
-        // 根据用户信息查询相关课程，并根据页码实现分页功能
-        List<Course> list = cs.searchCourses(1, page);
-        //将查询结果转成json对象并response回到前端
+        int page = Integer.valueOf(json);
+//        TODO: 根据用户信息查询相关课程，并根据页码实现分页功能
+        System.out.println("before search");
+        List<Course> list = cs.searchCourses(user.getId(), page);
+        System.out.println("after search");
+//         将查询结果转成json对象并response回到前端
+//        TODO: 我们需要一个工具类来打包json数据返回
         JSONArray ja = new JSONArray();
         for (Course c : list) {
             JSONObject jo = new JSONObject();

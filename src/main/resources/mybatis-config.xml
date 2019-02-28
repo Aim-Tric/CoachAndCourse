@@ -2,6 +2,8 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+    <properties resource="mybatis.properties" />
+
     <settings>
         <setting name="cacheEnabled" value="true"/>
         <setting name="lazyLoadingEnabled" value="true"/>
@@ -18,34 +20,30 @@
         <setting name="localCacheScope" value="SESSION"/>
         <setting name="jdbcTypeForNull" value="OTHER"/>
         <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
-
     </settings>
 
     <typeAliases>
-        <typeAlias alias="course" type="persistent.pojo.course.Course"/>
+        <package name="persistent.pojo"/>
     </typeAliases>
 
     <!-- Continue editing here -->
-
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC">
                 <property name="..." value="..."/>
             </transactionManager>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url"
-                          value="jdbc:mysql://10.12.224.31:3306/cnc?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull"/>
-                <property name="username" value="cncadmin"/>
-                <property name="password" value="zxcvbnm123"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
 
 
     <mappers>
-        <mapper resource="mapper/UserMapper.xml"/>
-        <mapper resource="mapper/CourseMapper.xml"/>
+        <package name="persistent.mapper"/>
     </mappers>
 
 

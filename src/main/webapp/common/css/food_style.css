@@ -629,3 +629,21 @@ input[type="password"] {
         display: none;
     }
 }
+
+.comment-block {
+    padding: 5px;
+    display: flex;
+}
+
+.user {
+    margin-left: 5px;
+}
+
+.user>.user-name {
+    text-align: center;
+}
+
+.comment {
+    margin-left: 15px;
+}
+

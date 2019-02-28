@@ -1,4 +1,4 @@
-package commons.data;
+package utils.data;
 
 public class Consts {
 

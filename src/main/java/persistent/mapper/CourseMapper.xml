@@ -1,0 +1,115 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="persistent.mapper.CourseMapper">
+    <!-- 查找个人课程 -->
+    <select id="findCoursesByUserId" parameterType="java.lang.Integer" resultType="Course">
+        select c.id,c.name,c.overview,c.status,c.max_person,c.score,c.type,
+               c.start_time,c.end_time,c.poster,c.teaid,c.source
+        from course as c,course_stu as cs
+        where c.id = cs.course_id and cs.stu_id = ${id}
+        order by c.start_time desc
+        limit ${(page-1)*max}, ${max}
+    </select>
+
+    <!-- 查找相关课程 -->
+    <select id="findCourseById" parameterType="java.lang.Integer" resultType="Course">
+        select c.id,c.name,c.overview,c.status,c.max_person,c.score,c.type,
+        c.start_time,c.end_time,c.poster,c.teaid,c.source
+        from course c
+        where id = ${value}
+    </select>
+
+    <!-- 用户是否加入了课程 -->
+    <select id="inCourse" parameterType="java.lang.Integer" resultType="boolean">
+        select count(*) from course_stu
+        where stu_id = ${sid} and course_id = ${cid}
+    </select>
+
+    <!-- 最新的课程 -->
+    <select id="findNewestCourses" parameterType="java.lang.Integer" resultType="Course">
+        select c.id,c.name,c.overview,c.status,c.max_person,c.score,c.type,
+        c.start_time,c.end_time,c.poster,c.teaid,c.source
+        from course c
+        order by start_time desc
+        limit ${(page-1)*max}, ${max}
+    </select>
+
+    <!-- 插入课程 -->
+    <insert id="insertCourse" parameterType="Course" keyProperty="id">
+        insert into course
+        <trim prefix=" (" suffix=")" suffixOverrides=",">
+            <if test="name != null">name,</if>
+            <if test="teaid != null">teaid,</if>
+            <if test="type != null">type,</if>
+            <if test="overview != null">overview,</if>
+            <if test="source != null">source,</if>
+            <if test="poster != null">poster</if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="name != null">#{name},</if>
+            <if test="teaid != null">#{teaid},</if>
+            <if test="type != null">#{type},</if>
+            <if test="overview != null">#{overview},</if>
+            <if test="source != null">#{source},</if>
+            <if test="poster != null">#{poster},</if>
+        </trim>
+    </insert>
+
+    <!-- 加入课程 -->
+    <insert id="joinCourse">
+        insert into course_stu
+        value (#{c_id}, #{s_id})
+    </insert>
+
+    <select id="getCurrentPerson" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        select COUNT(*) from course_stu
+        where course_id = ${value}
+    </select>
+
+    <update id="updateCourse">
+        update course
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="type != null">type = #{type},</if>
+            <if test="overview != null">overview = #{overview},</if>
+            <if test="source != null">source = #{source},</if>
+            <if test="poster != null">poster = #{poster},</if>
+        </trim>
+        where teaid = #{teaid}
+    </update>
+
+    <insert id="doComment" >
+        insert into course_comment (course_id, user_id, comment, time)
+        value(${cid}, ${c.user.id}, '${c.comment}', now())
+    </insert>
+
+
+    <select id="findComments" parameterType="persistent.pojo.Comment" resultMap="course_comments">
+        select c.id cid,c.name,c.type,c.status,c.overview,c.max_person,c.start_time,
+               u.id uid,u.nickname,u.avatar,
+               cc.id ccid,cc.comment,cc.time
+        from course c, course_comment cc, user u
+        where cc.course_id = #{course.id} and cc.course_id = c.id and cc.user_id = u.id
+    </select>
+    <resultMap id="course_comments" type="Course">
+        <id property="id" column="cid" />
+        <result property="name" column="name" />
+        <result property="type" column="type" />
+        <result property="status" column="status" />
+        <result property="overview" column="overview" />
+        <result property="max_person" column="max_person" />
+        <result property="start_time" column="start_time" />
+        <collection property="comments" ofType="Comment">
+            <id property="id" column="ccid" />
+            <result property="comment" column="comment" />
+            <result property="time" column="time" />
+            <association property="user" javaType="User">
+                <id property="id" column="uid" />
+                <result property="nickname" column="nickname" />
+                <result property="avatar" column="avatar" />
+            </association>
+        </collection>
+    </resultMap>
+
+</mapper>

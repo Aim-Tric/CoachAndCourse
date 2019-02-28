@@ -44,8 +44,8 @@
 
         </div>
     </div>
-
 </div>
+
 <script>
     $('#do-login').click(function (e) {
         e.stopPropagation();
@@ -80,4 +80,5 @@
         });
     });
 </script>
+
 <%@include file="../common/footer.jsp" %>

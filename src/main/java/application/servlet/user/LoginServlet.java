@@ -1,11 +1,11 @@
 package application.servlet.user;
 
 import application.servlet.pub.BaseServlet;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import commons.DataTransferer;
-import commons.data.Consts;
-import persistent.pojo.user.User;
-import service.user.LoginService;
+import service.UserService;
+import utils.data.Consts;
+import persistent.pojo.User;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -21,76 +21,64 @@ import java.util.HashMap;
 
 @WebServlet("/application/servlet/user/login")
 public class LoginServlet extends BaseServlet {
-    private HttpServletRequest request;
-    private HttpServletResponse response;
-    private boolean isLoginSuccess;
     private User user;
-    private String status, result;
-    DataTransferer transferer;
+    private String result;
 
     protected void Handle(HttpServletRequest req, HttpServletResponse resp) {
         synchronized (this) {
-            onCreate(req, resp);
             // 处理登录，密码正确时，isLogged就会为true
-            loginHandle();
-//        将登陆信息存入session中
-
-            if (isLoginSuccess) {
-                dataBuild();
+            if (doLogin(req)) {
+                // 将登陆信息存入session中
+                HashMap<String, String> map = dataBuild(req);
+                // 添加到Cookies
+                addCookiesAndSessionByMap(req, resp, map);
             }
+            HashMap<String, String> returnMap = new HashMap<>();
+            returnMap.put("result_code", result);
+            returnMap.put("nickname", user.getNickname());
 
-            responseRequest(response, status);
+            String status = JSONObject.toJSONString(returnMap);
+            responseRequest(resp, status);
         }
 
     }
 
 
-    private void dataBuild() {
+    private HashMap<String, String> dataBuild(HttpServletRequest req) {
 
-        HttpSession session = request.getSession();
-        HashMap<String, String> returnMap = new HashMap<String, String>();
-        user = LoginService.findUser(user);
-        returnMap.put("result_code", result);
-        returnMap.put("nickname", user.getNickname());
-        status = JSONObject.toJSONString(returnMap);
+        HttpSession session = req.getSession();
         // 数据预处理与存储
         session.setAttribute("CNC", user);
         session.setAttribute("INFO", "true");
         session.setAttribute("ROLE", user.getRole());
-        HashMap<String, String> map = new HashMap<String, String>();
+        HashMap<String, String> map = new HashMap<>();
         map.put("CNCID", String.valueOf(user.getUsername().hashCode()));
-        // 添加到Cookies
-        addCookiesAndSessionByMap(map);
+        return map;
 
     }
 
-    private void loginHandle() {
-        String json = request.getParameter("json");
-        LoginService.login(json);
-        transferer = DataTransferer.getInstance();
-        // TODO:需要改进此数据传输方式
-        user = (User) transferer.getData("user");
-        result = (String) transferer.getData("result");
+    private Boolean doLogin(HttpServletRequest req) {
+        String json = req.getParameter("json");
+        boolean loginSuccess = false;
+        UserService service = new UserService();
+        result = service.login(json);
+        user = service.findUser(JSON.parseObject(json, User.class));
+
         // 密码错误，直接跳出
         if (Consts.RESULT_OK.equals(result)) {
-            isLoginSuccess = true;
-            return;
+            loginSuccess = true;
         }
+        return loginSuccess;
     }
 
-    private void onCreate(HttpServletRequest req, HttpServletResponse resp) {
-        request = req;
-        response = resp;
-    }
-
-    private void addCookiesAndSessionByMap(HashMap<String, String> map) {
+    private void addCookiesAndSessionByMap(HttpServletRequest req, HttpServletResponse resp, HashMap<String, String> map) {
         Cookie ck;
         for (HashMap.Entry<String, String> entry : map.entrySet()) {
             ck = new Cookie(entry.getKey(), entry.getValue());
             ck.setMaxAge(Consts.COOKIE_EXPIRED_SEC);
             ck.setPath("/");
-            request.getSession().setAttribute(entry.getKey(), entry.getValue());
-            response.addCookie(ck);
+            req.getSession().setAttribute(entry.getKey(), entry.getValue());
+            resp.addCookie(ck);
         }
 
     }

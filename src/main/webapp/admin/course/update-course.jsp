@@ -8,3 +8,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
+<h1>修改课程信息</h1>
