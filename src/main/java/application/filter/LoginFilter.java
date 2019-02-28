@@ -40,7 +40,7 @@ public class LoginFilter implements Filter {
         }
 
 //        String regex = "http:\\/\\/(\\w.*((index)|(login)|(register)).jsp)|(\\w.*\\/)";
-        String regex = "http:\\/\\/(\\w.*(dashboard).jsp)|(\\w.*\\/)";
+        String regex = "http:\\/\\/(\\w.*((index)|(dashboard)).jsp)|(\\w.*\\/)";
 //
         boolean unValid = Pattern.matches(regex, req.getRequestURL());
         boolean unLogged = session.getAttribute("INFO").equals("false");

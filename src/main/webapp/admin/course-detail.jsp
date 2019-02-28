@@ -1,10 +1,10 @@
-<%@ page import="persistent.pojo.Course" %>
-<%@ page import="persistent.mapper.CourseMapper" %>
 <%@ page import="org.apache.ibatis.session.SqlSession" %>
-<%@ page import="utils.MybatisUtils" %>
+<%@ page import="persistent.mapper.CourseMapper" %>
 <%@ page import="persistent.pojo.Comment" %>
-<%@ page import="java.util.List" %>
+<%@ page import="persistent.pojo.Course" %>
+<%@ page import="utils.MybatisUtils" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: Aim-Trick
@@ -32,7 +32,7 @@
     request.setAttribute("course", c);
     request.setAttribute("person", person);
     c = cs.findComments(c.getId());
-    if(c != null) {
+    if (c != null) {
         List<Comment> cm = c.getComments();
         request.setAttribute("comments", cm);
     }
@@ -65,10 +65,10 @@
                     <button type="button" class="btn btn-primary">
                         <a href="${url}"><%
                             Object inCourse = request.getAttribute("inCourse");
-                            if(inCourse != null && (boolean)inCourse) {%>
-                                已加入课程
+                            if (inCourse != null && (boolean) inCourse) {%>
+                            已加入课程
                             <%} else {%>
-                                加入课程
+                            加入课程
                             <%}%></a>
                     </button>
                     <button type="button" class="btn">
@@ -81,42 +81,81 @@
     <div class="row">
         <h1>课程评论</h1>
         <div class="col-md-12 col-lg-12">
-            <%if(inCourse != null && (boolean)inCourse) {%>
+            <%if (inCourse != null && (boolean) inCourse) {%>
             <div>
                 <label for="comment">评论</label>
             </div>
             <div>
-                <%-- 使用ajax吧 --%>
                 <form action="/application/servlet/comment-course">
                     <textarea name="comment" id="comment" style="width: 80%;" rows="5"></textarea>
-                    <button type="submit" class="btn btn-primary">提交</button>
+                    <button id="do-comment" type="button" class="btn btn-primary">提交</button>
                 </form>
             </div>
             <%} else {%>
             <span>登录后才能进行评论<a href="login.jsp">登录</a>或<a href="register.jsp">注册</a></span>
             <%}%>
         </div>
-        <c:if test="${comments != null}">
-            <c:forEach items="${comments}" var="comment" end="${comments.size()}">
-                <div class="comment-block">
-                    <div class="user">
-                        <img class="user-avatar" src="../common/img/thumbnail1.jpg" alt="" width="64px">
-                        <div class="user-name">
-                            ${comment.user.nickname}
+        <div class="comment-content">
+            <c:if test="${comments != null}">
+                <c:forEach items="${comments}" var="comment" end="${comments.size()}">
+                    <div class="comment-block">
+                        <div class="user">
+                            <img class="user-avatar" src="../common/img/thumbnail1.jpg" alt="" width="64px">
+                            <div class="user-name">
+                                    ${comment.user.nickname}
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <div>${comment.comment}</div>
                         </div>
                     </div>
-                    <div class="comment">
-                        <div>${comment.comment}</div>
-                    </div>
+                </c:forEach>
+            </c:if>
+            <c:if test="${comments == null}">
+                <div>
+                    该课程暂无评论
                 </div>
-            </c:forEach>
-        </c:if>
-        <c:if test="${comments == null}">
-            该课程暂无评论
-        </c:if>
+            </c:if>
+        </div>
 
     </div>
 </div>
+
+<script>
+    $(function () {
+        console.log()
+        $('#do-comment').on('click', function () {
+            let c = $('#comment').val();
+            $.ajax({
+                url: '../application/servlet/comment-course',
+                type: 'POST',
+                data: {comment: c, cid: ${course.id}},
+                success: function (result) {
+                    if (result === 'true') {
+                        let tmp = '<div class="comment-block">\n' +
+                            '                        <div class="user">\n' +
+                            '                            <img class="user-avatar" src="../common/img/thumbnail1.jpg" alt="" width="64px">\n' +
+                            '                            <div class="user-name">\n' +
+                            '                                    <%=user.getNickname()%>\n' +
+                            '                            </div>\n' +
+                            '                        </div>\n' +
+                            '                        <div class="comment">\n' +
+                            '                            <div>' + c + '</div>\n' +
+                            '                        </div>\n' +
+                            '                    </div>';
+                        $('.comment-content').append(tmp);
+                        $('#comment').val();
+                    } else {
+                        alert("评论出错")
+                    }
+                },
+                error: function () {
+
+                }
+            })
+        })
+    })
+</script>
 
 <%@include file="../common/footer.jsp" %>
 
