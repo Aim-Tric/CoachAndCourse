@@ -1,4 +1,4 @@
-function addClickListener(obj, callback = null) {
+function addClickListener(obj) {
     $(obj.id).click(function (e) {
         e.stopPropagation();
         e.preventDefault();
@@ -50,12 +50,16 @@ function setSubmitBtnListener(targetObj, sender) {
         e.stopPropagation();
         e.preventDefault();
         var datas = form_datas();
-
+        //TODO： 改造data参数部分内容
+        var data = {"json": JSON.stringify(datas)};
+        if(sender.method) {
+            data = {"method": sender.method, "json": JSON.stringify(datas)};
+        }
         $.ajax({
             type: 'Post',
             url: sender.submitUrl,
             dataType: 'text',
-            data: {'json': JSON.stringify(datas)},
+            data: data,
             success: function (result) {
                 var results = JSON.parse(result);
                 // 对应返回的值做对应的操作弹窗提示

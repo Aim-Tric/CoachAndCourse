@@ -45,28 +45,13 @@
                     </h4>
                 </a>
             </div>
-            <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel"
+            <div id="collapseTwo" class="panel-collapse collapse in course" role="tabpanel"
                  aria-labelledby="headingTwo">
                 <a id="my-course">
                     <div class="panel-body">
                         我的课程
                     </div>
                 </a>
-                <%
-                    String role = (String) session.getAttribute("ROLE");
-                    if ("tea".equals(role)) {
-                %>
-                <a id="update-course">
-                    <div class="panel-body">
-                        修改课程信息
-                    </div>
-                </a>
-                <a id="new-course">
-                    <div class="panel-body">
-                        创建课程
-                    </div>
-                </a>
-                <%}%>
             </div>
         </div>
         <div class="panel panel-default">
@@ -95,6 +80,31 @@
     </div>
 </ul>
 <script>
-    initialSidebar();
+    $(function () {
+        $.ajax({
+            type: "GET",
+            url: "/application/servlet/user",
+            data: {"method": "getUserRole"},
+            success: function (result) {
+                if (result === "teacher") {
+                    $(".course").append(
+                        `<a id="update-course">
+                                    <div class="panel-body">
+                                        修改课程信息
+                                    </div>
+                                </a>
+                                <a id="new-course">
+                                    <div class="panel-body">
+                                        创建课程
+                                    </div>
+                                </a>`);
+                }
+                initialSidebar();
+            },
+            error: function () {
+
+            }
+        });
+    })
 </script>
 

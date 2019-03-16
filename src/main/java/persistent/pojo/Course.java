@@ -9,7 +9,7 @@ import java.util.List;
 public class Course {
 
     private Integer id, teaid;
-    private String name, overview, source, type, poster, index, status;
+    private String name, overview, type, poster, index, status, price;
     private Double score;
     private Integer max_person;
     private Date start_time, end_time, signup_time;
@@ -19,16 +19,16 @@ public class Course {
 
     public Course(){}
 
-    public Course(Integer id, Integer teaid, String name, String overview, String source, String type, String poster, String index, String status, Double score, Integer max_person, Date start_time, Date end_time, Date signup_time) {
+    public Course(Integer id, Integer teaid, String name, String overview, String type, String poster, String index, String status, String price, Double score, Integer max_person, Date start_time, Date end_time, Date signup_time) {
         this.id = id;
         this.teaid = teaid;
         this.name = name;
         this.overview = overview;
-        this.source = source;
         this.type = type;
         this.poster = poster;
         this.index = index;
         this.status = status;
+        this.price = price;
         this.score = score;
         this.max_person = max_person;
         this.start_time = start_time;
@@ -66,14 +66,6 @@ public class Course {
 
     public void setOverview(String overview) {
         this.overview = overview;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
     }
 
     public String getType() {
@@ -148,6 +140,14 @@ public class Course {
         this.signup_time = signup_time;
     }
 
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
     public List<Comment> getComments() {
         return comments;
     }
@@ -171,13 +171,16 @@ public class Course {
                 ", teaid=" + teaid +
                 ", name='" + name + '\'' +
                 ", overview='" + overview + '\'' +
-                ", source='" + source + '\'' +
                 ", type='" + type + '\'' +
                 ", poster='" + poster + '\'' +
                 ", index='" + index + '\'' +
                 ", status='" + status + '\'' +
+                ", price='" + price + '\'' +
                 ", score=" + score +
                 ", max_person=" + max_person +
+                ", start_time=" + start_time +
+                ", end_time=" + end_time +
+                ", signup_time=" + signup_time +
                 '}';
     }
 }

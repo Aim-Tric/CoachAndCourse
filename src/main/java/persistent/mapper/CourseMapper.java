@@ -11,7 +11,7 @@ public interface CourseMapper {
 
     List<Course> findCoursesByUserId(@Param("id") Integer id, @Param("page") Integer page, @Param("max") Integer max);
 
-    List<Course> findNewestCourses(@Param("page") Integer page, @Param("max") Integer max);
+    List<Course> getLatestCourses(@Param("page") Integer page, @Param("max") Integer max);
 
     Course findCourseById(Integer id);
 

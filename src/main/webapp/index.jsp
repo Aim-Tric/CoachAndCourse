@@ -1,8 +1,3 @@
-<%@ page import="persistent.pojo.Course" %>
-<%@ page import="java.util.List" %>
-<%@ page import="persistent.mapper.CourseMapper" %>
-<%@ page import="org.apache.ibatis.session.SqlSession" %>
-<%@ page import="utils.MybatisUtils" %>
 <%@ page pageEncoding="utf-8" contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="common/header.jsp" %>
 
@@ -41,10 +36,10 @@
 
                     <div class="item">
                         <img alt="" src="common/img/2.jpg"/>
-                        <div class="carousel-caption"><h4>
-                            百吃不厌的南瓜菜单
-
-                        </h4>
+                        <div class="carousel-caption">
+                            <h4>
+                                百吃不厌的南瓜菜单
+                            </h4>
                             <p>
                                 在你的印象中，南瓜是怎样的一种食材？怎么烹饪？其实，南瓜既可以当粮食又可以拿来当菜吃，而且价格便宜，真正的物兼价美。做成菜肴更是让人眼前一亮，百吃不厌呢～
                             </p>
@@ -113,75 +108,45 @@
         </div>
 
     </div>
-
-
-    <!-- 第一行 -->
-    <%
-        SqlSession sqlSession = MybatisUtils.getFactory().openSession();
-        CourseMapper cs = sqlSession.getMapper(CourseMapper.class);
-        List<Course> list = cs.findNewestCourses(1, 4);
-        request.setAttribute("courses", list);
-        request.setAttribute("user", user);
-    %>
     <div class="row">
-        <h2 class="page-header">最新课程</h2>
-
+        <div class="page-header">
+            <h2>最新课程</h2>
+            <span><a href="">更多>></a></span>
+        </div>
         <ul class="thumbnails">
+            <script>
+                var latestCoursesBar = $(".thumbnails");
+                $.ajax({
+                    type: "POST",
+                    url: "application/servlet/course",
+                    data: {"method": "getLatestCourses"},
+                    success: function (result) {
+                        var data = JSON.parse(result);
+                        for (var course of data) {
+                            latestCoursesBar.append(`<li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                                 <div class="thumbnail">
+                                     <a href="admin/course-detail.jsp"><img alt="300x200" src="common/img/thumbnail1.jpg"/></a>
+                                     <div class="caption">
+                                         <h3>${"${course.name}"}</h3>
+                                         <p>
+                                             <span class="label label-success">${"${course.status}"}</span>
+                                         </p>
+                                         <p>
+                                             <a class="btn btn-primary" href="admin/course-detail.jsp?id=${"${course.id}"}">浏览</a>
+                                             <a class="btn btn-default" href="#">分享</a>
+                                         </p>
+                                     </div>
+                                 </div>
+                            </li>`)
+                        }
+                    },
+                    error: function () {
 
-            <c:forEach items="${courses}" var="course" end="3">
-                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-                    <div class="thumbnail">
-                        <a href="admin/course-detail.jsp"><img alt="300x200" src="common/img/thumbnail1.jpg"/></a>
-                        <div class="caption">
-                            <h3>${course.name}</h3>
-                            <p>
-                                <span class="label label-success">${course.status}</span>
-                            </p>
-                            <p>
-                                    <%--<a class="btn btn-primary" href="application/servlet/course/detail?cid=${course.id}">浏览</a>--%>
-                                <a class="btn btn-primary" href="admin/course-detail.jsp?id=${course.id}">浏览</a>
-                                <a class="btn btn-default" href="#">分享</a>
-                            </p>
-                        </div>
-                    </div>
-
-                </li>
-            </c:forEach>
-
-
+                    }
+                })
+            </script>
         </ul>
     </div>
-
-
-    <!-- 翻页器 -->
-    <div class="row visible-lg">
-        <div class="center-block">
-            <ul class="pagination ">
-                <li>
-                    <a href="#">上一页</a>
-                </li>
-                <li>
-                    <a href="#">1</a>
-                </li>
-                <li>
-                    <a href="#">2</a>
-                </li>
-                <li>
-                    <a href="#">3</a>
-                </li>
-                <li>
-                    <a href="#">4</a>
-                </li>
-                <li>
-                    <a href="#">5</a>
-                </li>
-                <li>
-                    <a href="#">下一页</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
 
 </div>
 

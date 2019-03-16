@@ -1,7 +1,4 @@
-<%@ page import="persistent.pojo.Course" %>
-<%@ page import="persistent.pojo.User" %>
-<%@ page import="service.CourseService" %>
-<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Aim-Trick
@@ -11,24 +8,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <form class="template-inner">
-    <h1 class="page-header">我的课程</h1>
+    <h1 class="page-header">已加入课程</h1>
 
-
-    <div class="row" id="courseGallery">
-
-        <%
-            CourseService cs = new CourseService();
-            User user = (User) session.getAttribute("CNC");
-            List<Course> list = cs.searchCourses(user.getId(), 1);
-            for (Course c : list) {
-                out.print("<div class='col-xs-6 col-sm-3'>");
-                out.print("<a herf=''><img src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw'\n" +
-                        "width='200' height='200' alt=''></a>");
-                out.print("<h4>" + c.getName() + "</h4>");
-                out.print("<span class='text-muted'>" + c.getStatus() + "</span>");
-                out.print("</div>");
-            }
-        %>
+    <div class="row gallery" id="courseGallery">
 
     </div>
 
@@ -53,5 +35,31 @@
     </nav>
 </form>
 <script>
+    $.ajax({
+        type: "GET",
+        url: "/application/servlet/course",
+        data: {"method": "individual"},
+        success: function (result) {
+            var r = JSON.parse(result);
+            if (result.length === 0) {
+                $(".gallery").append(
+                    `<div>
+                        <h2>暂无加入课程</h2>
+                    </div>`);
+                return;
+            }
+            for (var course of r) {
+                $(".gallery").append(
+                    `<div class='col-xs-6 col-sm-3'>
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw"
+                             width='200' height='200' alt=''/>
+                        <h4><a href="./course-detail.jsp?id=${"${course.id}"}">${"${course.name}"}</a></h4>
+                        <span class='text-muted'>${"${course.status}"}</span>
+                    </div>`);
+            }
+        },
+        error: function () {
 
+        }
+    })
 </script>

@@ -2,7 +2,7 @@ package application.servlet.course;
 
 import application.servlet.pub.BaseServlet;
 import persistent.pojo.User;
-import service.CourseService;
+import service.impl.CourseServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/application/servlet/comment-course")
-public class CommentCourseSevlet extends BaseServlet {
+public class CommentCourseServlet extends BaseServlet {
 
     @Override
     protected void Handle(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -20,7 +20,7 @@ public class CommentCourseSevlet extends BaseServlet {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("CNC");
         Integer cid = Integer.valueOf(req.getParameter("cid"));
-        CourseService cs = new CourseService();
+        CourseServiceImpl cs = new CourseServiceImpl();
         boolean success = cs.doComment(comment, user.getId(), cid);
         responseRequest(resp, String.valueOf(success));
     }

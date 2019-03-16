@@ -1,7 +1,7 @@
 package application.servlet.course;
 
 import application.servlet.pub.BaseServlet;
-import service.CourseService;
+import service.impl.CourseServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +22,7 @@ public class JoinCourseServlet extends BaseServlet {
         int sid = Integer.valueOf(req.getParameter("sid"));
 //        检查是否已加入该课程
         if ("报名中".equals(status)) {
-            String ret = new CourseService().joinCourse(cid, sid);
+            String ret = new CourseServiceImpl().joinCourse(cid, sid);
             responseRequest(resp, ret);
 
         }

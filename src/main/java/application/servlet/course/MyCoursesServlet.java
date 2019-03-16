@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import persistent.pojo.Course;
 import persistent.pojo.User;
-import service.CourseService;
+import service.impl.CourseServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +26,7 @@ public class MyCoursesServlet extends BaseServlet {
         String json = req.getParameter("json");
 
         // 开始查询课程
-        CourseService cs = new CourseService();
+        CourseServiceImpl cs = new CourseServiceImpl();
         // 先拿到当前的用户信息
         HttpSession session = req.getSession();
 //        TODO: session中存的应该是一个user的唯一标识信息，在需要的时候在此执行查询

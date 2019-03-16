@@ -58,9 +58,9 @@
         });
         $.ajax({
             type: 'POST',
-            url: '/application/servlet/user/login',
+            url: '/application/servlet/user',
             dataType: 'text',
-            data: {'json': JSON.stringify(arr)},
+            data: {'method': 'login','json': JSON.stringify(arr)},
             success: function (result) {
                 var ret = JSON.parse(result);
                 var key = ret['result_code'];

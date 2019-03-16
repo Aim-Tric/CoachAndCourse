@@ -25,38 +25,37 @@ var sidebar_list = {
         id: '#new-course',
         url: '../admin/course/add-course.jsp',
         type: 'submit',
-        submitUrl: '/application/servlet/course/add-course',
+        submitUrl: '/application/servlet/course',
+        method: "add",
     },
     'my-course': {
         id: '#my-course',
-        url: '../admin/course-detail.jsp',
+        url: '../admin/course/my-course.jsp',
         type: 'query',
         submitUrl: '',
     },
     'update-course': {
         id: '#update-course',
         url: '../admin/course/update-course.jsp',
-        type: '',
+        type: 'query',
         submitUrl: '',
     },
     'moments': {
         id: '#moments',
-        url: '../admin/course/moments.jsp',
-        type: '',
+        url: '../admin/course/space.jsp',
+        type: 'query',
         submitUrl: '',
     },
-    'profile-view': {
-        id: '#profile-view',
-        url: '../admin/course/profileView.jsp',
-        type: '',
+    'profile-info': {
+        id: '#profile',
+        url: '../admin/profile-info.jsp',
+        type: 'query',
         submitUrl: '',
+        callback: function () {
+
+        }
     },
-    'profile-edit': {
-        id: '#profile-edit',
-        url: '../admin/course/profileEdit.jsp',
-        type: '',
-        submitUrl: '',
-    },
+
 };
 
 

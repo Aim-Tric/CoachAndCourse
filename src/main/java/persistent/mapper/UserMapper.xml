@@ -9,9 +9,10 @@
     </select>
 
     <select id="findUser" resultType="User" parameterType="User">
-        select u.id,u.username,u.sex,u.email,u.nickname,u.password,u.avatar
-        from user u
+        select u.id,u.username,u.sex,u.email,u.nickname,u.password,u.avatar,r.name as role
+        from user u,role r
         <trim prefix="WHERE" prefixOverrides="AND">
+            r.id = u.role_id
             <if test="id != null">AND id = #{id}</if>
             <if test="username != null">AND username = #{username}</if>
             <if test="sex != null">AND sex = #{sex}</if>
@@ -26,4 +27,16 @@
         insert into user (username, sex, password, email, nickname)
         values (#{username}, #{sex}, #{password}, #{email}, #{nickname})
     </insert>
+
+    <update id="updateUser" parameterType="User">
+        update user
+        <trim prefix="set" suffixOverrides="," >
+            <if test="sex != null">sex = #{sex},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="nickname != null">nickname = #{nickname},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="avatar != null">avatar = #{avatar}</if>
+        </trim>
+        where id = #{id}
+    </update>
 </mapper>

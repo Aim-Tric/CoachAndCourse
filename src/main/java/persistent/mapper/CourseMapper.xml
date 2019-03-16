@@ -5,7 +5,7 @@
     <!-- 查找个人课程 -->
     <select id="findCoursesByUserId" parameterType="java.lang.Integer" resultType="Course">
         select c.id,c.name,c.overview,c.status,c.max_person,c.score,c.type,
-               c.start_time,c.end_time,c.poster,c.teaid,c.source
+               c.start_time,c.end_time,c.poster,c.teaid,c.price
         from course as c,course_stu as cs
         where c.id = cs.course_id and cs.stu_id = ${id}
         order by c.start_time desc
@@ -15,7 +15,7 @@
     <!-- 查找相关课程 -->
     <select id="findCourseById" parameterType="java.lang.Integer" resultType="Course">
         select c.id,c.name,c.overview,c.status,c.max_person,c.score,c.type,
-        c.start_time,c.end_time,c.poster,c.teaid,c.source
+        c.start_time,c.end_time,c.poster,c.teaid,c.price
         from course c
         where id = ${value}
     </select>
@@ -27,9 +27,9 @@
     </select>
 
     <!-- 最新的课程 -->
-    <select id="findNewestCourses" parameterType="java.lang.Integer" resultType="Course">
+    <select id="getLatestCourses" parameterType="java.lang.Integer" resultType="Course">
         select c.id,c.name,c.overview,c.status,c.max_person,c.score,c.type,
-        c.start_time,c.end_time,c.poster,c.teaid,c.source
+        c.start_time,c.end_time,c.poster,c.teaid
         from course c
         order by start_time desc
         limit ${(page-1)*max}, ${max}

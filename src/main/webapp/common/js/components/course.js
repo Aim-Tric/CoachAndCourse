@@ -26,7 +26,7 @@
 //         });
 //     });
 // }
-
+//
 // var registerAction = {
 //     'submit': function (form, obj) {
 //         var $button = form.find('button[type=submit]');
@@ -50,7 +50,7 @@
 //         })
 //     },
 // };
-
+//
 // function setDropdownListener(targetObj) {
 //     targetObj.on('click', '.dropdown-menu li a', function () {
 //         var target = $(this).html();
@@ -96,6 +96,6 @@
 //         })
 //     });
 // }
-
-
-
+//
+//
+//

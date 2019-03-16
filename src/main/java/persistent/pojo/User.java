@@ -6,14 +6,15 @@ import java.util.List;
 public class User {
     private Integer id;
     private String username, sex, email, nickname, password;
-    private Byte[] avatar;
+    private byte[] avatar;
     private String role;
+    private String signature;
     private List<Course> Courses;
 
     public User() {
     }
 
-    public User(Integer id, String username, String sex, String email, String nickname, String password, Byte[] avatar, String role) {
+    public User(Integer id, String username, String sex, String email, String nickname, String password, byte[] avatar, String role, String signature, List<Course> courses) {
         this.id = id;
         this.username = username;
         this.sex = sex;
@@ -22,6 +23,8 @@ public class User {
         this.password = password;
         this.avatar = avatar;
         this.role = role;
+        this.signature = signature;
+        Courses = courses;
     }
 
     public String getEmail() {
@@ -72,11 +75,11 @@ public class User {
         this.sex = sex;
     }
 
-    public Byte[] getAvatar() {
+    public byte[] getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(Byte[] avatar) {
+    public void setAvatar(byte[] avatar) {
         this.avatar = avatar;
     }
 
@@ -96,6 +99,14 @@ public class User {
         Courses = courses;
     }
 
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -107,7 +118,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", avatar=" + Arrays.toString(avatar) +
                 ", role='" + role + '\'' +
-                ", Courses=" + Courses +
+                ", signature='" + signature + '\'' +
                 '}';
     }
 }

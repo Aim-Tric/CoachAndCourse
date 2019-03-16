@@ -2,7 +2,7 @@ package application.servlet.course;
 
 import application.servlet.pub.BaseServlet;
 import persistent.pojo.Course;
-import service.CourseService;
+import service.impl.CourseServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ public class CourseDetailsServlet extends BaseServlet {
         // 获取课程id
         Integer c_id = Integer.valueOf(req.getParameter("cid"));
         // 通过id查询更多课程详细信息
-        CourseService cs = new CourseService();
+        CourseServiceImpl cs = new CourseServiceImpl();
         // 返还课程详细信息，并跳转至详细页面
         Course c = cs.courseDetail(c_id);
         resp.sendRedirect("/admin/course-detail.jsp");

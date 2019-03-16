@@ -144,7 +144,7 @@
                             '                        </div>\n' +
                             '                    </div>';
                         $('.comment-content').append(tmp);
-                        $('#comment').val();
+                        $('#comment').val("");
                     } else {
                         alert("评论出错")
                     }

@@ -6,14 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Method;
 
 public abstract class BaseServlet extends HttpServlet {
 
 
     private void doRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html;charset=UTF-8");
-        resp.setHeader("Access-Control-Allow-Origin", "*");
-        resp.setCharacterEncoding("UTF-8");
+
         Handle(req, resp);
     }
 

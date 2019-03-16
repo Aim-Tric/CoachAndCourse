@@ -2,7 +2,7 @@ package application.servlet.course;
 
 import application.servlet.pub.BaseServlet;
 import persistent.pojo.User;
-import service.CourseService;
+import service.impl.CourseServiceImpl;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ public class AddCourseServlet extends BaseServlet {
     protected void Handle(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String json = req.getParameter("json");
         User teacher = (User) req.getSession().getAttribute("CNC");
-        String ret = new CourseService().addCourse(json);
+        String ret = new CourseServiceImpl().addCourse(json);
         resp.getWriter().print(ret);
     }
 }

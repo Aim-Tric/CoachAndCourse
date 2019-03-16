@@ -17,6 +17,7 @@
 <!--常用函数标签库-->
 <%@ page isELIgnored="false" %>
 <!--支持EL表达式，不设的话，EL表达式不会解析-->
+<% request.setAttribute("base_url", request.getContextPath()); %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,8 +33,9 @@
     <%--<script src="https://raw.githubusercontent.com/emn178/js-md5/master/build/md5.min.js"></script>--%>
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <%--Plugins--%>
+    <link rel="stylesheet" href="${base_url}/common/plugins/layui/css/layui.css" media="all">
+    <script src="${base_url}/common/plugins/layui/layui.all.js"></script>
     <%--dateTimePicker--%>
-    <% request.setAttribute("base_url", request.getContextPath()); %>
     <link href="${base_url}/common/css/plugins/dateTimePicker/bootstrap-datetimepicker.min.css" rel="stylesheet"
           media="screen">
     <script type="text/javascript" src="${base_url}/common/js/plugins/dateTimePicker/bootstrap-datetimepicker.min.js"
