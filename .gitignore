@@ -36,6 +36,7 @@ hs_err_pid*
 !.gitignore
 !README.md
 !src/
+!img/
 !**/src/
 out/
 .idea/
