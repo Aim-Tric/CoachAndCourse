@@ -72,9 +72,7 @@ public class CourseServlet extends BaseServlet {
 //        int page = Integer.valueOf(json);
         int page = Integer.valueOf(json);
 //        TODO: 根据用户信息查询相关课程，并根据页码实现分页功能
-        System.out.println("before search");
         List<Course> list = cs.searchCourses(user.getId(), page);
-        System.out.println("after search");
 //         将查询结果转成json对象并response回到前端
 //        TODO: 我们需要一个工具类来打包json数据返回
         JSONArray ja = new JSONArray();

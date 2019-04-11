@@ -51,9 +51,10 @@ function setSubmitBtnListener(targetObj, sender) {
         e.preventDefault();
         var datas = form_datas();
         //TODO： 改造data参数部分内容
-        var data = {"json": JSON.stringify(datas)};
+        var json = JSON.stringify(datas);
+        var data = {"json": json};
         if(sender.method) {
-            data = {"method": sender.method, "json": JSON.stringify(datas)};
+            data = {"method": sender.method, "json": json};
         }
         $.ajax({
             type: 'Post',

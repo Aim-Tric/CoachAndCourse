@@ -12,8 +12,8 @@ public class BaseServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html;charset=UTF-8");
-        resp.setHeader("Access-Control-Allow-Origin", "*");
         resp.setCharacterEncoding("UTF-8");
+        resp.setHeader("Access-Control-Allow-Origin", "*");
         String method = req.getParameter("method");
         if (method != null) {
             execute(method, req, resp);

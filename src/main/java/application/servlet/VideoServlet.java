@@ -1,4 +1,4 @@
-package application.video;
+package application.servlet;
 
 import application.servlet.pub.BaseServlet;
 

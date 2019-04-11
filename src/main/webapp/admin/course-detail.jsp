@@ -20,9 +20,9 @@
     String id = request.getParameter("id");
     Course c = cs.findCourseById(Integer.valueOf(id));
     Integer person = cs.getCurrentPerson(c.getId());
-    String url = "../admin/login.jsp";
+    String url = "/admin/login.jsp";
     if (isLogged) {
-        url = String.format("../application/servlet/course/joinCourse?cid=%d&status=%s&sid=%d", c.getId(), c.getStatus(), user.getId());
+        url = String.format("/application/servlet/course?method=join&cid=%d&status=%s&sid=%d", c.getId(), c.getStatus(), user.getId());
         boolean inCourse = cs.inCourse(c.getId(), user.getId());
         request.setAttribute("inCourse", inCourse);
     }
@@ -86,7 +86,7 @@
                 <label for="comment">评论</label>
             </div>
             <div>
-                <form action="/application/servlet/comment-course">
+                <form>
                     <textarea name="comment" id="comment" style="width: 80%;" rows="5"></textarea>
                     <button id="do-comment" type="button" class="btn btn-primary">提交</button>
                 </form>
@@ -127,9 +127,9 @@
         $('#do-comment').on('click', function () {
             let c = $('#comment').val();
             $.ajax({
-                url: '../application/servlet/comment-course',
+                url: '../application/servlet/course',
                 type: 'POST',
-                data: {comment: c, cid: ${course.id}},
+                data: {method: "comment",comment: c, cid: ${course.id}},
                 success: function (result) {
                     if (result === 'true') {
                         let tmp = '<div class="comment-block">\n' +
